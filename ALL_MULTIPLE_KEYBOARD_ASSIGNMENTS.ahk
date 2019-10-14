@@ -517,7 +517,57 @@ return
 
 return
 
-;SFX
+;SFX - Words/effects
+;3 - q,w
+;Bruh.wav
+;Yeet.wav
+;Yes.wav
+;Nope.wav
+;what-sound.wav
+;what-sound2.wav
+;Oof-1.wav
+;Oof-2.wav
+;Incredible.wav
+;Nice.wav
+;gotcha-grab.wav
+;Get Over Here Sound Effect!.wav
+;tadaa.wav
+;Ric Flair Woo.wav
+;Nice Shot Clean.wav
+;TOASTY!.wav
+;that-is-not-correct.wav
+;Surprise Motherfucker.wav
+;chappelle-gotcha.wav
+;FBI Open Up.wav
+;Mission Failed We'll Get Em Next Time - Call of Duty.wav
+;Run! Marlon Wayans.wav
+;help-me.wav
+;goteem.wav
+
+;3 - e,r
+;cash-register-opening.wav
+;cash-register.wav
+;slotMachine 2.wav
+;Fart sound effects.wav
+;fart-long.wav
+;Fart-short.wav
+;bone breaking 4.wav
+;bone-break.wav
+;picture taken.wav
+;Slide.wav
+;Slip.wav
+;Punch-1.wav
+;Punch-2.wav
+;whip.wav
+;Glitch.wav
+;glassbreak.wav
+;smack.wav
+;stab.wav
+;bowling-pins.wav
+;dreams.wav
+;record-scratch.wav
+;splat.wav
+;spring.wav
 #IfWinActive ahk_exe Adobe Premiere Pro.exe
 ~3::
 {
@@ -530,10 +580,25 @@ return
     }
     If OutputVar = Q
     {
+        sheet = 1
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    }
+    If OutputVar = W
+    {
         sheet = 2
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     }
-    
+    If OutputVar = E
+    {
+        sheet = 3
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    }
+    If OutputVar = R
+    {
+        sheet = 4
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    }
+    ;words 1
     if sheet = 1
     {
         If ErrorLevel = EndKey:Escape
@@ -545,62 +610,63 @@ return
             insertSFX("What-sound")
             return
         }  
-        If ErrorLevel = EndKey:F26
-        {
-            insertSFX("Cash-Register")
-            return
-        }    
-        If ErrorLevel = EndKey:F3
-        {
-            insertSFX("Yes")
-            return
-        } 
-        If ErrorLevel = EndKey:F4
-        {
-            insertSFX("MG-death")
-            return
-        } 
-        If ErrorLevel = EndKey:F5
-        {
-            insertSFX("MG-alert-ps")
-            return
-        }  
-        If ErrorLevel = EndKey:F6
-        {
-            insertSFX("MG-alert-nes")
-            return
-        }     
-        If ErrorLevel = EndKey:F7
+        If ErrorLevel = EndKey:F2
         {
             insertSFX("yeet")
             return
         }  
-        If ErrorLevel = EndKey:F8
+        If ErrorLevel = EndKey:F3
+        {
+            insertSFX("Yes")
+            return
+        }
+        If ErrorLevel = En6dKey:F4
+        {
+            insertSFX("incredible")
+            return
+        }
+        If ErrorLevel = EndKey:F5
         {
             insertSFX("bruh")
             return
         }  
-        If ErrorLevel = EndKey:F9
-        {
-            insertSFX("kobe")
-            return
-        }  
-        If ErrorLevel = EndKey:F10
-        {
-            insertSFX("bruh")
-            return
-        }  
-        If ErrorLevel = EndKey:F11
+        If ErrorLevel = EndKey:F6
         {
             insertSFX("wow")
             return
         }  
-        If ErrorLevel = EndKey:F12
+        If ErrorLevel = EndKey:F7
         {
             insertSFX("perfect")
             return
-        } 
+        }
+        If ErrorLevel = EndKey:F8
+        {
+            insertSFX("minion-w")
+            return
+        }
+        If ErrorLevel = EndKey:F9
+        {
+            insertSFX("kobe")
+            return
+        }            
+        If ErrorLevel = EndKey:F10
+        {
+            insertSFX("gotcha-grab")
+            return
+        }
+        If ErrorLevel = EndKey:F11
+        {
+            insertSFX("Nice-Shot")
+            return
+        }     
+        If ErrorLevel = EndKey:F12
+        {
+            insertSFX("tadaa")
+            return
+        }
     } 
+    ;words 2
     if sheet = 2 
     {
         If ErrorLevel = EndKey:Escape
@@ -609,146 +675,143 @@ return
         }
         If ErrorLevel = EndKey:F1
         {
-            insertSFX("birds-overhead")
+            insertSFX("Cash-Register")
             return
         }  
         If ErrorLevel = EndKey:F2
         {
+            insertSFX("MG-death")
+            return
+        } 
+        If ErrorLevel = EndKey:F3
+        {
+            insertSFX("MG-alert-ps")
+            return
+        }  
+        If ErrorLevel = EndKey:F4
+        {
+            insertSFX("MG-alert-nes")
+            return
+        }
+        If ErrorLevel = EndKey:F5
+        {
+            insertSFX("bowling-pins")
+            return
+        }  
+        If ErrorLevel = EndKey:F6
+        {
+            insertSFX("dreams")
+            return
+        }
+    }
+    ;effects 1
+    if sheet = 3 
+    {
+        If ErrorLevel = EndKey:Escape
+        {
+            return
+        }
+        If ErrorLevel = EndKey:F1
+        {
+            insertSFX("that-is-not-correct")
+            return
+        }
+        If ErrorLevel = EndKey:F2
+        {
+            insertSFX("goteem")
+            return
+        }
+        If ErrorLevel = EndKey:F3
+        {
+            insertSFX("help-me")
+            return
+        }  
+        If ErrorLevel = EndKey:F4
+        {
+            insertSFX("chappelle-gotcha")
+            return
+        }
+        If ErrorLevel = EndKey:F5
+        {
             insertSFX("look-at-this-dude")
             return
-        }    
-        If ErrorLevel = EndKey:F3
+        }
+        If ErrorLevel = EndKey:F6
+        {
+            insertSFX("birds-overhead")
+            return
+        }   
+        If ErrorLevel = EndKey:F7
         {
             insertSFX("navi-hey")
             return
         } 
-        If ErrorLevel = EndKey:F4
+        If ErrorLevel = EndKey:F8
         {
             insertSFX("hes-on-fire")
             return
-        } 
-        ;If ErrorLevel = EndKey:F5
-        ;{
-        ;    insertSFX("MG-alert-ps")
-        ;    return
-        ;}  
-        ;If ErrorLevel = EndKey:F6
-        ;{
-        ;    insertSFX("MG-alert-nes")
-        ;    return
-        ;}     
-        ;If ErrorLevel = EndKey:F7
-        ;{
-        ;    insertSFX("yeet")
-        ;    return
-        ;}  
-        ;If ErrorLevel = EndKey:F8
-        ;{
-        ;    insertSFX("bruh")
-        ;    return
-        ;}  
-        ;If ErrorLevel = EndKey:F9
-        ;{
-        ;    insertSFX("kobe")
-        ;    return
-        ;} 
-        ;If ErrorLevel = EndKey:F10
-        ;{
-        ;    insertSFX("bruh")
-        ;    return
-        ;}  
-        ;If ErrorLevel = EndKey:F11
-        ;{
-        ;;    insertSFX("wow")
-        ;    return
-        ;}  
-        ;If ErrorLevel = EndKey:F12
-        ;{
-        ;    insertSFX("perfect")
-        ;    return
-        ;} 
+        }
+    }
+    ;effects 2
+    if sheet = 4
+    {
+        If ErrorLevel = EndKey:Escape
+        {
+            return
+        }
+        If ErrorLevel = EndKey:F1
+        {
+            insertSFX("that-is-not-correct")
+            return
+        }
     }
 }    
 
 return
 
-;Audio Effects sounds 3; effects
+;Game/Movie effects - 4 q,w; laughs/crowd - 4 e; transitions 4 r
+;4 - q,w
+;;;Game/Movie effects - 18
+;metal-gear-alert-nes.wav
+;metal-gear-alert-playstation.wav
+;minion-w.wav
+;pick-up-item.wav
+;crash-bandicoot-spin.wav
+;zelda-secret-1.wav
+;zelda-secret-2.wav
+;super-mario-coin.wav
+;super-mario-death-1.wav
+;super-mario-death-2.wav
+;super-mario-mushroom.wav
+;Super Mario Jump.wav
+;chest opening - Fortnite.wav
+;FamilyFeud-Blip.wav
+;GTA 5 Death.wav
+;Uppercut.wav
+;--CharlieBrownTeacherVoice.wav
+
+;4 - e
+;;;laughs/applause/boo - 9
+;laugh-1.wav
+;laugh-2.wav
+;laugh-3.wav
+;laughing-earrape.wav
+;CharlieMurphyLaugh.wav
+;Human-Applause-LargeCrowd01.wav
+;Human-Boo-LargeCrowd01.wav
+;Human-Boo-SmallCrowd04.wav
+;Human-Cheer-MediumCrowd01.wav
+;Human-Laugh-SmallCrowd01.wav
+
+;4 - r
+;;transitions - 4
+;cartoon-swipe-in.wav
+;cartoon-swipe-out.wav
+;Swoosh.wav
+;bubble-pop.wav
+
 #IfWinActive ahk_exe Adobe Premiere Pro.exe
 ~4::
-{
-    Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-        
-    If ErrorLevel = EndKey:Escape
-    {
-        return
-    }
-    If ErrorLevel = EndKey:F1
-    {
-        insertSFX("laughing-earrape")
-        return
-    }  
-    If ErrorLevel = EndKey:F2
-    {
-        insertSFX("minion-w")
-        return
-    }    
-    If ErrorLevel = EndKey:F3
-    {
-        insertSFX("gotcha-grab")
-        return
-    } 
-    If ErrorLevel = En6dKey:F4
-    {
-        insertSFX("incredible")
-        return
-    } 
-    If ErrorLevel = EndKey:F5
-    {
-        insertSFX("goteem")
-        return
-    }  
-    If ErrorLevel = EndKey:F6
-    {
-        insertSFX("Nice-Shot")
-        return
-    }     
-    If ErrorLevel = EndKey:F7
-    {
-        insertSFX("tadaa")
-        return
-    }  
-    If ErrorLevel = EndKey:F8
-    {
-        insertSFX("that-is-not-correct")
-        return
-    }  
-    If ErrorLevel = EndKey:F9
-    {
-        insertSFX("bowling-pins")
-        return
-    }  
-    If ErrorLevel = EndKey:F10
-    {
-        insertSFX("dreams")
-        return
-    }  
-    If ErrorLevel = EndKey:F11
-    {
-        insertSFX("help-me")
-        return
-    }  
-    If ErrorLevel = EndKey:F12
-    {
-        insertSFX("chappelle-gotcha")
-        return
-    }     
-} 
-
-return
-
-;Audio Effects sounds
-#IfWinActive ahk_exe Adobe Premiere Pro.exe
-~5::
 {
     Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     sheet = 1
@@ -759,17 +822,132 @@ return
     }
     If OutputVar = Q
     {
+        sheet = 1
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    }
+    If OutputVar = W
+    {
         sheet = 2
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     }
-    if OutputVar = W 
+    If OutputVar = E
     {
         sheet = 3
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     }
+    If OutputVar = R
+    {
+        sheet = 4
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    }
+    ;Game sounds 1
+    if sheet = 1
+    {
+        If ErrorLevel = EndKey:Escape
+        {
+            return
+        }
+        If ErrorLevel = EndKey:F1
+        {
+            insertSFX("What-sound")
+            return
+        } 
+    }  
+    ;Game sounds 2
+    if sheet = 2
+    {
+        If ErrorLevel = EndKey:Escape
+        {
+            return
+        }
+        If ErrorLevel = EndKey:F1
+        {
+            insertSFX("What-sound")
+            return
+        } 
+    }  
+    ;laughs/crowd 1
+    if sheet = 3
+    {
+        If ErrorLevel = EndKey:Escape
+        {
+            return
+        }
+        If ErrorLevel = EndKey:F1
+        {
+            insertSFX("What-sound")
+            return
+        } 
+    }  
+    ;transitions
+    if sheet = 4
+    {
+        If ErrorLevel = EndKey:Escape
+        {
+            return
+        }
+        If ErrorLevel = EndKey:F1
+        {
+            insertSFX("What-sound")
+            return
+        } 
+    }  
+} 
 
-    msgbox, sheet is {sheet} %sheet%
-    
+return
+
+;Dramatic q,w
+;5 - q,w
+;;dramatic - 21
+;Dramatic-alert.wav
+;Dramatic-boom and trail off.wav
+;Dramatic-boom scratchy.wav
+;Dramatic-Boom.wav
+;Dramatic-building violin.wav
+;Dramatic-building with buzzing.wav
+;Dramatic-building with slow fade.wav
+;Dramatic-building with wisp 2.wav
+;Dramatic-bum bum bum bum bum bum bum bum.wav
+;Dramatic-Cinematic-Stinger.wav
+;Dramatic-CinematicBoom.wav
+;Dramatic-CinematicBoom2.wav
+;Dramatic-classic.wav
+;Dramatic-do dooo doo doo do dooo.wav
+;Dramatic-Electronic woosh.wav
+;Dramatic-Evil crack 06.wav
+;Dramatic-hard boom.wav
+;Dramatic-horn.wav
+;Dramatic-Jurassic park like.wav
+;Dramatic-lead pipe clang.wav
+;explosion.wav
+#IfWinActive ahk_exe Adobe Premiere Pro.exe
+~5::
+{
+    If ErrorLevel = EndKey:Escape
+    {
+        return
+    }
+    If OutputVar = Q
+    {
+        sheet = 1
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    }
+    If OutputVar = W
+    {
+        sheet = 2
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    }
+    If OutputVar = E
+    {
+        sheet = 3
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    }
+    If OutputVar = R
+    {
+        sheet = 4
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    }
+    ;dramatic
     if sheet = 1
     {
         If ErrorLevel = EndKey:Escape
@@ -838,7 +1016,7 @@ return
             return
         }   
     }
-
+    ;dramatic
     if sheet = 2
     {
         If ErrorLevel = EndKey:Escape
@@ -908,6 +1086,7 @@ return
             return
         }      
     } 
+    ;N/A
     if sheet = 3
     {
         If ErrorLevel = EndKey:Escape
@@ -949,12 +1128,52 @@ return
             insertSFX("Nope")
             return
         } 
-    }       
+    } 
+    ;N/A  
+    if sheet = 4
+    {
+        If ErrorLevel = EndKey:Escape
+        {
+            return
+        }
+        If ErrorLevel = EndKey:F1
+        {
+            insertSFX("What-sound")
+            return
+        } 
+    }     
 }   
 
 return
 
-;Audio Music
+;Audio Music q,w
+;6 - q,w
+;;music - 24
+;beverly-hills-cop.wav
+;cartoon-music-mattia-cupelli.wav
+;cinema-sins.wav
+;Fluffing-a-duck.wav
+;Ghostpocalypse.mp3
+;hitman.wav
+;Illuminati-Confirmed-Distorted.wav
+;Illuminati-Confirmed.wav
+;Investigations.wav
+;love-me.wav
+;Marty-Gots-a-Plan.wav
+;MBB.wav
+;monkey-spinning.wav
+;Piano-and-Ukulele.wav
+;pink-panther.wav
+;Pizzicato-Playtime.wav
+;sad-emotional-piano.wav
+;Scheming-Weasel.wav
+;Sneaking-Suspense-Jazz.wav
+;Sneaky-Adventure.wav
+;Sneaky-Snitch.wav
+;Spongebob-background-music.wav
+;Umbrella-Pants.mp3
+;wii-music.wav
+;workaday.wav
 #IfWinActive ahk_exe Adobe Premiere Pro.exe
 ~6::
 {
@@ -967,14 +1186,25 @@ return
     }
     If OutputVar = Q
     {
-        sheet = 2
-        Input, OutputVar, L1, 1,2,3,4,5,6,7,8,9,0,{F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+        sheet = 1
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     }
-    if OutputVar = W 
+    If OutputVar = W
+    {
+        sheet = 2
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    }
+    If OutputVar = E
     {
         sheet = 3
-        Input, OutputVar, L1, 1,2,3,4,5,6,7,8,9,0,{F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    } 
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    }
+    If OutputVar = R
+    {
+        sheet = 4
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    }
+    ;music 1
     if sheet = 1
     {
         If ErrorLevel = EndKey:Escape
@@ -1042,6 +1272,7 @@ return
             return
         }   
     }
+    ;music 2
     if sheet = 2
     {
         If ErrorLevel = EndKey:Escape
@@ -1110,6 +1341,7 @@ return
             return
         }   
     }
+    ;music N/A
     if sheet = 3
     {
         If ErrorLevel = EndKey:Escape
@@ -1126,7 +1358,25 @@ return
             insertAudio("love-me")
             return
         } 
-    }    
+    }   
+    ;music N/A 
+    if sheet = 4
+    {
+        If ErrorLevel = EndKey:Escape
+        {
+            return
+        }
+        If ErrorLevel = EndKey:F1
+        {
+            insertAudio("pizzicato-playtime")
+            return
+        } 
+        If ErrorLevel = EndKey:F2
+        {
+            insertAudio("love-me")
+            return
+        } 
+    }   
 } 
 
 return
