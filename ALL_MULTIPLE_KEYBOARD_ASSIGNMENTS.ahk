@@ -518,7 +518,7 @@ return
 return
 
 ;SFX - Words/effects
-;3 - q,w
+;3 - q,w,e
 ;Bruh.wav
 ;Yeet.wav
 ;Yes.wav
@@ -527,8 +527,11 @@ return
 ;what-sound2.wav
 ;Oof-1.wav
 ;Oof-2.wav
+;++perfect
 ;Incredible.wav
+;++kobe
 ;Nice.wav
+
 ;gotcha-grab.wav
 ;Get Over Here Sound Effect!.wav
 ;tadaa.wav
@@ -544,7 +547,7 @@ return
 ;help-me.wav
 ;goteem.wav
 
-;3 - e,r
+;3 - r,t,y
 ;cash-register-opening.wav
 ;cash-register.wav
 ;slotMachine 2.wav
@@ -556,9 +559,9 @@ return
 ;picture taken.wav
 ;Slide.wav
 ;Slip.wav
+;whip.wav
 ;Punch-1.wav
 ;Punch-2.wav
-;whip.wav
 ;Glitch.wav
 ;glassbreak.wav
 ;smack.wav
@@ -598,6 +601,16 @@ return
         sheet = 4
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     }
+    If OutputVar = T
+    {
+        sheet = 5
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    }
+    If OutputVar = Y
+    {
+        sheet = 6
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    }
     ;words 1
     if sheet = 1
     {
@@ -607,7 +620,7 @@ return
         }
         If ErrorLevel = EndKey:F1
         {
-            insertSFX("What-sound")
+            insertSFX("Bruh")
             return
         }  
         If ErrorLevel = EndKey:F2
@@ -622,47 +635,47 @@ return
         }
         If ErrorLevel = En6dKey:F4
         {
-            insertSFX("incredible")
+            insertSFX("Nope")
             return
         }
         If ErrorLevel = EndKey:F5
         {
-            insertSFX("bruh")
+            insertSFX("what-sound")
             return
         }  
         If ErrorLevel = EndKey:F6
         {
-            insertSFX("wow")
+            insertSFX("what-sound2")
             return
         }  
         If ErrorLevel = EndKey:F7
         {
-            insertSFX("perfect")
+            insertSFX("Oof-1")
             return
         }
         If ErrorLevel = EndKey:F8
         {
-            insertSFX("minion-w")
+            insertSFX("Oof-2")
             return
         }
         If ErrorLevel = EndKey:F9
         {
-            insertSFX("kobe")
+            insertSFX("perfect")
             return
         }            
         If ErrorLevel = EndKey:F10
         {
-            insertSFX("gotcha-grab")
+            insertSFX("incredible")
             return
         }
         If ErrorLevel = EndKey:F11
         {
-            insertSFX("Nice-Shot")
+            insertSFX("kobe")
             return
         }     
         If ErrorLevel = EndKey:F12
         {
-            insertSFX("tadaa")
+            insertSFX("nice")
             return
         }
     } 
@@ -675,36 +688,66 @@ return
         }
         If ErrorLevel = EndKey:F1
         {
-            insertSFX("Cash-Register")
+            insertSFX("gotcha-grab")
             return
         }  
         If ErrorLevel = EndKey:F2
         {
-            insertSFX("MG-death")
+            insertSFX("Get-Over-Here-Sound-Effect")
             return
         } 
         If ErrorLevel = EndKey:F3
         {
-            insertSFX("MG-alert-ps")
+            insertSFX("tadaa")
             return
         }  
         If ErrorLevel = EndKey:F4
         {
-            insertSFX("MG-alert-nes")
+            insertSFX("Ric-Flair-Woo")
             return
         }
         If ErrorLevel = EndKey:F5
         {
-            insertSFX("bowling-pins")
+            insertSFX("Nice-Shot-Clean")
             return
         }  
         If ErrorLevel = EndKey:F6
         {
-            insertSFX("dreams")
+            insertSFX("toasty")
+            return
+        }
+        If ErrorLevel = EndKey:F7
+        {
+            insertSFX("that-is-not-correct")
+            return
+        }
+        If ErrorLevel = EndKey:F8
+        {
+            insertSFX("Surprise-Motherfucker")
+            return
+        }
+        If ErrorLevel = EndKey:F9
+        {
+            insertSFX("fbi-open-up")
+            return
+        }
+        If ErrorLevel = EndKey:F10
+        {
+            insertSFX("Mission-Failed-We'll-Get-Em-Next-Time")
+            return
+        }
+        If ErrorLevel = EndKey:F11
+        {
+            insertSFX("Run!-Marlon-Wayans")
+            return
+        }
+        If ErrorLevel = EndKey:F12
+        {
+            insertSFX("help-me")
             return
         }
     }
-    ;effects 1
+    ;words 3
     if sheet = 3 
     {
         If ErrorLevel = EndKey:Escape
@@ -713,46 +756,11 @@ return
         }
         If ErrorLevel = EndKey:F1
         {
-            insertSFX("that-is-not-correct")
-            return
-        }
-        If ErrorLevel = EndKey:F2
-        {
             insertSFX("goteem")
             return
-        }
-        If ErrorLevel = EndKey:F3
-        {
-            insertSFX("help-me")
-            return
-        }  
-        If ErrorLevel = EndKey:F4
-        {
-            insertSFX("chappelle-gotcha")
-            return
-        }
-        If ErrorLevel = EndKey:F5
-        {
-            insertSFX("look-at-this-dude")
-            return
-        }
-        If ErrorLevel = EndKey:F6
-        {
-            insertSFX("birds-overhead")
-            return
-        }   
-        If ErrorLevel = EndKey:F7
-        {
-            insertSFX("navi-hey")
-            return
-        } 
-        If ErrorLevel = EndKey:F8
-        {
-            insertSFX("hes-on-fire")
-            return
-        }
+        }        
     }
-    ;effects 2
+    ;effects 1
     if sheet = 4
     {
         If ErrorLevel = EndKey:Escape
@@ -761,7 +769,198 @@ return
         }
         If ErrorLevel = EndKey:F1
         {
-            insertSFX("that-is-not-correct")
+            insertSFX("cash-register-opening")
+            return
+        }
+        If ErrorLevel = EndKey:F2
+        {
+            insertSFX("cash-register")
+            return
+        }
+        If ErrorLevel = EndKey:F3
+        {
+            insertSFX("slotMachine-2")
+            return
+        }
+        If ErrorLevel = EndKey:F4
+        {
+            insertSFX("Fart-sound-effects")
+            return
+        }
+        If ErrorLevel = EndKey:F5
+        {
+            insertSFX("fart-long")
+            return
+        }
+        If ErrorLevel = EndKey:F6
+        {
+            insertSFX("fart-short")
+            return
+        }
+        If ErrorLevel = EndKey:F7
+        {
+            insertSFX("bone-breaking-4")
+            return
+        }
+        If ErrorLevel = EndKey:F8
+        {
+            insertSFX("bone-break")
+            return
+        }
+        If ErrorLevel = EndKey:F9
+        {
+            insertSFX("picture-taken")
+            return
+        }
+        If ErrorLevel = EndKey:F10
+        {
+            insertSFX("slide")
+            return
+        }
+        If ErrorLevel = EndKey:F11
+        {
+            insertSFX("slip")
+            return
+        }
+        If ErrorLevel = EndKey:F12
+        {
+            insertSFX("whip")
+            return
+        }
+    }
+    ;effects 2
+    if sheet = 5
+    {
+        If ErrorLevel = EndKey:Escape
+        {
+            return
+        }
+        If ErrorLevel = EndKey:F1
+        {
+            insertSFX("punch-1")
+            return
+        }
+        If ErrorLevel = EndKey:F2
+        {
+            insertSFX("punch-2")
+            return
+        }
+        If ErrorLevel = EndKey:F3
+        {
+            insertSFX("glitch")
+            return
+        }
+        If ErrorLevel = EndKey:F4
+        {
+            insertSFX("glassbreak")
+            return
+        }
+        If ErrorLevel = EndKey:F5
+        {
+            insertSFX("smack")
+            return
+        }
+        If ErrorLevel = EndKey:F6
+        {
+            insertSFX("stab")
+            return
+        }
+        If ErrorLevel = EndKey:F7
+        {
+            insertSFX("bowling-pins")
+            return
+        }
+        If ErrorLevel = EndKey:F8
+        {
+            insertSFX("dreams")
+            return
+        }
+        If ErrorLevel = EndKey:F9
+        {
+            insertSFX("record-scratch")
+            return
+        }
+        If ErrorLevel = EndKey:F10
+        {
+            insertSFX("splat")
+            return
+        }
+        If ErrorLevel = EndKey:F11
+        {
+            insertSFX("spring")
+            return
+        }
+        If ErrorLevel = EndKey:F12
+        {
+            ;insertSFX("correct")
+            return
+        }
+    }
+    ;effects 3
+    if sheet = 6
+    {
+        If ErrorLevel = EndKey:Escape
+        {
+            return
+        }
+        If ErrorLevel = EndKey:F1
+        {
+            ;insertSFX("correct")
+            return
+        }
+        If ErrorLevel = EndKey:F2
+        {
+            ;insertSFX("correct")
+            return
+        }
+        If ErrorLevel = EndKey:F3
+        {
+            ;insertSFX("correct")
+            return
+        }
+        If ErrorLevel = EndKey:F4
+        {
+            ;insertSFX("correct")
+            return
+        }
+        If ErrorLevel = EndKey:F5
+        {
+            ;insertSFX("correct")
+            return
+        }
+        If ErrorLevel = EndKey:F6
+        {
+            ;insertSFX("correct")
+            return
+        }
+        If ErrorLevel = EndKey:F7
+        {
+            ;insertSFX("correct")
+            return
+        }
+        If ErrorLevel = EndKey:F8
+        {
+            ;insertSFX("correct")
+            return
+        }
+        If ErrorLevel = EndKey:F9
+        {
+            ;insertSFX("correct")
+            return
+        }
+        If ErrorLevel = EndKey:F10
+        {
+            ;insertSFX("correct")
+            return
+        }
+        If ErrorLevel = EndKey:F11
+        {
+            ;insertSFX("correct")
+            return
+        }
+        If ErrorLevel = EndKey:F12
+        {
+            ;insertSFX("correct")
             return
         }
     }
@@ -849,9 +1048,64 @@ return
         }
         If ErrorLevel = EndKey:F1
         {
-            insertSFX("What-sound")
+            insertSFX("metal-gear-alert-nes")
             return
-        } 
+        }
+        If ErrorLevel = EndKey:F2
+        {
+            insertSFX("metal-gear-alert-playstation")
+            return
+        }
+        If ErrorLevel = EndKey:F3
+        {
+            insertSFX("minion-w")
+            return
+        }
+        If ErrorLevel = EndKey:F4
+        {
+            insertSFX("pick-up-item")
+            return
+        }
+        If ErrorLevel = EndKey:F5
+        {
+            insertSFX("crash-bandicoot-spin")
+            return
+        }
+        If ErrorLevel = EndKey:F6
+        {
+            insertSFX("zelda-secret-1")
+            return
+        }
+        If ErrorLevel = EndKey:F7
+        {
+            insertSFX("zelda-secret-2")
+            return
+        }
+        If ErrorLevel = EndKey:F8
+        {
+            insertSFX("super-mario-coin")
+            return
+        }
+        If ErrorLevel = EndKey:F9
+        {
+            insertSFX("super-mario-death-1")
+            return
+        }
+        If ErrorLevel = EndKey:F10
+        {
+            insertSFX("super-mario-death-2")
+            return
+        }
+        If ErrorLevel = EndKey:F11
+        {
+            insertSFX("super-mario-mushroom")
+            return
+        }
+        If ErrorLevel = EndKey:F12
+        {
+            insertSFX("Super-Mario-Jump")
+            return
+        }
     }  
     ;Game sounds 2
     if sheet = 2
@@ -862,7 +1116,62 @@ return
         }
         If ErrorLevel = EndKey:F1
         {
-            insertSFX("What-sound")
+            insertSFX("chest-opening-Fortnite")
+            return
+        }
+        If ErrorLevel = EndKey:F2
+        {
+            insertSFX("FamilyFeud-Blip")
+            return
+        }
+        If ErrorLevel = EndKey:F3
+        {
+            insertSFX("GTA-5-Death")
+            return
+        }
+        If ErrorLevel = EndKey:F4
+        {
+            insertSFX("uppercut")
+            return
+        }
+        If ErrorLevel = EndKey:F5
+        {
+            ;insertSFX("correct")
+            return
+        }
+        If ErrorLevel = EndKey:F6
+        {
+            ;insertSFX("correct")
+            return
+        }
+        If ErrorLevel = EndKey:F7
+        {
+            ;insertSFX("correct")
+            return
+        }
+        If ErrorLevel = EndKey:F8
+        {
+            ;insertSFX("correct")
+            return
+        }
+        If ErrorLevel = EndKey:F9
+        {
+            ;insertSFX("correct")
+            return
+        }
+        If ErrorLevel = EndKey:F10
+        {
+            ;insertSFX("correct")
+            return
+        }
+        If ErrorLevel = EndKey:F11
+        {
+            ;insertSFX("correct")
+            return
+        }
+        If ErrorLevel = EndKey:F12
+        {
+            ;insertSFX("correct")
             return
         } 
     }  
@@ -875,9 +1184,64 @@ return
         }
         If ErrorLevel = EndKey:F1
         {
-            insertSFX("What-sound")
+            insertSFX("laugh-1")
             return
-        } 
+        }
+        If ErrorLevel = EndKey:F2
+        {
+            insertSFX("laugh-2")
+            return
+        }
+        If ErrorLevel = EndKey:F3
+        {
+            insertSFX("laugh-3")
+            return
+        }
+        If ErrorLevel = EndKey:F4
+        {
+            insertSFX("laughing-earrape")
+            return
+        }
+        If ErrorLevel = EndKey:F5
+        {
+            insertSFX("CharlieMurphyLaugh")
+            return
+        }
+        If ErrorLevel = EndKey:F6
+        {
+            insertSFX("Human-Applause-LargeCrowd01")
+            return
+        }
+        If ErrorLevel = EndKey:F7
+        {
+            insertSFX("Human-Boo-LargeCrowd01")
+            return
+        }
+        If ErrorLevel = EndKey:F8
+        {
+            insertSFX("Human-Boo-SmallCrowd04")
+            return
+        }
+        If ErrorLevel = EndKey:F9
+        {
+            insertSFX("Human-Cheer-MediumCrowd01")
+            return
+        }
+        If ErrorLevel = EndKey:F10
+        {
+            insertSFX("Human-Laugh-SmallCrowd01")
+            return
+        }
+        If ErrorLevel = EndKey:F11
+        {
+            ;insertSFX("correct")
+            return
+        }
+        If ErrorLevel = EndKey:F12
+        {
+            ;insertSFX("correct")
+            return
+        }
     }  
     ;transitions
     if sheet = 4
@@ -888,7 +1252,62 @@ return
         }
         If ErrorLevel = EndKey:F1
         {
-            insertSFX("What-sound")
+            insertSFX("cartoon-swipe-in")
+            return
+        }
+        If ErrorLevel = EndKey:F2
+        {
+            insertSFX("cartoon-swipe-out")
+            return
+        }
+        If ErrorLevel = EndKey:F3
+        {
+            insertSFX("swoosh")
+            return
+        }
+        If ErrorLevel = EndKey:F4
+        {
+            insertSFX("bubble-pop")
+            return
+        }
+        If ErrorLevel = EndKey:F5
+        {
+            ;insertSFX("correct")
+            return
+        }
+        If ErrorLevel = EndKey:F6
+        {
+            ;insertSFX("correct")
+            return
+        }
+        If ErrorLevel = EndKey:F7
+        {
+            ;insertSFX("correct")
+            return
+        }
+        If ErrorLevel = EndKey:F8
+        {
+            ;insertSFX("correct")
+            return
+        }
+        If ErrorLevel = EndKey:F9
+        {
+            ;insertSFX("correct")
+            return
+        }
+        If ErrorLevel = EndKey:F10
+        {
+            ;insertSFX("correct")
+            return
+        }
+        If ErrorLevel = EndKey:F11
+        {
+            ;insertSFX("correct")
+            return
+        }
+        If ErrorLevel = EndKey:F12
+        {
+            ;insertSFX("correct")
             return
         } 
     }  
@@ -956,63 +1375,63 @@ return
         }
         If ErrorLevel = EndKey:F1
         {
-            insertSFX("Swoosh")
+            insertSFX("Dramatic-alert")
             return
         }  
         If ErrorLevel = EndKey:F2
         {
-            insertSFX("cartoon-swipe-in")
+            insertSFX("Dramatic-boom-and-trail-off")
             return
         }    
         If ErrorLevel = EndKey:F3
         {
-            insertSFX("cartoon-swipe-out")
+            insertSFX("Dramatic-boom-scratchy")
             return
         } 
         If ErrorLevel = EndKey:F4
         {
-            insertSFX("GlassBreak")
+            insertSFX("Dramatic-Boom")
             return
         } 
         If ErrorLevel = EndKey:F5
         {
-            insertSFX("Fart-short")
+            insertSFX("Dramatic-building-violin")
             return
         }  
         If ErrorLevel = EndKey:F6
         {
-            insertSFX("fart-long")
+            insertSFX("Dramatic-building-with-buzzing")
             return
         } 
 
         If ErrorLevel = EndKey:F7
         {
-            insertSFX("crash-bandicoot-spin")
+            insertSFX("Dramatic-building-with-slow-fade")
             return
         }  
         If ErrorLevel = EndKey:F8
         {
-            insertSFX("splat")
+            insertSFX("Dramatic-building-with-wisp-2")
             return
         }  
         If ErrorLevel = EndKey:F9
         {
-            insertSFX("bone-break")
+            insertSFX("Dramatic-bum-bum-bum-bum-bum-bum-bum-bum")
             return
         }  
         If ErrorLevel = EndKey:F10
         {
-            insertSFX("laugh-1")
+            insertSFX("Dramatic-Cinematic-Stinger")
             return
         }  
         If ErrorLevel = EndKey:F11
         {
-            insertSFX("laugh-2")
+            insertSFX("Dramatic-CinematicBoom")
             return
         }  
         If ErrorLevel = EndKey:F12
         {
-            insertSFX("laugh-3")
+            insertSFX("Dramatic-CinematicBoom2")
             return
         }   
     }
@@ -1026,63 +1445,63 @@ return
 
         If ErrorLevel = EndKey:F1
         {
-            insertSFX("zelda-secret-1")
+            insertSFX("Dramatic-classic")
             return
         }  
         If ErrorLevel = EndKey:F2
         {
-            insertSFX("zelda-secret-2")
+            insertSFX("Dramatic-do-dooo-doo-doo-do-dooo")
             return
         }    
         If ErrorLevel = EndKey:F3
         {
-            insertSFX("stab")
+            insertSFX("Dramatic-Electronic-woosh")
             return
         } 
         If ErrorLevel = EndKey:F4
         {
-            insertSFX("whip")
+            insertSFX("Dramatic-Evil-crack-06")
             return
         } 
         If ErrorLevel = EndKey:F5
         {
-            insertSFX("smack")
+            insertSFX("Dramatic-hard-boom")
             return
         }  
         If ErrorLevel = EndKey:F6
         {
-            insertSFX("oof-1")
+            insertSFX("Dramatic-horn")
             return
         } 
 
         If ErrorLevel = EndKey:F7
         {
-            insertSFX("oof-2")
+            insertSFX("Dramatic-Jurassic-park-like")
             return
         }  
         If ErrorLevel = EndKey:F8
         {
-            insertSFX("punch-1")
+            insertSFX("Dramatic-lead-pipe-clang")
             return
         }  
         If ErrorLevel = EndKey:F9
         {
-            insertSFX("punch-2")
+            insertSFX("explosion")
             return
         }  
         If ErrorLevel = EndKey:F10
         {
-            insertSFX("record-scratch")
+            ;insertSFX("record-scratch")
             return
         }  
         If ErrorLevel = EndKey:F11
         {
-            insertSFX("laugh-2")
+            ;insertSFX("laugh-2")
             return
         }  
         If ErrorLevel = EndKey:F12
         {
-            insertSFX("pick-up-item")
+            ;insertSFX("pick-up-item")
             return
         }      
     } 
