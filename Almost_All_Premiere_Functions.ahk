@@ -1,4 +1,4 @@
-﻿SetWorkingDir, C:\Users\Owner\source\repos\2nd-keyboard\support_files
+﻿SetWorkingDir, C:\Users\cxp6696\source\repos\2nd-keyboard\support_files
 ;the above will supposedly set A_WorkingDir. It MUST be done in the autoexecute area, BEFORE the code below.
 ;SetWorkingDir, C:\Users\TaranWORK\Documents\GitHub\2nd-keyboard\2nd keyboard support files
 
@@ -9,6 +9,7 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 #SingleInstance force ;only one instance of this script may run at a time!
 #MaxHotkeysPerInterval 2000
 #WinActivateForce ;https://autohotkey.com/docs/commands/_WinActivateForce.htm
+workPC = "Yes"
 
 ;-------------------------------------------------------------------------
 ; HELLO PEOPLES!
@@ -421,16 +422,24 @@ ControlGetPos, XX, YY, Width, Height, %classNN%, ahk_class %class%, SubWindow, S
 ;comment in the following line to get a message box of your current variable values. The script will not advance until you dismiss the message box.
 ;MsgBox, xx=%XX% yy=%YY%
 
+MouseMove, X2X-15, YY+10, 0 ;--------------------for 100% UI scaling, this moves the cursor onto the magnifying glass
 ;MouseMove, XX-25, YY+10, 0 ;--------------------for 150% UI scaling, this moves the cursor onto the magnifying glass
-MouseMove, XX-15, YY+10, 0 ;--------------------for 100% UI scaling, this moves the cursor onto the magnifying glass
 ;msgbox, should be in the center of the magnifying glass now.
 sleep 5 ;was sleep 50
 ;This types in the text you wanted to search for. Like "pop in." We can do this because the entire find box text was already selected by Premiere. Otherwise, we could click the magnifying glass if we wanted to , in order to select that find box.
 Send %item%
 
 sleep 5
-;MouseMove, 62, 95, 0, R ;----------------------(for 150% UI) relative to the position of the magnifying glass (established earlier,) this moves the cursor down and directly onto the preset's icon. In my case, it is inside the "presets" folder, then inside of another folder, and the written name should be completely unique so that it is the first and only item.
-MouseMove, 41, 63, 0, R ;----------------------(for 100% UI) 
+
+if(workPC = "No")
+{
+	MouseMove, 41, 63, 0, R ;----------------------(for 100% UI) 	
+}
+if(workPC = "Yes")
+{
+	MouseMove, -200, 170, 0, R ;----------------------(for 150% UI) relative to the position of the magnifying glass (established earlier,) this moves the cursor down and directly onto the preset's icon. In my case, it is inside the "presets" folder, then inside of another folder, and the written name should be completely unique so that it is the first and only item.	
+}
+
 ;msgbox, The cursor should be directly on top of the preset's icon. `n If not, the script needs modification.
 sleep 5
 MouseGetPos, iconX, iconY, Window, classNN ;---now we have to figure out the ahk_class of the current panel we are on. It used to be DroverLord - Window Class14, but the number changes anytime you move panels around... so i must always obtain the information anew.
@@ -473,6 +482,11 @@ theEnding:
 ;END of preset()
 
 
+
+
+
+
+
 savepreset(presetname){
 SendInput, {Shift Down}{Shift Up}{Ctrl Down}{c Down}
 sleep 20
@@ -486,7 +500,7 @@ return presetname
 
 
 #IfWinActive ahk_exe Adobe Premiere Pro.exe
-insertSFX(leSound)
+insertSFX(leSound, layerToInsertOn:=1)
 {
 	
 ifWinNotActive ahk_exe Adobe Premiere Pro.exe
@@ -507,12 +521,25 @@ SetKeyDelay, 0 ;for instant writing of text
 MouseGetPos, xpos, ypos
 send ^+x ;ctrl shift x -- shortcut in premiere for "remove in/out points.
 sleep 10
-send ^+9 ;ctrl shift 6 - source assignment preset 4. (sets it to A3.)
+if(layerToInsertOn = 1)
+{
+	send ^+9 ;ctrl shift 9 - source assignment preset 4. (sets it to A3.)
+}
+if(layerToInsertOn = 2)
+{
+	send ^+8 ;ctrl shift 8 - source assignment preset 5. (sets it to A2/V1.)
+}
+if(layerToInsertOn = 3)
+{
+	send ^+7 ;ctrl shift 7 - source assignment preset 6. (sets it to A4/V4.)
+}
+
 sleep 10
 ; Send ^!+1 ;premiere shortcut to open the "project" panel, which is actually a bin. Only ONE bin is highlightable in this way.
 ; ;Send F11
 ; sleep 100
 ;msgbox, you in the panel now?
+
 send ^!+1 ;CTRL ALT SHIFT 1 -- ;shortcut for application>window>project (highlights a single bin. In my case, it's on my left monitor.)
 tooltip, waiting for premiere to select that bin....
 ;msgbox, waiting for premiere to select that bin....
@@ -525,20 +552,52 @@ Send ^b ;CTRL B -- set this in premiere's shortcuts panel to "select find box." 
 ; msgbox, okay now what
 Send %leSound% ;types in the name of the sound effect you want - should do so instantaneously.
 tooltip, waiting for premiere to load......
-send ^+9 ;source assignment preset 4, again.
+if(layerToInsertOn = 1)
+{
+	send ^+9 ;source assignment preset 4, again.
+}
+if(layerToInsertOn = 2)
+{
+	send ^+8 ;source assignment preset 5, again.
+}
+if(layerToInsertOn = 3)
+{
+	send ^+7 ;source assignment preset 6, again.
+}
+
 sleep 400 ;we are waiting for the search to complete....
 ;sleep 400 ;we are still waiting for the search to complete....
 ;msgbox, wheres de mouse?
 ;MouseMove, -6000, 250, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.
-MouseMove, 35, 229, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.
+
+if(workPC = "No")
+{
+	MouseMove, 35, 229, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.	
+}
+if(workPC = "Yes")
+{
+	MouseMove, 80, 500, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.	
+}
+
 ;msgbox, wheres de mouse?
 ; MouseGetPos, lol, lel
 ; PixelGetColor, zecolor, lol, lel, alt slow rgb
 ; msgbox, %zecolor% 
 MouseClick, left
 tooltip, CLICK!!!
-sleep 10
-send ^+9 ;source assignment preset 4, again.
+sleep 50
+if(layerToInsertOn = 1)
+{
+	send ^+9 ;source assignment preset 4, again.
+}
+if(layerToInsertOn = 2)
+{
+	send ^+8 ;source assignment preset 5, again.
+}
+if(layerToInsertOn = 3)
+{
+	send ^+7 ;source assignment preset 6, again.
+}
 sleep 5
 Send ^b ;CTRL B -- set this in premiere's shortcuts panel to "select find box."
 sleep 10
@@ -554,7 +613,19 @@ tooltip, so did that work?
 sleep 10
 ;send ^!+3 ;select timeline
 sleep 10
-send ^+9 ;my shortcut for "assign source assignment preset 4" in Premiere. The preset has V3 and A4 selected as sources. I may end up only using F18, since it does not use the CTRL and SHIFT keys, which can cause problems sometimes.
+if(layerToInsertOn = 1)
+{
+	send ^+9 ;my shortcut for "assign source assignment preset 4" in Premiere. The preset has V3 and A4 selected as sources. I may end up only using F18, since it does not use the CTRL and SHIFT keys, which can cause problems sometimes.
+}
+if(layerToInsertOn = 2)
+{
+	send ^+8 ;my shortcut for "assign source assignment preset 5" in Premiere. The preset has V1 and A2 selected as sources. I may end up only using F18, since it does not use the CTRL and SHIFT keys, which can cause problems sometimes.
+}
+if(layerToInsertOn = 3)
+{
+	send ^+7 ;my shortcut for "assign source assignment preset 6" in Premiere. The preset has V4 and A4 selected as sources. I may end up only using F18, since it does not use the CTRL and SHIFT keys, which can cause problems sometimes.
+}
+
 sleep 50
 Send ^/ ;CTRL FORWARD SLASH -- SET TO "OVERWRITE" in premiere. Premiere's default shortcut for "overwrite" is a period.  I use modifier keys for THIS, so that a period is never typed accidentally.
 sleep 30
@@ -569,6 +640,77 @@ BlockInput, MouseMoveOff
 sfxEnding:
 }
 ;;end of insertSFX()
+
+
+
+
+
+
+
+#IfWinActive ahk_exe Adobe Premiere Pro.exe
+insertCloseUpAdjustment(item)
+{
+	
+ifWinNotActive ahk_exe Adobe Premiere Pro.exe
+	goto insertCloseUpAdjustmentEnding 
+;keyShower(item, "insertCloseUpAdjustmentEnding")
+if IsFunc("Keyshower") {
+	Func := Func("Keyshower")
+	RetVal := Func.Call(item, "insertCloseUpAdjustment") 
+}
+
+Send f
+sleep 10
+send !{UP}
+sleep 10
+;send {DOWN}
+;sleep 10
+;send {UP}
+;sleep 10
+insertSFX("13335", 2)
+sleep 10
+Input, OutputVar, L1, {Escape}
+If ErrorLevel = EndKey:Escape
+{
+	return
+}
+preset("CP - Middle Static Large")
+
+Input, OutputVar, L1, {Escape}
+If ErrorLevel = EndKey:Escape
+{
+	return
+}
+preset("CP - Zoom into object")
+
+sleep 50
+insertSFX("Me-Overlay-Adjustment-Layer", 3)
+
+sleep 10
+Input, OutputVar, L1, {Escape}
+If ErrorLevel = EndKey:Escape
+{
+	return
+}
+preset(item)
+
+insertCloseUpAdjustmentEnding:
+}
+;;end of insertCloseUpAdjustment()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #IfWinActive ahk_exe Adobe Premiere Pro.exe

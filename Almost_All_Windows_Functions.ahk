@@ -1,7 +1,15 @@
 ﻿; global savedCLASS = "ahk_class Notepad++"
 ; global savedEXE = "notepad++.exe" ;BEFORE the #include is apparently the only place these can go.
+global workPC = "Yes"
 
-#include C:\Users\Owner\source\repos\2nd-keyboard\point_to_gui.ahk
+if workPC = "No"
+{
+    ;#include C:\Users\Owner\source\repos\2nd-keyboard\point_to_gui.ahk
+}
+if workPC = "Yes"
+{
+    #include C:\Users\cxp6696\source\repos\2nd-keyboard\point_to_gui.ahk
+}
 
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.

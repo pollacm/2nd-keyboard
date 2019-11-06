@@ -12,11 +12,24 @@ global savedEXE = "notepad++.exe" ;BEFORE the #include is apparently the only pl
 global globalPosition = "Left"
 global secondPosition = "Middle"
 global thirdPosition = "Right"
+global workPC = "Yes"
 
-#Include C:\Users\Owner\source\repos\2nd-keyboard\gui.ahk
-#include C:\Users\Owner\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
-#include C:\Users\Owner\source\repos\2nd-keyboard\Almost_All_Windows_Functions.ahk
-#include C:\Users\Owner\source\repos\2nd-keyboard\After_Effects_Functions.ahk
+if workPC = "No"
+{
+    ;#Include C:\Users\Owner\source\repos\2nd-keyboard\gui.ahk
+    ;#include C:\Users\Owner\source\r1epos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
+    ;#include C:\Users\Owner\source\repos\2nd-keyboard\Almost_All_Windows_Functions.ahk
+    ;#include C:\Users\Owner\source\repos\2nd-keyboard\After_Effects_Functions.ahk
+}
+if workPC = "Yes"
+{
+    #Include C:\Users\cxp6696\source\repos\2nd-keyboard\gui.ahk
+    #include C:\Users\cxp6696\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
+    #include C:\Users\cxp6696\source\repos\2nd-keyboard\Almost_All_Windows_Functions.ahk
+    #include C:\Users\cxp6696\source\repos\2nd-keyboard\After_Effects_Functions.ahk
+}
+
+
 SetKeyDelay, 0 ;warning ---this was absent for some reason. i just added it back in. IDK if I removed it for a reason or not...
 
 ;-------------------------------------------------------------------------
@@ -1906,7 +1919,7 @@ return
     }
     If ErrorLevel = EndKey:F1
     {
-        insertSFX("Bruh")
+        insertCloseUpAdjustment("Me Zoom 4")
         return
     }    
 }    
