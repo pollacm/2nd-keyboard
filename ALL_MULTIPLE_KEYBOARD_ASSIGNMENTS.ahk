@@ -7,71 +7,28 @@ Menu, Tray, Icon, shell32.dll, 283 ;tray icon is now a little keyboard, or piece
 ;gui must be #included first, or it does not work, for some reason...
 ;YOU probably do NOT need the GUI at all. Delete the line below:
 
-global savedCLASS = "ahk_class Notepad++"
-global savedEXE = "notepad++.exe" ;BEFORE the #include is apparently the only place these can go.
 global globalPosition = "Left"
 global secondPosition = "Middle"
 global thirdPosition = "Right"
-global workPC = "Yes"
+global workPC = "No"
 
 if workPC = "No"
 {
-    ;#Include C:\Users\Owner\source\repos\2nd-keyboard\gui.ahk
-    ;#include C:\Users\Owner\source\r1epos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
-    ;#include C:\Users\Owner\source\repos\2nd-keyboard\Almost_All_Windows_Functions.ahk
-    ;#include C:\Users\Owner\source\repos\2nd-keyboard\After_Effects_Functions.ahk
+    #Include C:\Users\Owner\source\repos\2nd-keyboard\gui.ahk
+    #include C:\Users\Owner\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
+    #include C:\Users\Owner\source\repos\2nd-keyboard\Almost_All_Windows_Functions.ahk
+    #include C:\Users\Owner\source\repos\2nd-keyboard\After_Effects_Functions.ahk
 }
 if workPC = "Yes"
 {
-    #Include C:\Users\cxp6696\source\repos\2nd-keyboard\gui.ahk
-    #include C:\Users\cxp6696\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
-    #include C:\Users\cxp6696\source\repos\2nd-keyboard\Almost_All_Windows_Functions.ahk
-    #include C:\Users\cxp6696\source\repos\2nd-keyboard\After_Effects_Functions.ahk
+    ;#Include C:\Users\cxp6696\source\repos\2nd-keyboard\gui.ahk
+    ;#include C:\Users\cxp6696\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
+    ;#include C:\Users\cxp6696\source\repos\2nd-keyboard\Almost_All_Windows_Functions.ahk
+    ;#include C:\Users\cxp6696\source\repos\2nd-keyboard\After_Effects_Functions.ahk
 }
 
 
 SetKeyDelay, 0 ;warning ---this was absent for some reason. i just added it back in. IDK if I removed it for a reason or not...
-
-;-------------------------------------------------------------------------
-; HELLO PEOPLES 
-; CHECK OUT MY BIG TUTORIAL FOR SOME EXPLANATION OF HOW THESE
-; AHK SCRIPTS WORK, AND HOW THEY COMMUNICATE WITH ONE ANOTHER.
-; https://youtu.be/O6ERELse_QY?t=20m7s
-; ;
-; IF YOU HAVE NOT USED AHK BEFORE, YOU MUST TAKE THIS TUTORIAL:
-;  https://autohotkey.com/docs/Tutorial.htm
-;
-; IMPORTANT NOTE:
-; Using #include is pretty much the same as pasting an entire script into 
-; THIS script. So basically, I'm just importing all the functions that I
-; have created in those scripts, so that I can refer to them here.
-;
-; So, this script has all the keyboard assignments, and the other
-; #included scripts have all the functions. I had to split it up this way 
-; so that I can also directly launch those functions using means OTHER
-; than a keyboard, like the Stream Deck's "open file" feature.
-;
-; ANOTHER NOTE:
-; If you have CUE (Corsair Utility Engine) open, and your keyboard selected 
-; (in all its RGB glory,) it will take a lot longer to switch between applications. 
-; to fix this lag, simply close CUE, or select some other "demo" peripheral.
-;------------------------------------------------------------------------
-;
-;THIS SCRIPT NO LONGER USES LUAMACROS TO REPROGRAM THE SECOND KEYBOARD. IF YOU WANT THAT CODE, PLEASE GO TO "2nd keyboard if using luamacros.ahk"
-;
-;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-; WATCH THESE VIDEOS TO UNDERSTAND YOUR OPTIONS FOR ADDING EXTRA KEYBOARDS:
-; https://www.youtube.com/playlist?list=PLH1gH0v9E3ruYrNyRbHhDe6XDfw4sZdZr
-;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-; Lots of other explanatory videos other AHK scripts can be found on my youtube channel! https://www.youtube.com/user/TaranVH/videos 
-;+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-; Also, I will put shortcuts to all the AHK scripts that I use into my startup folder... which is here for all users:
-;  C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp
-;  Or here for just one user:
-;  C:\Users\YOUR_USERNAME\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
-
 
 #NoEnv
 SendMode Input
@@ -96,165 +53,7 @@ SetNumLockState, AlwaysOn ;i think this only works if launched as admin.
 ;#MenuMaskKey vk07  ; vk07 is (was) unassigned. See my full list of scan codes and virtual keys to see what else is available: 
 #MenuMaskKey sc08A  ; vk07 is (was) unassigned. See my full list of scan codes and virtual keys to see what else is available: https://docs.google.com/spreadsheets/d/1GSj0gKDxyWAecB3SIyEZ2ssPETZkkxn67gdIwL1zFUs/edit#gid=0
 
-;_________________________________________________________________________________________
-;                                                                                                                       
-; NOTE: In autohotkey, the following special characters (usually) represent modifier keys:
-; # is the WIN key. (it can mean other things though, as you can see above.)
-; ^ is CTRL
-; ! is ALT
-; + is SHIFT
-; list of other keys: http://www.autohotkey.com/docs/Hotkeys.htm
-;__________________________________________________________________________________________
-; 
-;----------------------------------------------------------------------------------
-; RELEVANT SHORTCUTS I HAVE ASSIGNED IN PREMIERE'S BUILT IN KEYBOARD SHORTCUTS MENU
-;----------------------------------------------------------------------------------
-; KEYS                  PREMIERE FUNCTIONS
-;----------------------------------------------------------------------------------
-; ctrl alt s            select clip at playhead. Probably this should be moved to a different series of keystrokes, so that "u" is freed for something else.
-; backspace             ripple delete --- but I don't use that in AutoHotKey because it's dangerous. This should be changed to something else; I use SHIFT C now.
-; shift c               ripple delete --- very convenient for left handed use. Premiere's poor track targeting makes ripple delete less useful than it could be.
-; ctrl alt shift d      ripple delete --- I never type this in manually - long shortcuts like this are great for using AHK or a macro to press them.
-; delete                delete
-; c                     delete --- I also have this on "C" because it puts it directly under my left hand. Very quick.
-; ctrl r                speed/duration panel
-; shift 1               toggle track targeting for AUDIO LAYER 1
-; shift 2               toggle track targeting for AUDIO LAYER 2. And so on up to 8.
-; alt 1                 toggle track targeting for VIDEO LAYER 1
-; alt 2                 toggle track targeting for VIDEO LAYER 2. And so on up to 8. I wish there were DEDICATED shortcuts to enable and disable ALL layers
-; ctrl p                toggle "selection follows playhead"
-; ctrl alt shift 3      Application > Window > Timeline (default is shift 3)
-; ctrl alt shift 1      Application > Window > Project  (This sets the focus onto a BIN.) (default is SHIFT 1)
-; ctrl alt shift 4      Application > Window > program monitor (Default is SHIFT 4)
-; ctrl alt shift 7      Application > Window > Effects   (NOT the Effect Controls panel) (Default is SHIFT 7) --- The defaults are stupid. SHIFT 7 is an ampersand if you happen to be in a text box somewhere...
-; F2                    gain
-; F3                    audio channels --- To be pressed manually by the user. (this might change in the future.)
-; ctrl alt shift a      audio channels --- (I will NOT change this, so that it can always be reliably triggered using AutoHotKey.)
-; shift F               From source monitor, match frame.
-; ctrl /                Overwrite (default is "." (period))
-; ctrl b                select find box --- This is such a useful function when you pair it the the effects panel!!
-; ctrl alt F            select find box 
-; ctrl shift 6			Apply source assignment preset 1 (set to V5 and A3)
-; ctrl ; (semicolon)	Add Marker
-;                                                                                                                        
-; Be aware that sometimes other programs like PUUSH can overlap/conflict with your customized shortcuts.                          
-;_______________________________________________________________________________________________
-;
-;
-; NOTE:
-; SC0E8: "scan code of an unassigned key" that I use to tell the computer "yeah, treat this like a keyboard,"
-; SC0E9: Nullify ALT's sticky key effect. See for more info: Alt_menu_acceleration_DISABLER.ahk
-; VK07:  #menumaskkey https://autohotkey.com/docs/commands/_MenuMaskKey.htm
-
-
-
-;these are sent from the stream deck.
-;I didn't use CTRL and SHIFT and stuff because I wanted NO CROSS TALK!!
-;COPY 1 2 and 3
-;SC062::ClipBoard_1 := GetFromClipboard() ;zoom
-;vk2A::ClipBoard_2 := GetFromClipboard()	 ;Printer
-;SC16B::ClipBoard_3 := GetFromClipboard() ;launch (0)
-
-;PASTE 1 2 and 3
-;I might have to use proper functions to get these to type faster
-;SC16D::SendInput {Raw}%ClipBoard_1%		;launch_media
-;vk2B::SendInput {Raw}%ClipBoard_2%		;Execute
-;SC121::SendInput %ClipBoard_3% 	;launch (1)
-
-;note to self, this is where to go for tap dance stuff
-; https://autohotkey.com/board/topic/35566-rapidhotkey/
-
 currentTool = "v" ;This is super useful and important for a Premiere script, you'll see...
-
-;#if
-
-;this is pause/break. I'm using it for debugging...
-;sc045::
-;^sc045::
-;+sc045::
-;!sc045::
-;ctrlbreak::
-;^ctrlbreak::
-;tooltip, pause break
-;sleep 100
-;tooltip,
-;KeyHistory
-;sleep 10
-;return 
-;____________________________________________________________________
-;                                                                    
-;		  2ND KEYBOARD USING HASU USB TO USB (Logitech K120)  
-;____________________________________________________________________
-; watch [link NYA] to understand how this works.
-; https://www.1upkeyboards.com/shop/controllers/usb-to-usb-converter/
-
-;#if ( \\\\\\\\\\\\\\\getKeyState("F23", "P")) && IfWinActive ahk_exe Adobe Premiere Pro.exe ;have not tested this to see if it works
-;#if (getKeyState("F23", "P")) && (uselayer = 0) ;;you can also use a varibable like so.
-
-;#IfWinActive ahk_exe Adobe Premiere Pro.exe
-;;;;;;;;;;;;;BEGIN K120 (2ND KEYBOARD) REMAPPED INTO ALL MACRO KEYS;;;;;;;;;;;;;;;;;
-;#if (getKeyState("F2")) ;This is the line that makes all the lines below possible. 
-
-;F2::return ;F23 is the dedicated 2nd keyboard "modifier key." You MUST allow it to "return," since it will ALWAYS be fired before any of the keystrokes below, any time you use the 2nd keyboard.
-;;This also means that you must NEVER use F23 for anything else. Doing so will sometimes allow a key to pass through unwrapped, which can cause big problems with cross-talk.
-
-;SC06E::return ;;This is F23's scan code. Using this line acts as some more insurance against cross-talk. comment this in if you have issues.
-
-
-
-;escape::msgbox,,, you pressed escape. this might cause like problems maybe, 0.9
-
-;F1::return
-;F2::insertSFX("Bruh") ;you may not use spaces for filenames of sounds that you want to retreive in this way... since searching in premiere will disregard spaces in a a weird way... returning multiple wrong results....
-;F3::insertSFX("Bruh")
-;F4::insertSFX("Whoosh2-Short")
-;F5::insertSFX("SimpleWhoosh12")
-;F6::insertSFX("SimpleWhoosh11")
-;F7::insertSFX("SimpleWhoosh10")
-;F9::insertSFX("SimpleWhoosh3")
-;F8::insertSFX("SimpleWhoosh8")
-;F10::insertSFX("woosh2")
-;F11::insertSFX("woosh1")
-;F12::instantExplorer("N:\Team_Documents\N_TARAN_THINGS\prompter and cutting_room_floor") ;"FLOOR"
-
-
-
-;F12::search() ;"search" is also used on ^+j 
-; F12 must not used here IF it is the keyboard's launching key. You MAY put it here if you used F13 to F24 as the launching key
-
-;;;;;next line;;;;;;;;
-;;;;K120 keyboard;;;;;
-
-;`::msgbox tilde or weird quote thing??
-;1::insertSFX("bleep")
-;2::
-;3::return
-;4::
-;tooltip, this happens on key down
-;keywait, 4 ;waits for the key to go up
-;tooltip, and this happens on key up. dang
-;return
-;5::insertSFX("")
-;6::insertSFX("record scratch")
-;7::preset("180 hue angle")
-;8::preset("PAINT WHITE")
-;9::preset("PAINT BLACK")
-;0::insertSFX("pop")
-;-::audioMonoMaker("left")
-;=::audioMonoMaker("right")
-;backspace::
-;if WinActive("New TightVNC Connection") ;if we are at the thingy that asks for a password or whatever
-;	{
-;	Sendinput, {enter}
-;	goto tvnEND ;LOL ARE YOU TRIGGERED BY THIS!!? DESPAIR!! DESPAIR!!!!
-;	}
-;IfWinNotExist, ahk_class TvnWindowClass
-;	Run, C:\Program Files\TightVNC\tvnviewer.exe
-;if WinExist("ahk_exe tvnviewer.exe")
-;	WinActivate ahk_exe tvnviewer.exe
-;tvnEND:
-;all done
-;return
 
 ;static commands
 #IfWinActive ahk_exe Adobe Premiere Pro.exe
@@ -1919,7 +1718,7 @@ return
     }
     If ErrorLevel = EndKey:F1
     {
-        insertCloseUpAdjustment("Me Zoom 4")
+        insertCloseUpAdjustment("CP - Adj Me Zoom 2 Left to Right")
         return
     }    
 }    
@@ -1945,25 +1744,3 @@ return
 }    
 
 return
-
-
-#IfWinActive ahk_exe Adobe Premiere Pro.exe
-;~2::
-;global VFXkey = "2"
-;preset("CP - Large")
-;Send ^!3
-;return
-
-#IfWinActive ahk_exe Adobe Premiere Pro.exe
-;~3::
-;global VFXkey = "3"
-;preset("CP - Normal")
-;Send ^!2
-;return
-
-#IfWinActive ahk_exe Adobe Premiere Pro.exe
-;~4::
-;global VFXkey = "4"
-;preset("CP - XL")
-;Send ^!4
-;return

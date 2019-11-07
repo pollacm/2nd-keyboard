@@ -4,11 +4,11 @@ global workPC = "Yes"
 
 if workPC = "No"
 {
-    ;#include C:\Users\Owner\source\repos\2nd-keyboard\point_to_gui.ahk
+    #include C:\Users\Owner\source\repos\2nd-keyboard\point_to_gui.ahk
 }
 if workPC = "Yes"
 {
-    #include C:\Users\cxp6696\source\repos\2nd-keyboard\point_to_gui.ahk
+    ;#include C:\Users\cxp6696\source\repos\2nd-keyboard\point_to_gui.ahk
 }
 
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
