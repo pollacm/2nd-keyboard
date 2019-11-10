@@ -445,7 +445,7 @@ return
             insertSFX("Yes")
             return
         }
-        If ErrorLevel = En6dKey:F4
+        If ErrorLevel = EndKey:F4
         {
             insertSFX("Nope")
             return
@@ -788,8 +788,8 @@ return
 ;minion-w.wav
 ;pick-up-item.wav
 ;crash-bandicoot-spin.wav
-;zelda-secret-1.wav
-;zelda-secret-2.wav
+;zelda-secret-n64.wav
+;zelda-secret-nes.wav
 ;super-mario-coin.wav
 ;super-mario-death-1.wav
 ;super-mario-death-2.wav
@@ -885,12 +885,12 @@ return
         }
         If ErrorLevel = EndKey:F6
         {
-            insertSFX("zelda-secret-1")
+            insertSFX("zelda-secret-n64")
             return
         }
         If ErrorLevel = EndKey:F7
         {
-            insertSFX("zelda-secret-2")
+            insertSFX("zelda-secret-nes")
             return
         }
         If ErrorLevel = EndKey:F8

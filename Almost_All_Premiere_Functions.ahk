@@ -191,7 +191,7 @@ loop
 		}
 	if (waiting2 > 30)
 		{
-		tooltip, FAIL - no caret found. `nIf your cursor will not move`, hit the button to call the preset() function again.`nTo remove this tooltip`, refresh the script using its icon in the taskbar.
+		msgbox, FAIL - no caret found
 		;Note to self, need much better way to debug this than screwing the user
 		sleep 200
 		;tooltip,
@@ -264,7 +264,15 @@ MouseMove, iconX, iconY, 0 ;--------------------moves cursor BACK onto the effec
 ;sleep 50
 sleep 5
 MouseClickDrag, Left, , , %xposP%, %yposP%, 0 ;---clicks the left button down, drags this effect to the cursor's pervious coordinates and releases the left mouse button, which should be above a clip, on the TIMELINE panel.
+
 sleep 5
+;prFocus("effects")
+;sleep 15
+;Sendinput, ^b ;CTRL B ------------------------- set in premiere to "select find box"
+;sleep 15
+;Send {Del} ;clear effects panel
+;sleep, 15
+
 MouseClick, middle, , , 1 ;this returns focus to the panel the cursor is hovering above, WITHOUT selecting anything. great!
 blockinput, MouseMoveOff ;returning mouse movement ability
 BlockInput, off ;do not comment out or delete this line -- or you won't regain control of the keyboard!! However, CTRL+ALT+DEL will still work if you get stuck!! Cool.
