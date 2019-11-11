@@ -1,14 +1,14 @@
 ﻿;C:\Users\Owner\Documents\Adobe\Premiere Pro\13.0\Profile-Owner\Win
 
-workPC = "No"
+workPC = "Yes"
 
 if workPC = "No"
 {
-    SetWorkingDir, C:\Users\Owner\source\repos\2nd-keyboard\support_files
+    ;SetWorkingDir, C:\Users\Owner\source\repos\2nd-keyboard\support_files
 }
 if workPC = "Yes"
 {
-    ;SetWorkingDir, C:\Users\cxp6696\source\repos\2nd-keyboard\support_files
+    SetWorkingDir, C:\Users\cxp6696\source\repos\2nd-keyboard\support_files
 }
 ;the above will supposedly set A_WorkingDir. It MUST be done in the autoexecute area, BEFORE the code below.
 ;SetWorkingDir, C:\Users\TaranWORK\Documents\GitHub\2nd-keyboard\2nd keyboard support files
@@ -244,7 +244,7 @@ if(workPC = "No")
 }
 if(workPC = "Yes")
 {
-	MouseMove, -200, 170, 0, R ;----------------------(for 150% UI) relative to the position of the magnifying glass (established earlier,) this moves the cursor down and directly onto the preset's icon. In my case, it is inside the "presets" folder, then inside of another folder, and the written name should be completely unique so that it is the first and only item.	
+	MouseMove, -120, 110, 0, R ;----------------------(for 150% UI) relative to the position of the magnifying glass (established earlier,) this moves the cursor down and directly onto the preset's icon. In my case, it is inside the "presets" folder, then inside of another folder, and the written name should be completely unique so that it is the first and only item.	
 }
 
 ;msgbox, The cursor should be directly on top of the preset's icon. `n If not, the script needs modification.
@@ -386,7 +386,7 @@ if(workPC = "No")
 }
 if(workPC = "Yes")
 {
-	MouseMove, 80, 500, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.	
+	MouseMove, 80, 300, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.	
 }
 
 ;msgbox, wheres de mouse?

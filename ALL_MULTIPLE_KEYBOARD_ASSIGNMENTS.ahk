@@ -10,21 +10,21 @@ Menu, Tray, Icon, shell32.dll, 283 ;tray icon is now a little keyboard, or piece
 global globalPosition = "Left"
 global secondPosition = "Middle"
 global thirdPosition = "Right"
-global workPC = "No"
+global workPC = "Yes"
 
 if workPC = "No"
 {
-    #Include C:\Users\Owner\source\repos\2nd-keyboard\gui.ahk
-    #include C:\Users\Owner\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
-    #include C:\Users\Owner\source\repos\2nd-keyboard\Almost_All_Windows_Functions.ahk
-    #include C:\Users\Owner\source\repos\2nd-keyboard\After_Effects_Functions.ahk
+    ;#Include C:\Users\Owner\source\repos\2nd-keyboard\gui.ahk
+    ;#include C:\Users\Owner\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
+    ;#include C:\Users\Owner\source\repos\2nd-keyboard\Almost_All_Windows_Functions.ahk
+    ;#include C:\Users\Owner\source\repos\2nd-keyboard\After_Effects_Functions.ahk
 }
 if workPC = "Yes"
 {
-    ;#Include C:\Users\cxp6696\source\repos\2nd-keyboard\gui.ahk
-    ;#include C:\Users\cxp6696\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
-    ;#include C:\Users\cxp6696\source\repos\2nd-keyboard\Almost_All_Windows_Functions.ahk
-    ;#include C:\Users\cxp6696\source\repos\2nd-keyboard\After_Effects_Functions.ahk
+    #Include C:\Users\cxp6696\source\repos\2nd-keyboard\gui.ahk
+    #include C:\Users\cxp6696\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
+    #include C:\Users\cxp6696\source\repos\2nd-keyboard\Almost_All_Windows_Functions.ahk
+    #include C:\Users\cxp6696\source\repos\2nd-keyboard\After_Effects_Functions.ahk
 }
 
 
