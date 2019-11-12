@@ -23,7 +23,7 @@ if workPC = "Yes"
 {
     #Include C:\Users\cxp6696\source\repos\2nd-keyboard\gui.ahk
     #include C:\Users\cxp6696\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
-    #include C:\Users\cxp6696\source\repos\2nd-keyboard\Almost_All_Windows_Functions.ahk
+    ;#include C:\Users\cxp6696\source\repos\2nd-keyboard\Almost_All_Windows_Functions.ahk
     #include C:\Users\cxp6696\source\repos\2nd-keyboard\After_Effects_Functions.ahk
 }
 
@@ -72,17 +72,17 @@ currentTool = "v" ;This is super useful and important for a Premiere script, you
         position = %thirdPosition%
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}
     }
-    If OutputVar = S
+    If OutputVar = A
     {
         size = S
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}
     }
-    If OutputVar = M
+    If OutputVar = S
     {
         size = M
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}
     }
-    If OutputVar = L
+    If OutputVar = D
     {
         size = L
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}
@@ -222,6 +222,7 @@ return
 {
     Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     position = %globalPosition%
+    sheet = 1
 
     If OutputVar = Q
     {
@@ -232,99 +233,191 @@ return
     {
         position = %thirdPosition%
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    } 
+    If OutputVar = E
+    {
+        sheet = 2
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     }    
     If ErrorLevel = EndKey:Escape
     {
         return
     }    
+    if sheet = 1
+    {
+        If ErrorLevel = EndKey:F1
+        {
+            presetString = CP - %position% Zoom NtoM
+            preset(presetString)
+            Send ^!5
+            return
+        }
+        If ErrorLevel = EndKey:F2
+        {
+            presetString = CP - %position% Zoom NtoL
+            preset(presetString)
+            Send ^!5
+            return
+        }
+        If ErrorLevel = EndKey:F3
+        {
+            presetString = CP - %position% Zoom NtoXL
+            preset(presetString)
+            Send ^!5
+            return
+        } 
 
-    If ErrorLevel = EndKey:F1
-    {
-        presetString = CP - %position% Zoom NtoM
-        preset(presetString)
-        Send ^!5
-        return
-    }
-    If ErrorLevel = EndKey:F2
-    {
-        presetString = CP - %position% Zoom NtoL
-        preset(presetString)
-        Send ^!5
-        return
-    }
-    If ErrorLevel = EndKey:F3
-    {
-        presetString = CP - %position% Zoom NtoXL
-        preset(presetString)
-        Send ^!5
-        return
-    } 
+        If ErrorLevel = EndKey:F4
+        {
+            presetString = CP - %position% Zoom MtoN
+            preset(presetString)
+            Send ^!5
+            return
+        }
+        If ErrorLevel = EndKey:F5
+        {
+            presetString = CP - %position% Zoom MtoL
+            preset(presetString)
+            Send ^!5
+            return
+        }
+        If ErrorLevel = EndKey:F6
+        {
+            presetString = CP - %position% Zoom MtoXL
+            preset(presetString)
+            Send ^!5
+            return
+        }  
 
-    If ErrorLevel = EndKey:F4
-    {
-        presetString = CP - %position% Zoom MtoN
-        preset(presetString)
-        Send ^!5
-        return
-    }
-    If ErrorLevel = EndKey:F5
-    {
-        presetString = CP - %position% Zoom MtoL
-        preset(presetString)
-        Send ^!5
-        return
-    }
-    If ErrorLevel = EndKey:F6
-    {
-        presetString = CP - %position% Zoom MtoXL
-        preset(presetString)
-        Send ^!5
-        return
-    }  
+        If ErrorLevel = EndKey:F7
+        {
+            presetString = CP - %position% Zoom LtoN
+            preset(presetString)
+            Send ^!5
+            return
+        }
+        If ErrorLevel = EndKey:F8
+        {
+            presetString = CP - %position% Zoom LtoM
+            preset(presetString)
+            Send ^!5
+            return
+        }
+        If ErrorLevel = EndKey:F9
+        {
+            presetString = CP - %position% Zoom LtoXL
+            preset(presetString)
+            Send ^!5
+            return
+        }  
 
-    If ErrorLevel = EndKey:F7
-    {
-        presetString = CP - %position% Zoom LtoN
-        preset(presetString)
-        Send ^!5
-        return
+        If ErrorLevel = EndKey:F10
+        {
+            presetString = CP - %position% Zoom XLtoN
+            preset(presetString)
+            Send ^!5
+            return
+        }
+        If ErrorLevel = EndKey:F11
+        {
+            presetString = CP - %position% Zoom XLtoM
+            preset(presetString)
+            Send ^!5
+            return
+        }
+        If ErrorLevel = EndKey:F12
+        {
+            presetString = CP - %position% Zoom XLtoL
+            preset(presetString)
+            Send ^!5
+            return
+        } 
     }
-    If ErrorLevel = EndKey:F8
+    if sheet = 2 
     {
-        presetString = CP - %position% Zoom LtoM
-        preset(presetString)
-        Send ^!5
-        return
-    }
-    If ErrorLevel = EndKey:F9
-    {
-        presetString = CP - %position% Zoom LtoXL
-        preset(presetString)
-        Send ^!5
-        return
-    }  
+        If ErrorLevel = EndKey:F1
+        {
+            presetString = CP - Zoom into me
+            preset(presetString)
+            ;Send ^!5
+            return
+        }
+        If ErrorLevel = EndKey:F2
+        {
+            presetString = CP - Zoom into object
+            preset(presetString)
+            ;Send ^!5
+            return
+        }
+        If ErrorLevel = EndKey:F3
+        {
+            ;presetString = CP - %position% Zoom NtoXL
+            ;preset(presetString)            
+            return
+        } 
 
-    If ErrorLevel = EndKey:F10
-    {
-        presetString = CP - %position% Zoom XLtoN
-        preset(presetString)
-        Send ^!5
-        return
+        If ErrorLevel = EndKey:F4
+        {
+            ;presetString = CP - %position% Zoom MtoN
+            ;preset(presetString)            
+            return
+        }
+        If ErrorLevel = EndKey:F5
+        {
+            ;presetString = CP - %position% Zoom MtoL
+            ;preset(presetString)            
+            return
+        }
+        If ErrorLevel = EndKey:F6
+        {
+            ;presetString = CP - %position% Zoom MtoXL
+            ;preset(presetString)
+            return
+        }  
+
+        If ErrorLevel = EndKey:F7
+        {
+            ;presetString = CP - %position% Zoom LtoN
+            ;preset(presetString)
+            return
+        }
+        If ErrorLevel = EndKey:F8
+        {
+            ;presetString = CP - %position% Zoom LtoM
+            ;preset(presetString)
+            return
+        }
+        If ErrorLevel = EndKey:F9
+        {
+            ;presetString = CP - %position% Zoom LtoXL
+            ;preset(presetString)
+            return
+        }  
+
+        If ErrorLevel = EndKey:F10
+        {
+            ;presetString = CP - %position% Zoom XLtoN
+            ;preset(presetString)
+            return
+        }
+        If ErrorLevel = EndKey:F11
+        {
+            ;presetString = CP - %position% Zoom XLtoM
+            ;preset(presetString)
+            return
+        }
+        If ErrorLevel = EndKey:F12
+        {
+            ;presetString = CP - %position% Zoom XLtoL
+            ;preset(presetString)
+            return
+        } 
+        If ErrorLevel = EndKey:Escape
+        {
+            return
+        }
     }
-    If ErrorLevel = EndKey:F11
-    {
-        presetString = CP - %position% Zoom XLtoM
-        preset(presetString)
-        Send ^!5
-        return
-    }
-    If ErrorLevel = EndKey:F12
-    {
-        presetString = CP - %position% Zoom XLtoL
-        preset(presetString)
-        Send ^!5
-        return
-    }  
+     
 }    
 
 return
@@ -559,21 +652,8 @@ return
             return
         }
     }
-    ;words 3
-    if sheet = 3 
-    {
-        If ErrorLevel = EndKey:Escape
-        {
-            return
-        }
-        If ErrorLevel = EndKey:F1
-        {
-            insertSFX("goteem")
-            return
-        }        
-    }
     ;effects 1
-    if sheet = 4
+    if sheet = 3
     {
         If ErrorLevel = EndKey:Escape
         {
@@ -639,9 +719,9 @@ return
             insertSFX("whip")
             return
         }
-    }
+    }    
     ;effects 2
-    if sheet = 5
+    if sheet = 4
     {
         If ErrorLevel = EndKey:Escape
         {
@@ -704,11 +784,29 @@ return
         }
         If ErrorLevel = EndKey:F12
         {
-            ;insertSFX("correct")
+            insertSFX("Quack-Sound-Effect")
             return
         }
     }
     ;effects 3
+    if sheet = 5 
+    {
+        If ErrorLevel = EndKey:Escape
+        {
+            return
+        }
+        If ErrorLevel = EndKey:F1
+        {
+            insertSFX("Yoshi-Sound-jump-on")
+            return
+        } 
+        If ErrorLevel = EndKey:F2
+        {
+            insertSFX("Ding-dong-sound-effect")
+            return
+        }       
+    }
+    ;effects 4
     if sheet = 6
     {
         If ErrorLevel = EndKey:Escape
@@ -1154,6 +1252,9 @@ return
 #IfWinActive ahk_exe Adobe Premiere Pro.exe
 ~5::
 {
+    Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    sheet = 1
+
     If ErrorLevel = EndKey:Escape
     {
         return
