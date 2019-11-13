@@ -547,7 +547,14 @@ sleep 400 ;we are waiting for the search to complete....
 ;sleep 400 ;we are still waiting for the search to complete....
 ;msgbox, wheres de mouse?
 ;MouseMove, -6000, 250, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.
-MouseMove, 35, 229, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.
+if(workPC = "No")
+{
+	MouseMove, 35, 229, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.	
+}
+if(workPC = "Yes")
+{
+	MouseMove, 80, 300, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.	
+}
 ;msgbox, wheres de mouse?
 ; MouseGetPos, lol, lel
 ; PixelGetColor, zecolor, lol, lel, alt slow rgb
