@@ -451,6 +451,63 @@ sfxEnding:
 }
 ;;end of insertSFX()
 
+
+;insert double preset
+#IfWinActive ahk_exe Adobe Premiere Pro.exe
+insertDoublePreset(topItem, bottomItem)
+{
+	
+ifWinNotActive ahk_exe Adobe Premiere Pro.exe
+	goto insertDoublePresetEnding 
+;keyShower(topItem, bottomItem, "insertDoublePreset")
+if IsFunc("Keyshower") {
+	Func := Func("Keyshower")
+	RetVal := Func.Call(topItem, bottomItem, "insertDoublePreset") 
+}
+
+Input, OutputVar, L1, {Escape}
+If ErrorLevel = EndKey:Escape
+{
+	return
+}
+preset(topItem)
+
+Input, OutputVar, L1, {Escape}
+If ErrorLevel = EndKey:Escape
+{
+	return
+}
+preset(bottomItem)
+
+insertDoublePresetEnding:
+}
+;;end of insertDoublePreset()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #IfWinActive ahk_exe Adobe Premiere Pro.exe
 insertCloseUpAdjustment(item)
 {

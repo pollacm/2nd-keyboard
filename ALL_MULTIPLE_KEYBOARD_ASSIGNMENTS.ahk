@@ -333,19 +333,21 @@ return
             return
         } 
     }
+    ;double presets
     if sheet = 2 
     {
         If ErrorLevel = EndKey:F1
         {
-            presetString = CP - Zoom into me
-            preset(presetString)
+            insertDoublePreset("CP - Zoom into me", "CP - Zoom into object")
+            ;presetString = CP - Zoom into me
+            ;preset(presetString)
             ;Send ^!5
             return
         }
         If ErrorLevel = EndKey:F2
         {
-            presetString = CP - Zoom into object
-            preset(presetString)
+            ;presetString = CP - Zoom into object
+            ;preset(presetString)
             ;Send ^!5
             return
         }
