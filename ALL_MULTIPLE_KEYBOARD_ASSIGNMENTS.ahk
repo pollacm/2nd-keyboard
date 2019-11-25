@@ -353,17 +353,18 @@ return
         }
         If ErrorLevel = EndKey:F3
         {
-            ;presetString = CP - %position% Zoom NtoXL
-            ;preset(presetString)            
+            presetString = CP - Zoom into book for reading
+            preset(presetString)            
             return
         } 
 
         If ErrorLevel = EndKey:F4
         {
-            ;presetString = CP - %position% Zoom MtoN
-            ;preset(presetString)            
+            presetString = CP - Screen Shake Nested Custom
+            preset(presetString)            
             return
         }
+
         If ErrorLevel = EndKey:F5
         {
             ;presetString = CP - %position% Zoom MtoL
@@ -1719,7 +1720,7 @@ return
 #IfWinActive ahk_exe Adobe Premiere Pro.exe
 ~7::
 {
-    Input, OutputVar, L1, 1,2,3,4,5,6,7,8,9,0,{F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
         
     If ErrorLevel = EndKey:Escape
     {
