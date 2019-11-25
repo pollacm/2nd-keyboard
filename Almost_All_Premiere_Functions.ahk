@@ -465,11 +465,6 @@ if IsFunc("Keyshower") {
 	RetVal := Func.Call(topItem, bottomItem, "insertDoublePreset") 
 }
 
-Input, OutputVar, L1, {Escape}
-If ErrorLevel = EndKey:Escape
-{
-	return
-}
 preset(topItem)
 
 Input, OutputVar, L1, {Escape}
