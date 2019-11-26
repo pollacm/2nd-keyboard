@@ -452,6 +452,67 @@ sfxEnding:
 ;;end of insertSFX()
 
 
+;capture screenshot
+#IfWinActive ahk_exe Adobe Premiere Pro.exe
+captureScreenshot()
+{
+	
+ifWinNotActive ahk_exe Adobe Premiere Pro.exe
+	goto captureScreenshotEnding 
+;keyShower("captureScreenshot")
+if IsFunc("Keyshower") {
+	Func := Func("Keyshower")
+	RetVal := Func.Call("captureScreenshot") 
+}
+
+Send ^+e ;shortcut to take screenshot
+sleep 30
+
+Input, OutputVar, L1, {Escape}
+while (OutputVar != 1)
+{
+	If ErrorLevel = EndKey:Escape
+	{
+		return
+	}
+	Send %OutputVar%
+	Input, OutputVar, L1, {Escape}
+	If ErrorLevel = EndKey:Escape
+	{
+		return
+	}
+}
+sleep 30
+Send ^a
+sleep 30
+Send ^c
+sleep 30
+Send {Enter}
+sleep 100
+Send ^+!1
+sleep 10
+Send ^+!1
+Send ^b ;expand searchbar
+Send ^v ;paste
+sleep 50
+SendInput, .png
+
+Input, OutputVar, L1, {Escape}
+If ErrorLevel = EndKey:Escape
+{
+	return
+}
+MouseClick, left
+sleep 10
+Send {,}
+
+captureScreenshotEnding:
+}
+;;end of captureScreenshot()
+
+
+
+
 ;insert double preset
 #IfWinActive ahk_exe Adobe Premiere Pro.exe
 insertDoublePreset(topItem, bottomItem)

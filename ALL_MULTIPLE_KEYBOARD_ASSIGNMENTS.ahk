@@ -16,14 +16,12 @@ if workPC = "No"
 {
     ;#Include C:\Users\Owner\source\repos\2nd-keyboard\gui.ahk
     ;#include C:\Users\Owner\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
-    ;#include C:\Users\Owner\source\repos\2nd-keyboard\Almost_All_Windows_Functions.ahk
     ;#include C:\Users\Owner\source\repos\2nd-keyboard\After_Effects_Functions.ahk
 }
 if workPC = "Yes"
 {
     #Include C:\Users\cxp6696\source\repos\2nd-keyboard\gui.ahk
     #include C:\Users\cxp6696\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
-    ;#include C:\Users\cxp6696\source\repos\2nd-keyboard\Almost_All_Windows_Functions.ahk
     #include C:\Users\cxp6696\source\repos\2nd-keyboard\After_Effects_Functions.ahk
 }
 
@@ -346,7 +344,7 @@ return
         }
         If ErrorLevel = EndKey:F2
         {
-            ;presetString = CP - Zoom into object
+            captureScreenshot()
             ;preset(presetString)
             ;Send ^!5
             return
