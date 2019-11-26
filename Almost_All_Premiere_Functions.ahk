@@ -465,6 +465,10 @@ if IsFunc("Keyshower") {
 	RetVal := Func.Call("captureScreenshot") 
 }
 
+Send ^!+3 ;highlight timeline
+sleep 30
+MouseGetPos, xpos, ypos
+sleep 30
 send ^+8 ;ctrl shift 8 - source assignment preset 5. (sets it to A2/V1.)
 sleep 30
 Send ^+e ;shortcut to take screenshot
@@ -509,6 +513,8 @@ sleep 50
 send ^+8 ;ctrl shift 8 - source assignment preset 5. (sets it to A2/V1.)
 sleep 50
 Send ^/ ;CTRL FORWARD SLASH -- SET TO "OVERWRITE" in premiere. Premiere's default shortcut for "overwrite" is a period.  I use modifier keys for THIS, so that a period is never typed accidentally.
+sleep 30
+MouseMove, xpos, ypos, 0 ;--------------------moves cursor BACK
 
 captureScreenshotEnding:
 }
