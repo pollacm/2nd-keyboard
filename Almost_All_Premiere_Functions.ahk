@@ -1061,6 +1061,7 @@ instantVFX2(bezier)
 	prFocus("effect controls")
 	sleep 10
 	originalClipboard := ClipboardAll
+;	msgbox, %originalClipboard%
 	clipboard := ""   ; Empty the clipboard.
 	Send, {Tab}
 	sleep 10
@@ -1085,6 +1086,8 @@ instantVFX2(bezier)
 	currentSetScale := clipboard
 
 	Clipboard := originalClipboard
+;	msgbox, Clipboard
+	;msgbox, %Clipboard%
 	originalClipboard := ""
 
 	sleep 50
@@ -1192,7 +1195,7 @@ instantVFX2(bezier)
 	Send, {Tab}
 	sleep 10
 	MouseMove, currentMouseX, currentMouseY, 0
-	
+
 	; blockinput, off
 	; blockinput, MouseMoveOff
 }
