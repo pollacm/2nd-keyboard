@@ -816,6 +816,35 @@ instantVFX2(bezier)
 		;msgbox,,,moved to located text
 		;sleep 5
 		;findHotText(foobar)
+	}
+
+	ImageSearch, motionDownX, motionDownY, Xcorner, Ycorner, XX, YY, %A_WorkingDir%\motion-down.PNG
+	if ErrorLevel = 1
+	{
+		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %A_WorkingDir%\%foobar%_D2019.png ;within 10 shades of variation (in case SCALE is fully extended with bezier handles, in which case, the other images are real hard to find because the horizontal seperating lines look a BIT different. But if you crop in really closely, you don't have to worry about this. so this part of the code is not really necessary execpt to expand the range to look.
+		;msgbox, whwhwuhuat
+		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %A_WorkingDir%\%foobar%_D2019_ui100.png
+		;msgbox, lvl1
+	}
+	else if ErrorLevel = 2
+	{
+		;msgbox,,, ERROR LEVEL 2`nCould not conduct the search,1
+		;resetFromAutoVFX()
+	}	
+	else
+	{
+		sleep 10
+		motionDownX := motionDownX + 50
+		;MouseMove, motionDownX, motionDownY, 0
+		sleep 10
+		;MouseClick, left, , , 1 ;-----------------------the actual click
+		;sleep 20
+		;tooltip, The %foobar% icon was found at %FoundX%x%FoundY%.
+		;msgbox, The icon was found at %FoundX%x%FoundY%.
+		;MouseMove, FoundX, FoundY, 0
+		;msgbox,,,moved to located text
+		;sleep 5
+		;findHotText(foobar)
 	}	
 	
 	ImageSearch, FoundX, FoundY, Xcorner, Ycorner, XX, YY, %A_WorkingDir%\scale-keyframe-on.PNG
@@ -1031,7 +1060,7 @@ instantVFX2(bezier)
 	
 	prFocus("effect controls")
 	sleep 10
-	originalClipboard := clipboard
+	originalClipboard := ClipboardAll
 	clipboard := ""   ; Empty the clipboard.
 	Send, {Tab}
 	sleep 10
@@ -1055,7 +1084,9 @@ instantVFX2(bezier)
 	ClipWait
 	currentSetScale := clipboard
 
-	clipboard := originalClipboard
+	Clipboard := originalClipboard
+	originalClipboard := ""
+
 	sleep 50
 	Send, {Tab}		
 	sleep 50	
@@ -1063,6 +1094,12 @@ instantVFX2(bezier)
 	Send, {Right}
 	Send, {Right}
 
+	sleep 50
+	MouseMove, motionDownX, motionDownY, 0
+	sleep 50
+	MouseClick, left, , , 1 ;-----------------------the actual click	
+	sleep 50
+	
 	Input, OutputVar, L1, {Escape}
 	If ErrorLevel = EndKey:Escape
 	{
@@ -1098,6 +1135,12 @@ instantVFX2(bezier)
 	Send, {Left}
 	Send, {Left}
 	Send, {Left}
+
+	sleep 50
+	MouseMove, motionDownX, motionDownY, 0
+	sleep 50
+	MouseClick, left, , , 1 ;-----------------------the actual click	
+	sleep 50
 
 	Input, OutputVar, L1, {Escape}
 	If ErrorLevel = EndKey:Escape
@@ -1147,6 +1190,8 @@ instantVFX2(bezier)
 	sleep 10
 
 	Send, {Tab}
+	sleep 10
+	MouseMove, currentMouseX, currentMouseY, 0
 	
 	; blockinput, off
 	; blockinput, MouseMoveOff
