@@ -807,7 +807,7 @@ return
             return
         }       
     }
-    ;effects 4
+    ;misc
     if sheet = 6
     {
         If ErrorLevel = EndKey:Escape
@@ -816,7 +816,7 @@ return
         }
         If ErrorLevel = EndKey:F1
         {
-            ;insertSFX("correct")
+            insertSFX("huh")
             return
         }
         If ErrorLevel = EndKey:F2
@@ -1689,6 +1689,11 @@ return
         If ErrorLevel = EndKey:F2
         {
             insertAudio("love-me")
+            return
+        } 
+        If ErrorLevel = EndKey:F3
+        {
+            insertAudio("Movement-Proposition")
             return
         } 
     }   
