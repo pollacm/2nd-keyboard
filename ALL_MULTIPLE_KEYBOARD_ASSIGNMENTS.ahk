@@ -1845,12 +1845,14 @@ return
     }
     If ErrorLevel = EndKey:F1
     {
-        instantVFX2("No")
+        instantVFX()
         return
     }    
-    If ErrorLevel = EndKey:F1
+    If ErrorLevel = EndKey:F2
     {
-        insertSFX("Bruh")
+        addEffectToAdjustmentLayer("CP - FinOutBnW")
+        ;CP - FinOutBnW
+        ;CP - FQuickinOutBW
         return
     }   
 }    
