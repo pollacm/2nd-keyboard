@@ -1853,6 +1853,39 @@ return
         addEffectToAdjustmentLayer("CP - FinOutBnW")
         ;CP - FinOutBnW
         ;CP - FQuickinOutBW
+        ;CPSEQ-its-clobbering-time
+        ;CPSEQ-kiki-wyatt-crazy-look-earrape-laugh
+        ;CPSEQ-tv-no-signal
+        return
+    }   
+    If ErrorLevel = EndKey:F3
+    {
+        loadSequence("CPSEQ-kiki-wyatt-crazy-look-earrape-laugh")
+        ;CP - FinOutBnW
+        ;CP - FQuickinOutBW
+        ;CPSEQ-its-clobbering-time
+        ;CPSEQ-kiki-wyatt-crazy-look-earrape-laugh
+        ;CPSEQ-tv-no-signal
+        return
+    }   
+    If ErrorLevel = EndKey:F4
+    {
+        loadSequence("CPSEQ-its-clobbering-time")
+        ;CP - FinOutBnW
+        ;CP - FQuickinOutBW
+        ;CPSEQ-its-clobbering-time
+        ;CPSEQ-kiki-wyatt-crazy-look-earrape-laugh
+        ;CPSEQ-tv-no-signal
+        return
+    }   
+    If ErrorLevel = EndKey:F5
+    {
+        loadSequence("CPSEQ-tv-no-signal")
+        ;CP - FinOutBnW
+        ;CP - FQuickinOutBW
+        ;CPSEQ-its-clobbering-time
+        ;CPSEQ-kiki-wyatt-crazy-look-earrape-laugh
+        ;CPSEQ-tv-no-signal
         return
     }   
 }    

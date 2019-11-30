@@ -70,7 +70,7 @@ sleep 7
 if (panel = "effects")
 	goto theEnd ;Send ^!+7 ;do nothing. the shortcut has already been pressed.
 else if (panel = "timeline")
-	Send ^!+3 ;if focus had already been on the timeline, this would have switched to the next sequence in some arbitrary order.
+	Send +3 ;if focus had already been on the timeline, this would have switched to the next sequence in some arbitrary order.
 else if (panel = "program") ;program monitor
 	Send ^!+4
 else if (panel = "source") ;source monitor
@@ -779,6 +779,68 @@ addEffectToAdjustmentLayer(effect)
 		return
 	}
 	preset(effect)
+}
+
+loadSequence(sequenceName)
+{
+	prFocus("project")
+	sleep 10
+	Send ^!+1 ;need to do it twice to get to the right bin
+	sleep 10
+
+	send ^b
+	sleep 30
+	SendInput %sequenceName%
+	
+	sleep 300
+	Send {Tab}
+
+	sleep 10
+	Send {Enter}
+
+	sleep 300
+	Send ^+4 ; open sequence ctrl/shift 4
+
+	sleep 500
+	Send ^a
+
+	sleep 20
+	Send ^c
+
+	sleep 50
+	send ^w ;close the window
+
+	sleep 50
+	send ^+5 ;paste insert
+
+	sleep 20
+	Send ^l ;unlink clip
+	
+	;cleanup
+	prFocus("project")
+	sleep 10
+	Send ^!+1 ;need to do it twice to get to the right bin
+	sleep 10
+
+	send ^b
+	sleep 30
+	SendInput {BackSpace}
+	sleep 10
+
+	Send {Tab}
+	sleep 10
+
+	Send {Escape}
+	sleep 10
+
+	Send {Up}
+	Send {Up}
+	Send {Up}
+	Send {Up}
+	Send {Up}
+	
+	sleep 10
+	prFocus("timeline")
 }
 
 instantVFX()
