@@ -1780,11 +1780,11 @@ return
     {
         If sheet = 1
         {
-            preset("CP - Mid Contrast")
+            addEffectToAdjustmentLayer("CP - Mid Contrast")
         }
         If sheet = 2
         {
-            preset("CP - Fade to M Contrast")
+            addEffectToAdjustmentLayer("CP - Fade to M Contrast")
         }
         If sheet = 3
         {
@@ -1797,11 +1797,11 @@ return
     {
         If sheet = 1
         {
-            preset("CP - Deep Contrast")
+            addEffectToAdjustmentLayer("CP - Deep Contrast")
         }
         If sheet = 2
         {
-            preset("CP - Fade to D Contrast")
+            addEffectToAdjustmentLayer("CP - Fade to D Contrast")
         }
         If sheet = 3
         {
