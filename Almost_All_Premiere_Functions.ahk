@@ -1,15 +1,5 @@
 ﻿;C:\Users\Owner\Documents\Adobe\Premiere Pro\13.0\Profile-Owner\Win
 
-workPC = "No"
-
-if workPC = "No"
-{
-    SetWorkingDir, C:\Users\Owner\source\repos\2nd-keyboard\support_files
-}
-if workPC = "Yes"
-{
-    ;SetWorkingDir, C:\Users\cxp6696\source\repos\2nd-keyboard\support_files
-}
 ;the above will supposedly set A_WorkingDir. It MUST be done in the autoexecute area, BEFORE the code below.
 ;SetWorkingDir, C:\Users\TaranWORK\Documents\GitHub\2nd-keyboard\2nd keyboard support files
 
@@ -843,27 +833,49 @@ loadSequence(sequenceName)
 	prFocus("timeline")
 }
 
+;https://www.autohotkey.com/boards/viewtopic.php?t=23987
 instantVFX()
 {
 	; blockinput, sendandMouse
 	; blockinput, MouseMove
 	; blockinput, on
 	;-Sendinput ^!+5
-	msgbox, made it here
+	
 	prFocus("effect controls") ;essentially just hits CTRL ALT SHIFT 5 to highlight the effect controls panel.
 	sleep 10
 	;ToolTip, A, , , 2
 	MouseGetPos currentMouseX, currentMouseY
 
-	ControlGetPos, Xcorner, Ycorner, Width, Height, DroverLord - Window Class60, ahk_class Premiere Pro ;This is HOPEFULLY the ClassNN of the effect controls panel. Use Window Spy to figure it out.
+	if workPC = Yes
+	{
+		ControlGetPos, Xcorner, Ycorner, Width, Height, DroverLord - Window Class65, ahk_class Premiere Pro ;This is HOPEFULLY the ClassNN of the effect controls panel. Use Window Spy to figure it out.
+	}
+	else if workPC = No
+	{
+		ControlGetPos, Xcorner, Ycorner, Width, Height, DroverLord - Window Class60, ahk_class Premiere Pro ;This is HOPEFULLY the ClassNN of the effect controls panel. Use Window Spy to figure it out.
+	}	
 	
-	sleep 10
+	;msgbox, %Xcorner% %Ycorner% %Width% %Height%
+
+	sleep 10	
 	MouseMove, Xcorner, Ycorner, 0
 	MouseClick, left, , , 1
 	sleep 10
 
-	YY := Ycorner+125 ;ui 100%
-	XX := Xcorner+115 ;ui 100%
+	if workPC = Yes
+	{
+		YY := Ycorner+200 ;ui 100%
+		XX := Xcorner+175 ;ui 100%
+
+		;YY := Ycorner+3000 ;ui 100%
+		;XX := Xcorner+3000 ;ui 100%
+	}
+	else if workPC = No
+	{
+		YY := Ycorner+125 ;ui 100%
+		XX := Xcorner+115 ;ui 100%
+	}	
+	
 	sleep 10
 	Send {Home}
 
@@ -873,17 +885,27 @@ instantVFX()
 	; MouseMove, XX, YY, 0
 	; msgbox, mouse is here now
 
-	ImageSearch, FoundX, FoundY, Xcorner, Ycorner, XX, YY, %A_WorkingDir%\motion-up-small.PNG
+	if workPC = Yes
+	{
+		fileName = motion-up-small-w.PNG
+		ImageSearch, FoundX, FoundY, 0, 0, XX, YY, %workingDir%\%fileName%
+	}
+	else if workPC = No
+	{
+		fileName = motion-up-small.PNG
+		ImageSearch, FoundX, FoundY, Xcorner, Ycorner, XX, YY, %workingDir%\%fileName%
+	}
+	
 	if ErrorLevel = 1
 	{
-		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %A_WorkingDir%\%foobar%_D2019.png ;within 10 shades of variation (in case SCALE is fully extended with bezier handles, in which case, the other images are real hard to find because the horizontal seperating lines look a BIT different. But if you crop in really closely, you don't have to worry about this. so this part of the code is not really necessary execpt to expand the range to look.
+		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %workingDir%\%foobar%_D2019.png ;within 10 shades of variation (in case SCALE is fully extended with bezier handles, in which case, the other images are real hard to find because the horizontal seperating lines look a BIT different. But if you crop in really closely, you don't have to worry about this. so this part of the code is not really necessary execpt to expand the range to look.
 		;msgbox, whwhwuhuat
-		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %A_WorkingDir%\%foobar%_D2019_ui100.png
-		;msgbox, lvl1
+		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %workingDir%\%foobar%_D2019_ui100.png
+		;msgbox, lvl1 %workingDir%\%fileName%
 	}
 	else if ErrorLevel = 2
 	{
-		;msgbox,,, ERROR LEVEL 2`nCould not conduct the search,1
+		;msgbox,,, ERROR LEVEL 2`nCould not conduct the search  %workingDir%\%fileName%,1
 		;resetFromAutoVFX()
 	}	
 	else
@@ -898,20 +920,28 @@ instantVFX()
 		;MouseMove, FoundX, FoundY, 0
 		;msgbox,,,moved to located text
 		;sleep 5
-		;findHotText(foobar)
+		;findHotText(foobar)		
 	}
 
-	ImageSearch, motionDownX, motionDownY, Xcorner, Ycorner, XX, YY, %A_WorkingDir%\motion-down.PNG
+	if workPC = Yes
+	{
+		fileName = motion-down-w.PNG
+	}
+	else if workPC = No
+	{
+		fileName = motion-down.PNG
+	}
+	ImageSearch, motionDownX, motionDownY, Xcorner, Ycorner, XX, YY, %workingDir%\%fileName%
 	if ErrorLevel = 1
 	{
-		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %A_WorkingDir%\%foobar%_D2019.png ;within 10 shades of variation (in case SCALE is fully extended with bezier handles, in which case, the other images are real hard to find because the horizontal seperating lines look a BIT different. But if you crop in really closely, you don't have to worry about this. so this part of the code is not really necessary execpt to expand the range to look.
+		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %workingDir%\%foobar%_D2019.png ;within 10 shades of variation (in case SCALE is fully extended with bezier handles, in which case, the other images are real hard to find because the horizontal seperating lines look a BIT different. But if you crop in really closely, you don't have to worry about this. so this part of the code is not really necessary execpt to expand the range to look.
 		;msgbox, whwhwuhuat
-		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %A_WorkingDir%\%foobar%_D2019_ui100.png
-		;msgbox, lvl1
+		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %workingDir%\%foobar%_D2019_ui100.png
+		;msgbox, lvl1 %workingDir%\%fileName%
 	}
 	else if ErrorLevel = 2
 	{
-		;msgbox,,, ERROR LEVEL 2`nCould not conduct the search,1
+		msgbox,,, ERROR LEVEL 2`nCould not conduct the search %workingDir%\%fileName%,1
 		;resetFromAutoVFX()
 	}	
 	else
@@ -930,17 +960,30 @@ instantVFX()
 		;findHotText(foobar)
 	}	
 	
-	ImageSearch, FoundX, FoundY, Xcorner, Ycorner, XX, YY, %A_WorkingDir%\scale-keyframe-on.PNG
+	if workPC = Yes
+	{
+		fileName = scale-keyframe-on-w.PNG
+	}
+	else if workPC = No
+	{
+		fileName = scale-keyframe-on.PNG
+	}
+	ImageSearch, FoundX, FoundY, Xcorner, Ycorner, XX, YY, %workingDir%\%fileName%
 	if ErrorLevel = 1
 	{
-		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %A_WorkingDir%\%foobar%_D2019.png ;within 10 shades of variation (in case SCALE is fully extended with bezier handles, in which case, the other images are real hard to find because the horizontal seperating lines look a BIT different. But if you crop in really closely, you don't have to worry about this. so this part of the code is not really necessary execpt to expand the range to look.
+		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %workingDir%\%foobar%_D2019.png ;within 10 shades of variation (in case SCALE is fully extended with bezier handles, in which case, the other images are real hard to find because the horizontal seperating lines look a BIT different. But if you crop in really closely, you don't have to worry about this. so this part of the code is not really necessary execpt to expand the range to look.
 		;msgbox, whwhwuhuat
-		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %A_WorkingDir%\%foobar%_D2019_ui100.png
-		;msgbox, scale on lvl1
+		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %workingDir%\%foobar%_D2019_ui100.png
+		; msgbox, scale on lvl1 %workingDir%\%fileName%
+		; MouseMove, Xcorner, Ycorner, 0
+		; msgbox, xcorner ycorner
+
+		; MouseMove, XX, YY, 0
+		; msgbox, XX, YY
 	}
 	else if ErrorLevel = 2
 	{
-		;msgbox,,, scale on ERROR LEVEL 2`nCould not conduct the search,1
+		;msgbox,,, scale on ERROR LEVEL 2`nCould not conduct the search %workingDir%\%fileName%,1
 		;resetFromAutoVFX()
 	}	
 	else
@@ -955,20 +998,28 @@ instantVFX()
 		;MouseMove, FoundX, FoundY, 0
 		;msgbox,,,moved to located text
 		;sleep 5
-		;findHotText(foobar)
+		;findHotText(foobar)		
 	}
 
-	ImageSearch, FoundX, FoundY, Xcorner, Ycorner, XX, YY, %A_WorkingDir%\scale-keyframe-off.PNG
+	if workPC = Yes
+	{
+		fileName = scale-keyframe-off-w.PNG
+	}
+	else if workPC = No
+	{
+		fileName = scale-keyframe-off.PNG
+	}
+	ImageSearch, FoundX, FoundY, Xcorner, Ycorner, XX, YY, %workingDir%\%fileName%
 	if ErrorLevel = 1
 	{
-		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %A_WorkingDir%\%foobar%_D2019.png ;within 10 shades of variation (in case SCALE is fully extended with bezier handles, in which case, the other images are real hard to find because the horizontal seperating lines look a BIT different. But if you crop in really closely, you don't have to worry about this. so this part of the code is not really necessary execpt to expand the range to look.
+		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %workingDir%\%foobar%_D2019.png ;within 10 shades of variation (in case SCALE is fully extended with bezier handles, in which case, the other images are real hard to find because the horizontal seperating lines look a BIT different. But if you crop in really closely, you don't have to worry about this. so this part of the code is not really necessary execpt to expand the range to look.
 		;msgbox, whwhwuhuat
-		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %A_WorkingDir%\%foobar%_D2019_ui100.png
-		;msgbox, scale off lvl1
+		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %workingDir%\%foobar%_D2019_ui100.png
+		;msgbox, scale off lvl1 %workingDir%\%fileName%
 	}
 	else if ErrorLevel = 2
 	{
-		;msgbox,,, scale off ERROR LEVEL 2`nCould not conduct the search,1
+		;msgbox,,, scale off ERROR LEVEL 2`nCould not conduct the search %workingDir%\%fileName%,1
 		;resetFromAutoVFX()
 	}	
 	else
@@ -999,17 +1050,25 @@ instantVFX()
 	; MouseMove, scaleSearchRightX, scaleSearchBottomY, 0
 	; msgbox, second area
 
-	ImageSearch, scaleKeyFrameX, scaleKeyFrameY, scaleSearchLeftX, scaleSearchTopY, scaleSearchRightX, scaleSearchBottomY, %A_WorkingDir%\keyframe-on.PNG
+	if workPC = Yes
+	{
+		fileName = keyframe-on-w.PNG
+	}
+	else if workPC = No
+	{
+		fileName = keyframe-on.PNG
+	}
+	ImageSearch, scaleKeyFrameX, scaleKeyFrameY, scaleSearchLeftX, scaleSearchTopY, scaleSearchRightX, scaleSearchBottomY, %A_WorkingDir%\%fileName%
 	if ErrorLevel = 1
 	{
-		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %A_WorkingDir%\%foobar%_D2019.png ;within 10 shades of variation (in case SCALE is fully extended with bezier handles, in which case, the other images are real hard to find because the horizontal seperating lines look a BIT different. But if you crop in really closely, you don't have to worry about this. so this part of the code is not really necessary execpt to expand the range to look.
+		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %workingDir%\%foobar%_D2019.png ;within 10 shades of variation (in case SCALE is fully extended with bezier handles, in which case, the other images are real hard to find because the horizontal seperating lines look a BIT different. But if you crop in really closely, you don't have to worry about this. so this part of the code is not really necessary execpt to expand the range to look.
 		;msgbox, whwhwuhuat
-		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %A_WorkingDir%\%foobar%_D2019_ui100.png
-		;msgbox, lvl1
+		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %workingDir%\%foobar%_D2019_ui100.png
+		;msgbox, lvl1 %workingDir%\%fileName%
 	}
 	else if ErrorLevel = 2
 	{
-		;msgbox,,, ERROR LEVEL 2`nCould not conduct the search,1
+		;msgbox,,, ERROR LEVEL 2`nCould not conduct the search %workingDir%\%fileName%,1
 		;resetFromAutoVFX()
 	}	
 	else
@@ -1027,17 +1086,25 @@ instantVFX()
 		;findHotText(foobar)
 	}
 
-	ImageSearch, FoundX, FoundY, Xcorner, Ycorner, XX, YY, %A_WorkingDir%\position-keyframe-on.PNG
+	if workPC = Yes
+	{
+		fileName = position-keyframe-on-w.PNG
+	}
+	else if workPC = No
+	{
+		fileName = position-keyframe-on.PNG
+	}
+	ImageSearch, FoundX, FoundY, Xcorner, Ycorner, XX, YY, %workingDir%\%fileName%
 	if ErrorLevel = 1
 	{
-		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %A_WorkingDir%\%foobar%_D2019.png ;within 10 shades of variation (in case SCALE is fully extended with bezier handles, in which case, the other images are real hard to find because the horizontal seperating lines look a BIT different. But if you crop in really closely, you don't have to worry about this. so this part of the code is not really necessary execpt to expand the range to look.
+		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %workingDir%\%foobar%_D2019.png ;within 10 shades of variation (in case SCALE is fully extended with bezier handles, in which case, the other images are real hard to find because the horizontal seperating lines look a BIT different. But if you crop in really closely, you don't have to worry about this. so this part of the code is not really necessary execpt to expand the range to look.
 		;msgbox, whwhwuhuat
-		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %A_WorkingDir%\%foobar%_D2019_ui100.png
-		;msgbox, lvl1
+		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %workingDir%\%foobar%_D2019_ui100.png
+		;msgbox, lvl1 %workingDir%\%fileName%
 	}
 	else if ErrorLevel = 2
 	{
-		;msgbox,,, ERROR LEVEL 2`nCould not conduct the search,1
+		;msgbox,,, ERROR LEVEL 2`nCould not conduct the search %workingDir%\%fileName%,1
 		;resetFromAutoVFX()
 	}	
 	else
@@ -1055,17 +1122,25 @@ instantVFX()
 		;findHotText(foobar)
 	}
 
-	ImageSearch, FoundX, FoundY, Xcorner, Ycorner, XX, YY, %A_WorkingDir%\position-keyframe-off.PNG
+	if workPC = Yes
+	{
+		fileName = position-keyframe-off-w.PNG
+	}
+	else if workPC = No
+	{
+		fileName = position-keyframe-off.PNG
+	}
+	ImageSearch, FoundX, FoundY, Xcorner, Ycorner, XX, YY, %workingDir%\%fileName%
 	if ErrorLevel = 1
 	{
-		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %A_WorkingDir%\%foobar%_D2019.png ;within 10 shades of variation (in case SCALE is fully extended with bezier handles, in which case, the other images are real hard to find because the horizontal seperating lines look a BIT different. But if you crop in really closely, you don't have to worry about this. so this part of the code is not really necessary execpt to expand the range to look.
+		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %workingDir%\%foobar%_D2019.png ;within 10 shades of variation (in case SCALE is fully extended with bezier handles, in which case, the other images are real hard to find because the horizontal seperating lines look a BIT different. But if you crop in really closely, you don't have to worry about this. so this part of the code is not really necessary execpt to expand the range to look.
 		;msgbox, whwhwuhuat
-		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %A_WorkingDir%\%foobar%_D2019_ui100.png
-		;msgbox, lvl1
+		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %workingDir%\%foobar%_D2019_ui100.png
+		;msgbox, lvl1 %workingDir%\%fileName%
 	}
 	else if ErrorLevel = 2
 	{
-		;msgbox,,, ERROR LEVEL 2`nCould not conduct the search,1
+		;msgbox,,, ERROR LEVEL 2`nCould not conduct the search %workingDir%\%fileName%,1
 		;resetFromAutoVFX()
 	}	
 	else
@@ -1096,17 +1171,25 @@ instantVFX()
 	; MouseMove, positionSearchRightX, positionSearchBottomY, 0
 	; msgbox, second area
 
-	ImageSearch, positionKeyFrameX, positionKeyFrameY, positionSearchLeftX, positionSearchTopY, positionSearchRightX, positionSearchBottomY, %A_WorkingDir%\keyframe-on.PNG
+	if workPC = Yes
+	{
+		fileName = keyframe-on-w.PNG
+	}
+	else if workPC = No
+	{
+		fileName = keyframe-on.PNG
+	}
+	ImageSearch, positionKeyFrameX, positionKeyFrameY, positionSearchLeftX, positionSearchTopY, positionSearchRightX, positionSearchBottomY, %A_WorkingDir%\%fileName%
 	if ErrorLevel = 1
 	{
-		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %A_WorkingDir%\%foobar%_D2019.png ;within 10 shades of variation (in case SCALE is fully extended with bezier handles, in which case, the other images are real hard to find because the horizontal seperating lines look a BIT different. But if you crop in really closely, you don't have to worry about this. so this part of the code is not really necessary execpt to expand the range to look.
+		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %workingDir%\%foobar%_D2019.png ;within 10 shades of variation (in case SCALE is fully extended with bezier handles, in which case, the other images are real hard to find because the horizontal seperating lines look a BIT different. But if you crop in really closely, you don't have to worry about this. so this part of the code is not really necessary execpt to expand the range to look.
 		;msgbox, whwhwuhuat
-		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %A_WorkingDir%\%foobar%_D2019_ui100.png
-		;msgbox, lvl1
+		;ImageSearch, FoundX, FoundY, xPos-30, yPos, xPos+1200, yPos+1200, *10 %workingDir%\%foobar%_D2019_ui100.png
+		;msgbox, lvl1 %workingDir%\%fileName%
 	}
 	else if ErrorLevel = 2
 	{
-		;msgbox,,, ERROR LEVEL 2`nCould not conduct the search,1
+		;msgbox,,, ERROR LEVEL 2`nCould not conduct the search %workingDir%\%fileName%,1
 		;resetFromAutoVFX()
 	}	
 	else
@@ -1279,8 +1362,8 @@ instantVFX()
 	sleep 10
 	MouseMove, currentMouseX, currentMouseY, 0
 
-	; blockinput, off
-	; blockinput, MouseMoveOff
+	blockinput, off
+	blockinput, MouseMoveOff
 }
 
 ; instantVFX(foobar)
@@ -1577,6 +1660,41 @@ instantVFX()
 
 ; ;is the above line really necessary? i dont think so, but i am afraid to touch it.
 
+
+GetFocusedControl(Option := "ClassNN")
+{
+	;"Options": ClassNN \ Hwnd \ Text \ List \ All
+
+GuiWindowHwnd := WinExist("A")		;stores the current Active Window Hwnd id number in "GuiWindowHwnd" variable
+				;"A" for Active Window
+
+ControlGetFocus, FocusedControl, ahk_id %GuiWindowHwnd%	;stores the  classname "ClassNN" of the current focused control from the window above in "FocusedControl" variable
+						;"ahk_id" searches windows by Hwnd Id number
+
+if Option = ClassNN
+return, FocusedControl
+
+ControlGet, FocusedControlId, Hwnd,, %FocusedControl%, ahk_id %GuiWindowHwnd%	;stores the Hwnd Id number of the focused control found above in "FocusedControlId" variable
+
+if Option = Hwnd
+return, FocusedControlId
+
+if (Option = "Text") or (Option = "All")
+ControlGetText, FocusedControlText, , ahk_id %FocusedControlId%		;stores the focused control texts in "FocusedControlText" variable
+							;"ahk_id" searches control by Hwnd id number
+
+if Option = Text	
+return, FocusedControlText
+
+if (Option = "List") or (Option = "All")
+ControlGet, FocusedControlList, List, , , ahk_id %FocusedControlId%	;"List", retrieves  all the text from a ListView, ListBox, or ComboBox controls
+
+if Option = List	
+return, FocusedControlList
+
+return, FocusedControl " - " FocusedControlId "`n`n____Text____`n`n" FocusedControlText "`n`n____List____`n`n" FocusedControlList
+
+}
 
 
 
