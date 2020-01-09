@@ -219,7 +219,7 @@ ControlGetPos, XX, YY, Width, Height, %classNN%, ahk_class %class%, SubWindow, S
 ;comment in the following line to get a message box of your current variable values. The script will not advance until you dismiss the message box.
 ;MsgBox, xx=%XX% yy=%YY%
 
-MouseMove, X2X-15, YY+10, 0 ;--------------------for 100% UI scaling, this moves the cursor onto the magnifying glass
+MouseMove, XX-15, YY+10, 0 ;--------------------for 100% UI scaling, this moves the cursor onto the magnifying glass
 ;MouseMove, XX-25, YY+10, 0 ;--------------------for 150% UI scaling, this moves the cursor onto the magnifying glass
 ;msgbox, should be in the center of the magnifying glass now.
 sleep 5 ;was sleep 50
@@ -228,18 +228,19 @@ Send %item%
 
 sleep 5
 
-if(workPC = "No")
+if workPC = No 
 {
 	MouseMove, -80, 72, 0, R ;----------------------(for 100% UI) 	
 }
-if(workPC = "Yes")
+if workPC = Yes
 {
-	MouseMove, -120, 110, 0, R ;----------------------(for 150% UI) relative to the position of the magnifying glass (established earlier,) this moves the cursor down and directly onto the preset's icon. In my case, it is inside the "presets" folder, then inside of another folder, and the written name should be completely unique so that it is the first and only item.	
+	MouseMove, 50, 105, 0, R ;----------------------(for 150% UI) relative to the position of the magnifying glass (established earlier,) this moves the cursor down and directly onto the preset's icon. In my case, it is inside the "presets" folder, then inside of another folder, and the written name should be completely unique so that it is the first and only item.	
 }
 
 ;msgbox, The cursor should be directly on top of the preset's icon. `n If not, the script needs modification.
 sleep 5
 MouseGetPos, iconX, iconY, Window, classNN ;---now we have to figure out the ahk_class of the current panel we are on. It used to be DroverLord - Window Class14, but the number changes anytime you move panels around... so i must always obtain the information anew.
+;msgbox, %classNN%
 sleep 5
 WinGetClass, class, ahk_id %Window% ;----------"ahk_id %Window%" is important for SOME REASON. if you delete it, this doesn't work.
 ;tooltip, ahk_class =   %class% `nClassNN =     %classNN% `nTitle= %Window%

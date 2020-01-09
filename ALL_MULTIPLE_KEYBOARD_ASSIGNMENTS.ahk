@@ -1999,7 +1999,17 @@ return
     }
     If ErrorLevel = EndKey:F1
     {
-        insertSFX("Bruh")
+        loadSequence("CPSEQ-tv-no-signal")        
+        return
+    }  
+    If ErrorLevel = EndKey:F2
+    {
+        loadSequence("CPSEQ-kiki-wyatt-crazy-look-earrape-laugh")        
+        return
+    }  
+    If ErrorLevel = EndKey:F3
+    {
+        loadSequence("CPSEQ-its-clobbering-time")
         return
     }    
 } 
@@ -2052,7 +2062,7 @@ return
     }   
     If ErrorLevel = EndKey:F3
     {
-        loadSequence("CPSEQ-kiki-wyatt-crazy-look-earrape-laugh")
+        ;loadSequence("CPSEQ-kiki-wyatt-crazy-look-earrape-laugh")
         ;CP - FinOutBnW
         ;CP - FQuickinOutBW
         ;CPSEQ-its-clobbering-time
@@ -2062,7 +2072,7 @@ return
     }   
     If ErrorLevel = EndKey:F4
     {
-        loadSequence("CPSEQ-its-clobbering-time")
+        ;loadSequence("CPSEQ-its-clobbering-time")
         ;CP - FinOutBnW
         ;CP - FQuickinOutBW
         ;CPSEQ-its-clobbering-time
@@ -2072,7 +2082,7 @@ return
     }   
     If ErrorLevel = EndKey:F5
     {
-        loadSequence("CPSEQ-tv-no-signal")
+        ;loadSequence("CPSEQ-tv-no-signal")
         ;CP - FinOutBnW
         ;CP - FQuickinOutBW
         ;CPSEQ-its-clobbering-time
