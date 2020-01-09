@@ -368,12 +368,14 @@ return
 
         If ErrorLevel = EndKey:F5
         {
+            insertSFX("Me-Overlay-Adjustment-Layer", 3)
             ;presetString = CP - %position% Zoom MtoL
             ;preset(presetString)            
             return
         }
         If ErrorLevel = EndKey:F6
         {
+            insertSFX("Me-Overlay-Adjustment-Layer", 4)
             ;presetString = CP - %position% Zoom MtoXL
             ;preset(presetString)
             return
@@ -381,12 +383,27 @@ return
 
         If ErrorLevel = EndKey:F7
         {
+            insertSFX("Me-Overlay-Adjustment-Layer", 3)
+            Input, OutputVar, L1, {Escape}
+            If ErrorLevel = EndKey:Escape
+            {
+                return
+            }
+            preset("CP - Transform Default")
+            
             ;presetString = CP - %position% Zoom LtoN
             ;preset(presetString)
             return
         }
         If ErrorLevel = EndKey:F8
         {
+            insertSFX("Me-Overlay-Adjustment-Layer", 4)
+            Input, OutputVar, L1, {Escape}
+            If ErrorLevel = EndKey:Escape
+            {
+                return
+            }
+            preset("CP - Transform Default")
             ;presetString = CP - %position% Zoom LtoM
             ;preset(presetString)
             return
@@ -808,7 +825,12 @@ return
         {
             insertSFX("Ding-dong-sound-effect")
             return
-        }       
+        }    
+        If ErrorLevel = EndKey:F3
+        {
+            insertSFX("Microphone Tap")
+            return
+        }     
     }
     ;misc
     if sheet = 6
@@ -1727,69 +1749,238 @@ return
 ~7::
 {
     Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-        
+    sheet = 1
+
     If ErrorLevel = EndKey:Escape
     {
         return
     }
+    If OutputVar = Q
+    {
+        sheet = 1
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    }
+    If OutputVar = W
+    {
+        sheet = 2
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    }
+    If OutputVar = E
+    {
+        sheet = 3
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    }
+    
+    If ErrorLevel = EndKey:Escape
+    {
+        return
+    }
+    ;mid contrast
     If ErrorLevel = EndKey:F1
     {
-        preset("CP - Mid Contrast")
+        If sheet = 1
+        {
+            preset("CP - Mid Contrast")
+        }
+        If sheet = 2
+        {
+            preset("CP - Fade to M Contrast")
+        }
+        If sheet = 3
+        {
+
+        }
+        
         return
     }    
     If ErrorLevel = EndKey:F2
     {
-        preset("CP - Fade to M Contrast")
+        If sheet = 1
+        {
+            preset("CP - Deep Contrast")
+        }
+        If sheet = 2
+        {
+            preset("CP - Fade to D Contrast")
+        }
+        If sheet = 3
+        {
+
+        }
+
         return
     }
     If ErrorLevel = EndKey:F3
     {
-        preset("CP - Deep Contrast")
+        If sheet = 1
+        {
+            ;preset("CP - Black and White")
+            addEffectToAdjustmentLayer("CP - FinOutBnW")        
+        }
+        If sheet = 2
+        {
+            ;preset("CP - Fade to BnW")
+            addEffectToAdjustmentLayer("CP - FQuickinOutBW")
+        }
+        If sheet = 3
+        {
+
+        }
         return
     }
     If ErrorLevel = EndKey:F4
     {
-        preset("CP - Fade to D Contrast")
+        If sheet = 1
+        {
+            ;preset("CP - Deep Contrast")
+        }
+        If sheet = 2
+        {
+            ;preset("CP - Fade to D Contrast")
+        }
+        If sheet = 3
+        {
+
+        }
+        addEffectToAdjustmentLayer("CP - Faded Lumetri Color")
+        ;preset("CP - Faded Lumetri Color")
         return
     }
     If ErrorLevel = EndKey:F5
     {
-        preset("CP - Black and White")
+        If sheet = 1
+        {
+            ;preset("CP - Deep Contrast")
+        }
+        If sheet = 2
+        {
+            ;preset("CP - Fade to D Contrast")
+        }
+        If sheet = 3
+        {
+
+        }
+        addEffectToAdjustmentLayer("CP - Red")
+        ;preset("CP - Red")
         return
     }
     If ErrorLevel = EndKey:F6
     {
-        preset("CP - Fade to BnW")
+        If sheet = 1
+        {
+            ;preset("CP - Deep Contrast")
+        }
+        If sheet = 2
+        {
+            ;preset("CP - Fade to D Contrast")
+        }
+        If sheet = 3
+        {
+
+        }
+        addEffectToAdjustmentLayer("CP - Blue")
+        ;preset("CP - Blue")
         return
     }
     If ErrorLevel = EndKey:F7
     {
-        preset("CP - Faded Lumetri Color")
+        If sheet = 1
+        {
+            ;preset("CP - Deep Contrast")
+        }
+        If sheet = 2
+        {
+            ;preset("CP - Fade to D Contrast")
+        }
+        If sheet = 3
+        {
+
+        }      
+        addEffectToAdjustmentLayer("CP - Green")  
+        ;preset("CP - Green")  
         return
     }
     If ErrorLevel = EndKey:F8
     {
-        ;preset("Bruh")
+        If sheet = 1
+        {
+            ;preset("CP - Deep Contrast")
+        }
+        If sheet = 2
+        {
+            ;preset("CP - Fade to D Contrast")
+        }
+        If sheet = 3
+        {
+
+        }
         return
     }
     If ErrorLevel = EndKey:F9
     {
-        ;preset("Bruh")
+        If sheet = 1
+        {
+            ;preset("CP - Deep Contrast")
+        }
+        If sheet = 2
+        {
+            ;preset("CP - Fade to D Contrast")
+        }
+        If sheet = 3
+        {
+
+        }
         return
     }
     If ErrorLevel = EndKey:F10
     {
-        preset("CP - Blue")
+        If sheet = 1
+        {
+            ;preset("CP - Deep Contrast")
+        }
+        If sheet = 2
+        {
+            ;preset("CP - Fade to D Contrast")
+        }
+        If sheet = 3
+        {
+
+        }
+        
         return
     }
     If ErrorLevel = EndKey:F11
     {
-        preset("CP - Green")
+        If sheet = 1
+        {
+            ;preset("CP - Deep Contrast")
+        }
+        If sheet = 2
+        {
+            ;preset("CP - Fade to D Contrast")
+        }
+        If sheet = 3
+        {
+
+        }
+        
         return
     }
     If ErrorLevel = EndKey:F12
     {
-        preset("CP - Red")
+        If sheet = 1
+        {
+            ;preset("CP - Deep Contrast")
+        }
+        If sheet = 2
+        {
+            ;preset("CP - Fade to D Contrast")
+        }
+        If sheet = 3
+        {
+
+        }
+        
         return
     }
 } 
@@ -1854,7 +2045,7 @@ return
     }    
     If ErrorLevel = EndKey:F2
     {
-        addEffectToAdjustmentLayer("CP - FinOutBnW")
+        ;addEffectToAdjustmentLayer("CP - FinOutBnW")
         ;CP - FinOutBnW
         ;CP - FQuickinOutBW
         return

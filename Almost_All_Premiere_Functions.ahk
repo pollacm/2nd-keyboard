@@ -132,9 +132,9 @@ coordmode, mouse, Window
 coordmode, Caret, Window
 
 ;This (temporarily) blocks the mouse and keyboard from sending any information, which could interfere with the funcitoning of the script.
-BlockInput, SendAndMouse
-BlockInput, MouseMove
-BlockInput, On
+;BlockInput, SendAndMouse
+;BlockInput, MouseMove
+;BlockInput, On
 
 SetKeyDelay, 0 ;NO DELAY BETWEEN TYPED STUFF! It might actually be best to put this at "1" though.
 
@@ -264,8 +264,8 @@ sleep 5
 ;sleep, 15
 
 MouseClick, middle, , , 1 ;this returns focus to the panel the cursor is hovering above, WITHOUT selecting anything. great!
-blockinput, MouseMoveOff ;returning mouse movement ability
-BlockInput, off ;do not comment out or delete this line -- or you won't regain control of the keyboard!! However, CTRL+ALT+DEL will still work if you get stuck!! Cool.
+;blockinput, MouseMoveOff ;returning mouse movement ability
+;BlockInput, off ;do not comment out or delete this line -- or you won't regain control of the keyboard!! However, CTRL+ALT+DEL will still work if you get stuck!! Cool.
 
 ;remove the following thingy if it makes no sense to you
 IfInString, item, CROP
@@ -333,6 +333,10 @@ if(layerToInsertOn = 3)
 {
 	send ^+7 ;ctrl shift 7 - source assignment preset 6. (sets it to A4/V4.)
 }
+if(layerToInsertOn = 4)
+{
+	send ^+6 ;ctrl shift 6 - source assignment preset 7. (sets it to A5/V5.)
+}
 
 sleep 10
 ; Send ^!+1 ;premiere shortcut to open the "project" panel, which is actually a bin. Only ONE bin is highlightable in this way.
@@ -363,6 +367,10 @@ if(layerToInsertOn = 2)
 if(layerToInsertOn = 3)
 {
 	send ^+7 ;source assignment preset 6, again.
+}
+if(layerToInsertOn = 4)
+{
+	send ^+6 ;ctrl shift 6 - source assignment preset 7. (sets it to A5/V5.)
 }
 
 sleep 400 ;we are waiting for the search to complete....
@@ -398,6 +406,10 @@ if(layerToInsertOn = 3)
 {
 	send ^+7 ;source assignment preset 6, again.
 }
+if(layerToInsertOn = 4)
+{
+	send ^+6 ;ctrl shift 6 - source assignment preset 7. (sets it to A5/V5.)
+}
 sleep 5
 Send ^b ;CTRL B -- set this in premiere's shortcuts panel to "select find box."
 sleep 10
@@ -424,6 +436,10 @@ if(layerToInsertOn = 2)
 if(layerToInsertOn = 3)
 {
 	send ^+7 ;my shortcut for "assign source assignment preset 6" in Premiere. The preset has V4 and A4 selected as sources. I may end up only using F18, since it does not use the CTRL and SHIFT keys, which can cause problems sometimes.
+}
+if(layerToInsertOn = 4)
+{
+	send ^+6 ;ctrl shift 6 - source assignment preset 7. (sets it to A5/V5.)
 }
 
 sleep 50
