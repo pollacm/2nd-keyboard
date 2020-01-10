@@ -230,7 +230,7 @@ sleep 5
 
 if workPC = No 
 {
-	MouseMove, -80, 72, 0, R ;----------------------(for 100% UI) 	
+	MouseMove, 40, 62, 0, R ;----------------------(for 100% UI) 	
 }
 if workPC = Yes
 {
@@ -861,15 +861,18 @@ instantVFX()
 	prFocus("effect controls") ;essentially just hits CTRL ALT SHIFT 5 to highlight the effect controls panel.
 	sleep 10
 	;ToolTip, A, , , 2
-	MouseGetPos currentMouseX, currentMouseY
-
+	;MouseGetPos, currentMouseX, currentMouseY, Window, classNN
+	;WinGetClass, class, ahk_id %Window%
+	;msgbox, window %Window%
+	;msgbox, classNN %classNN%
+	
 	if workPC = Yes
 	{
 		ControlGetPos, Xcorner, Ycorner, Width, Height, DroverLord - Window Class65, ahk_class Premiere Pro ;This is HOPEFULLY the ClassNN of the effect controls panel. Use Window Spy to figure it out.
 	}
 	else if workPC = No
 	{
-		ControlGetPos, Xcorner, Ycorner, Width, Height, DroverLord - Window Class60, ahk_class Premiere Pro ;This is HOPEFULLY the ClassNN of the effect controls panel. Use Window Spy to figure it out.
+		ControlGetPos, Xcorner, Ycorner, Width, Height, DroverLord - Window Class59, ahk_class Premiere Pro ;This is HOPEFULLY the ClassNN of the effect controls panel. Use Window Spy to figure it out.
 	}	
 	
 	;msgbox, %Xcorner% %Ycorner% %Width% %Height%

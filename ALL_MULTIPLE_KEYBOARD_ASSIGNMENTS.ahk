@@ -10,22 +10,20 @@ Menu, Tray, Icon, shell32.dll, 283 ;tray icon is now a little keyboard, or piece
 global globalPosition = "Left"
 global secondPosition = "Middle"
 global thirdPosition = "Right"
-global workPC = "Yes"
+global workPC = "No"
+global workingDir = "C:\Users\Owner\source\repos\2nd-keyboard\support_files"
 
 if workPC = No
-{    
-    ;global workingDir = "C:\Users\Owner\source\repos\2nd-keyboard\support_files"
-    ;#Include C:\Users\Owner\source\repos\2nd-keyboard\gui.ahk
-    ;#include C:\Users\Owner\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
-    ;#include C:\Users\Owner\source\repos\2nd-keyboard\After_Effects_Functions.ahk
+{
+    #Include C:\Users\Owner\source\repos\2nd-keyboard\gui.ahk
+    #include C:\Users\Owner\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
+    #include C:\Users\Owner\source\repos\2nd-keyboard\After_Effects_Functions.ahk    
 }
-
 if workPC = Yes
 {
-    global workingDir = "C:\Users\cxp6696\source\repos\2nd-keyboard\support_files"
-    #Include C:\Users\cxp6696\source\repos\2nd-keyboard\gui.ahk
-    #include C:\Users\cxp6696\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
-    #include C:\Users\cxp6696\source\repos\2nd-keyboard\After_Effects_Functions.ahk
+    ;#Include C:\Users\cxp6696\source\repos\2nd-keyboard\gui.ahk
+    ;#include C:\Users\cxp6696\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
+    ;#include C:\Users\cxp6696\source\repos\2nd-keyboard\After_Effects_Functions.ahk
 }
 
 
@@ -368,14 +366,12 @@ return
 
         If ErrorLevel = EndKey:F5
         {
-            insertSFX("Me-Overlay-Adjustment-Layer", 3)
             ;presetString = CP - %position% Zoom MtoL
             ;preset(presetString)            
             return
         }
         If ErrorLevel = EndKey:F6
         {
-            insertSFX("Me-Overlay-Adjustment-Layer", 4)
             ;presetString = CP - %position% Zoom MtoXL
             ;preset(presetString)
             return
@@ -383,27 +379,12 @@ return
 
         If ErrorLevel = EndKey:F7
         {
-            insertSFX("Me-Overlay-Adjustment-Layer", 3)
-            Input, OutputVar, L1, {Escape}
-            If ErrorLevel = EndKey:Escape
-            {
-                return
-            }
-            preset("CP - Transform Default")
-            
             ;presetString = CP - %position% Zoom LtoN
             ;preset(presetString)
             return
         }
         If ErrorLevel = EndKey:F8
         {
-            insertSFX("Me-Overlay-Adjustment-Layer", 4)
-            Input, OutputVar, L1, {Escape}
-            If ErrorLevel = EndKey:Escape
-            {
-                return
-            }
-            preset("CP - Transform Default")
             ;presetString = CP - %position% Zoom LtoM
             ;preset(presetString)
             return
@@ -825,12 +806,7 @@ return
         {
             insertSFX("Ding-dong-sound-effect")
             return
-        }    
-        If ErrorLevel = EndKey:F3
-        {
-            insertSFX("Microphone Tap")
-            return
-        }     
+        }       
     }
     ;misc
     if sheet = 6
@@ -1749,238 +1725,69 @@ return
 ~7::
 {
     Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    sheet = 1
-
+        
     If ErrorLevel = EndKey:Escape
     {
         return
     }
-    If OutputVar = Q
-    {
-        sheet = 1
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }
-    If OutputVar = W
-    {
-        sheet = 2
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }
-    If OutputVar = E
-    {
-        sheet = 3
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }
-    
-    If ErrorLevel = EndKey:Escape
-    {
-        return
-    }
-    ;mid contrast
     If ErrorLevel = EndKey:F1
     {
-        If sheet = 1
-        {
-            addEffectToAdjustmentLayer("CP - Mid Contrast")
-        }
-        If sheet = 2
-        {
-            addEffectToAdjustmentLayer("CP - Fade to M Contrast")
-        }
-        If sheet = 3
-        {
-
-        }
-        
+        preset("CP - Mid Contrast")
         return
     }    
     If ErrorLevel = EndKey:F2
     {
-        If sheet = 1
-        {
-            addEffectToAdjustmentLayer("CP - Deep Contrast")
-        }
-        If sheet = 2
-        {
-            addEffectToAdjustmentLayer("CP - Fade to D Contrast")
-        }
-        If sheet = 3
-        {
-
-        }
-
+        preset("CP - Fade to M Contrast")
         return
     }
     If ErrorLevel = EndKey:F3
     {
-        If sheet = 1
-        {
-            ;preset("CP - Black and White")
-            addEffectToAdjustmentLayer("CP - FinOutBnW")        
-        }
-        If sheet = 2
-        {
-            ;preset("CP - Fade to BnW")
-            addEffectToAdjustmentLayer("CP - FQuickinOutBW")
-        }
-        If sheet = 3
-        {
-
-        }
+        preset("CP - Deep Contrast")
         return
     }
     If ErrorLevel = EndKey:F4
     {
-        If sheet = 1
-        {
-            ;preset("CP - Deep Contrast")
-        }
-        If sheet = 2
-        {
-            ;preset("CP - Fade to D Contrast")
-        }
-        If sheet = 3
-        {
-
-        }
-        addEffectToAdjustmentLayer("CP - Faded Lumetri Color")
-        ;preset("CP - Faded Lumetri Color")
+        preset("CP - Fade to D Contrast")
         return
     }
     If ErrorLevel = EndKey:F5
     {
-        If sheet = 1
-        {
-            ;preset("CP - Deep Contrast")
-        }
-        If sheet = 2
-        {
-            ;preset("CP - Fade to D Contrast")
-        }
-        If sheet = 3
-        {
-
-        }
-        addEffectToAdjustmentLayer("CP - Red")
-        ;preset("CP - Red")
+        preset("CP - Black and White")
         return
     }
     If ErrorLevel = EndKey:F6
     {
-        If sheet = 1
-        {
-            ;preset("CP - Deep Contrast")
-        }
-        If sheet = 2
-        {
-            ;preset("CP - Fade to D Contrast")
-        }
-        If sheet = 3
-        {
-
-        }
-        addEffectToAdjustmentLayer("CP - Blue")
-        ;preset("CP - Blue")
+        preset("CP - Fade to BnW")
         return
     }
     If ErrorLevel = EndKey:F7
     {
-        If sheet = 1
-        {
-            ;preset("CP - Deep Contrast")
-        }
-        If sheet = 2
-        {
-            ;preset("CP - Fade to D Contrast")
-        }
-        If sheet = 3
-        {
-
-        }      
-        addEffectToAdjustmentLayer("CP - Green")  
-        ;preset("CP - Green")  
+        preset("CP - Faded Lumetri Color")
         return
     }
     If ErrorLevel = EndKey:F8
     {
-        If sheet = 1
-        {
-            ;preset("CP - Deep Contrast")
-        }
-        If sheet = 2
-        {
-            ;preset("CP - Fade to D Contrast")
-        }
-        If sheet = 3
-        {
-
-        }
+        ;preset("Bruh")
         return
     }
     If ErrorLevel = EndKey:F9
     {
-        If sheet = 1
-        {
-            ;preset("CP - Deep Contrast")
-        }
-        If sheet = 2
-        {
-            ;preset("CP - Fade to D Contrast")
-        }
-        If sheet = 3
-        {
-
-        }
+        ;preset("Bruh")
         return
     }
     If ErrorLevel = EndKey:F10
     {
-        If sheet = 1
-        {
-            ;preset("CP - Deep Contrast")
-        }
-        If sheet = 2
-        {
-            ;preset("CP - Fade to D Contrast")
-        }
-        If sheet = 3
-        {
-
-        }
-        
+        preset("CP - Blue")
         return
     }
     If ErrorLevel = EndKey:F11
     {
-        If sheet = 1
-        {
-            ;preset("CP - Deep Contrast")
-        }
-        If sheet = 2
-        {
-            ;preset("CP - Fade to D Contrast")
-        }
-        If sheet = 3
-        {
-
-        }
-        
+        preset("CP - Green")
         return
     }
     If ErrorLevel = EndKey:F12
     {
-        If sheet = 1
-        {
-            ;preset("CP - Deep Contrast")
-        }
-        If sheet = 2
-        {
-            ;preset("CP - Fade to D Contrast")
-        }
-        If sheet = 3
-        {
-
-        }
-        
+        preset("CP - Red")
         return
     }
 } 
@@ -1999,17 +1806,7 @@ return
     }
     If ErrorLevel = EndKey:F1
     {
-        loadSequence("CPSEQ-tv-no-signal")        
-        return
-    }  
-    If ErrorLevel = EndKey:F2
-    {
-        loadSequence("CPSEQ-kiki-wyatt-crazy-look-earrape-laugh")        
-        return
-    }  
-    If ErrorLevel = EndKey:F3
-    {
-        loadSequence("CPSEQ-its-clobbering-time")
+        insertSFX("Bruh")
         return
     }    
 } 
@@ -2050,19 +1847,21 @@ return
     If ErrorLevel = EndKey:F1
     {
         instantVFX()
-        ;GetFocusedControl()
         return
     }    
     If ErrorLevel = EndKey:F2
     {
-        ;addEffectToAdjustmentLayer("CP - FinOutBnW")
+        addEffectToAdjustmentLayer("CP - FinOutBnW")
         ;CP - FinOutBnW
         ;CP - FQuickinOutBW
+        ;CPSEQ-its-clobbering-time
+        ;CPSEQ-kiki-wyatt-crazy-look-earrape-laugh
+        ;CPSEQ-tv-no-signal
         return
     }   
     If ErrorLevel = EndKey:F3
     {
-        ;loadSequence("CPSEQ-kiki-wyatt-crazy-look-earrape-laugh")
+        loadSequence("CPSEQ-kiki-wyatt-crazy-look-earrape-laugh")
         ;CP - FinOutBnW
         ;CP - FQuickinOutBW
         ;CPSEQ-its-clobbering-time
@@ -2072,7 +1871,7 @@ return
     }   
     If ErrorLevel = EndKey:F4
     {
-        ;loadSequence("CPSEQ-its-clobbering-time")
+        loadSequence("CPSEQ-its-clobbering-time")
         ;CP - FinOutBnW
         ;CP - FQuickinOutBW
         ;CPSEQ-its-clobbering-time
@@ -2082,7 +1881,7 @@ return
     }   
     If ErrorLevel = EndKey:F5
     {
-        ;loadSequence("CPSEQ-tv-no-signal")
+        loadSequence("CPSEQ-tv-no-signal")
         ;CP - FinOutBnW
         ;CP - FQuickinOutBW
         ;CPSEQ-its-clobbering-time
@@ -2090,6 +1889,16 @@ return
         ;CPSEQ-tv-no-signal
         return
     }   
+    If ErrorLevel = EndKey:F5
+    {
+        loadSequence("CPSEQ-draymond-nope")
+        ;CP - FinOutBnW
+        ;CP - FQuickinOutBW
+        ;CPSEQ-its-clobbering-time
+        ;CPSEQ-kiki-wyatt-crazy-look-earrape-laugh
+        ;CPSEQ-tv-no-signal
+        return
+    } 
 }    
 
 return
