@@ -410,6 +410,7 @@ return
         }
         If ErrorLevel = EndKey:F9
         {
+            preset("CP - Transform Default")
             ;presetString = CP - %position% Zoom LtoXL
             ;preset(presetString)
             return
