@@ -1798,7 +1798,7 @@ return
         }
         If sheet = 3
         {
-
+            addEffectToAdjustmentLayer("CP - DContrast Pop In and Out")
         }
 
         return
@@ -1817,7 +1817,7 @@ return
         }
         If sheet = 3
         {
-
+            addEffectToAdjustmentLayer("CP - BnW Pop In and Out")
         }
         return
     }
