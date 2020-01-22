@@ -10,22 +10,20 @@ Menu, Tray, Icon, shell32.dll, 283 ;tray icon is now a little keyboard, or piece
 global globalPosition = "Left"
 global secondPosition = "Middle"
 global thirdPosition = "Right"
-global workPC = "Yes"
+global workPC = "No"
+global workingDir = "C:\Users\Owner\source\repos\2nd-keyboard\support_files"
 
 if workPC = No
-{    
-    ;global workingDir = "C:\Users\Owner\source\repos\2nd-keyboard\support_files"
-    ;#Include C:\Users\Owner\source\repos\2nd-keyboard\gui.ahk
-    ;#include C:\Users\Owner\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
-    ;#include C:\Users\Owner\source\repos\2nd-keyboard\After_Effects_Functions.ahk
+{
+    #Include C:\Users\Owner\source\repos\2nd-keyboard\gui.ahk
+    #include C:\Users\Owner\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
+    #include C:\Users\Owner\source\repos\2nd-keyboard\After_Effects_Functions.ahk    
 }
-
 if workPC = Yes
 {
-    global workingDir = "C:\Users\cxp6696\source\repos\2nd-keyboard\support_files"
-    #Include C:\Users\cxp6696\source\repos\2nd-keyboard\gui.ahk
-    #include C:\Users\cxp6696\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
-    #include C:\Users\cxp6696\source\repos\2nd-keyboard\After_Effects_Functions.ahk
+    ;#Include C:\Users\cxp6696\source\repos\2nd-keyboard\gui.ahk
+    ;#include C:\Users\cxp6696\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
+    ;#include C:\Users\cxp6696\source\repos\2nd-keyboard\After_Effects_Functions.ahk
 }
 
 
@@ -826,12 +824,7 @@ return
         {
             insertSFX("Ding-dong-sound-effect")
             return
-        }    
-        If ErrorLevel = EndKey:F3
-        {
-            insertSFX("Microphone Tap")
-            return
-        }     
+        }       
     }
     ;misc
     if sheet = 6
@@ -2000,17 +1993,7 @@ return
     }
     If ErrorLevel = EndKey:F1
     {
-        loadSequence("CPSEQ-tv-no-signal")        
-        return
-    }  
-    If ErrorLevel = EndKey:F2
-    {
-        loadSequence("CPSEQ-kiki-wyatt-crazy-look-earrape-laugh")        
-        return
-    }  
-    If ErrorLevel = EndKey:F3
-    {
-        loadSequence("CPSEQ-its-clobbering-time")
+        insertSFX("Bruh")
         return
     }    
 } 
@@ -2051,19 +2034,21 @@ return
     If ErrorLevel = EndKey:F1
     {
         instantVFX()
-        ;GetFocusedControl()
         return
     }    
     If ErrorLevel = EndKey:F2
     {
-        ;addEffectToAdjustmentLayer("CP - FinOutBnW")
+        addEffectToAdjustmentLayer("CP - FinOutBnW")
         ;CP - FinOutBnW
         ;CP - FQuickinOutBW
+        ;CPSEQ-its-clobbering-time
+        ;CPSEQ-kiki-wyatt-crazy-look-earrape-laugh
+        ;CPSEQ-tv-no-signal
         return
     }   
     If ErrorLevel = EndKey:F3
     {
-        ;loadSequence("CPSEQ-kiki-wyatt-crazy-look-earrape-laugh")
+        loadSequence("CPSEQ-kiki-wyatt-crazy-look-earrape-laugh")
         ;CP - FinOutBnW
         ;CP - FQuickinOutBW
         ;CPSEQ-its-clobbering-time
@@ -2073,7 +2058,7 @@ return
     }   
     If ErrorLevel = EndKey:F4
     {
-        ;loadSequence("CPSEQ-its-clobbering-time")
+        loadSequence("CPSEQ-its-clobbering-time")
         ;CP - FinOutBnW
         ;CP - FQuickinOutBW
         ;CPSEQ-its-clobbering-time
@@ -2083,7 +2068,7 @@ return
     }   
     If ErrorLevel = EndKey:F5
     {
-        ;loadSequence("CPSEQ-tv-no-signal")
+        loadSequence("CPSEQ-tv-no-signal")
         ;CP - FinOutBnW
         ;CP - FQuickinOutBW
         ;CPSEQ-its-clobbering-time
@@ -2091,6 +2076,16 @@ return
         ;CPSEQ-tv-no-signal
         return
     }   
+    If ErrorLevel = EndKey:F5
+    {
+        loadSequence("CPSEQ-draymond-nope")
+        ;CP - FinOutBnW
+        ;CP - FQuickinOutBW
+        ;CPSEQ-its-clobbering-time
+        ;CPSEQ-kiki-wyatt-crazy-look-earrape-laugh
+        ;CPSEQ-tv-no-signal
+        return
+    } 
 }    
 
 return
