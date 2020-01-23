@@ -10,20 +10,21 @@ Menu, Tray, Icon, shell32.dll, 283 ;tray icon is now a little keyboard, or piece
 global globalPosition = "Left"
 global secondPosition = "Middle"
 global thirdPosition = "Right"
-global workPC = "No"
-global workingDir = "C:\Users\Owner\source\repos\2nd-keyboard\support_files"
+global workPC = "Yes"
+;global workingDir = "C:\Users\Owner\source\repos\2nd-keyboard\support_files"
+global workingDir = "C:\Users\cxp6696\source\repos\2nd-keyboard\support_files"
 
 if workPC = No
 {
-    #Include C:\Users\Owner\source\repos\2nd-keyboard\gui.ahk
-    #include C:\Users\Owner\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
-    #include C:\Users\Owner\source\repos\2nd-keyboard\After_Effects_Functions.ahk    
+    ;#Include C:\Users\Owner\source\repos\2nd-keyboard\gui.ahk
+    ;#include C:\Users\Owner\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
+    ;#include C:\Users\Owner\source\repos\2nd-keyboard\After_Effects_Functions.ahk    
 }
 if workPC = Yes
 {
-    ;#Include C:\Users\cxp6696\source\repos\2nd-keyboard\gui.ahk
-    ;#include C:\Users\cxp6696\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
-    ;#include C:\Users\cxp6696\source\repos\2nd-keyboard\After_Effects_Functions.ahk
+    #Include C:\Users\cxp6696\source\repos\2nd-keyboard\gui.ahk
+    #include C:\Users\cxp6696\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
+    #include C:\Users\cxp6696\source\repos\2nd-keyboard\After_Effects_Functions.ahk
 }
 
 
@@ -408,7 +409,14 @@ return
         }
         If ErrorLevel = EndKey:F9
         {
-            preset("CP - Transform Default")
+            insertSFX("BlackColorMatte", 4)
+            Input, OutputVar, L1, {Escape}
+            If ErrorLevel = EndKey:Escape
+            {
+                return
+            }
+            preset("CP - Fade to 99 opacity")
+            
             ;presetString = CP - %position% Zoom LtoXL
             ;preset(presetString)
             return
@@ -1764,6 +1772,11 @@ return
         sheet = 3
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     }
+    If OutputVar = R
+    {
+        sheet = 4
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    }
     
     If ErrorLevel = EndKey:Escape
     {
@@ -1799,7 +1812,11 @@ return
         }
         If sheet = 3
         {
-
+            addEffectToAdjustmentLayer("CP - FQuickinOutDeepContrast")
+        }
+        If sheet = 4
+        {
+            addEffectToAdjustmentLayer("CP - DContrastPop")
         }
 
         return
@@ -1809,14 +1826,18 @@ return
         If sheet = 1
         {
             ;preset("CP - Black and White")
-            addEffectToAdjustmentLayer("CP - FinOutBnW")        
+            addEffectToAdjustmentLayer("CP - BnWStatic")        
         }
         If sheet = 2
         {
             ;preset("CP - Fade to BnW")
-            addEffectToAdjustmentLayer("CP - FQuickinOutBW")
+            addEffectToAdjustmentLayer("CP - FadeToBnW")
         }
         If sheet = 3
+        {
+            addEffectToAdjustmentLayer("CP - FQuickinOutBW")
+        }
+        If sheet = 4
         {
             addEffectToAdjustmentLayer("CP - BnWPop") 
         }
