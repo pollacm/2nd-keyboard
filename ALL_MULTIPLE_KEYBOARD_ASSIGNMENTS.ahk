@@ -1816,7 +1816,8 @@ return
         }
         If sheet = 4
         {
-            addEffectToAdjustmentLayer("CP - DContrastPop")
+            ;addEffectToAdjustmentLayer("CP - DContrastPop")
+            addEffectToAdjustmentLayer("CP - DContrast Pop In and Out")
         }
 
         return
@@ -1839,7 +1840,8 @@ return
         }
         If sheet = 4
         {
-            addEffectToAdjustmentLayer("CP - BnWPop") 
+            ;addEffectToAdjustmentLayer("CP - BnWPop") 
+            addEffectToAdjustmentLayer("CP - BnW Pop In and Out")
         }
         return
     }
