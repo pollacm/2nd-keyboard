@@ -409,6 +409,12 @@ return
         }
         If ErrorLevel = EndKey:F9
         {
+            preset("CP - Transform Default")
+            return
+        }  
+
+        If ErrorLevel = EndKey:F10
+        {
             insertSFX("BlackColorMatte", 4)
             Input, OutputVar, L1, {Escape}
             If ErrorLevel = EndKey:Escape
@@ -418,13 +424,6 @@ return
             preset("CP - Fade to 99 opacity")
             
             ;presetString = CP - %position% Zoom LtoXL
-            ;preset(presetString)
-            return
-        }  
-
-        If ErrorLevel = EndKey:F10
-        {
-            ;presetString = CP - %position% Zoom XLtoN
             ;preset(presetString)
             return
         }
