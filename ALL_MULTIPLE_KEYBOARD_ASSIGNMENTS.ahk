@@ -10,21 +10,21 @@ Menu, Tray, Icon, shell32.dll, 283 ;tray icon is now a little keyboard, or piece
 global globalPosition = "Left"
 global secondPosition = "Middle"
 global thirdPosition = "Right"
-global workPC = "Yes"
-;global workingDir = "C:\Users\Owner\source\repos\2nd-keyboard\support_files"
-global workingDir = "C:\Users\cxp6696\source\repos\2nd-keyboard\support_files"
+global workPC = "No"
+global workingDir = "C:\Users\Owner\source\repos\2nd-keyboard\support_files"
+;global workingDir = "C:\Users\cxp6696\source\repos\2nd-keyboard\support_files"
 
 if workPC = No
 {
-    ;#Include C:\Users\Owner\source\repos\2nd-keyboard\gui.ahk
-    ;#include C:\Users\Owner\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
-    ;#include C:\Users\Owner\source\repos\2nd-keyboard\After_Effects_Functions.ahk    
+    #Include C:\Users\Owner\source\repos\2nd-keyboard\gui.ahk
+    #include C:\Users\Owner\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
+    #include C:\Users\Owner\source\repos\2nd-keyboard\After_Effects_Functions.ahk    
 }
 if workPC = Yes
 {
-    #Include C:\Users\cxp6696\source\repos\2nd-keyboard\gui.ahk
-    #include C:\Users\cxp6696\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
-    #include C:\Users\cxp6696\source\repos\2nd-keyboard\After_Effects_Functions.ahk
+    ;#Include C:\Users\cxp6696\source\repos\2nd-keyboard\gui.ahk
+    ;#include C:\Users\cxp6696\source\repos\2nd-keyboard\Almost_All_Premiere_Functions.ahk
+    ;#include C:\Users\cxp6696\source\repos\2nd-keyboard\After_Effects_Functions.ahk
 }
 
 
@@ -238,6 +238,11 @@ return
     {
         sheet = 2
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    } 
+    If OutputVar = R
+    {
+        sheet = 3
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     }    
     If ErrorLevel = EndKey:Escape
     {
@@ -409,7 +414,7 @@ return
         }
         If ErrorLevel = EndKey:F9
         {
-            preset("CP - Transform Default")
+            preset("CP - Transform Default")            
             return
         }  
 
@@ -429,16 +434,128 @@ return
         }
         If ErrorLevel = EndKey:F11
         {
-            ;presetString = CP - %position% Zoom XLtoM
-            ;preset(presetString)
+            presetString = Zoom in and Rotate Then Out
+            preset(presetString)
             return
         }
         If ErrorLevel = EndKey:F12
         {
-            ;presetString = CP - %position% Zoom XLtoL
-            ;preset(presetString)
+            presetString = CP - Stretched Face Full
+            preset(presetString)
             return
         } 
+        If ErrorLevel = EndKey:Escape
+        {
+            return
+        }
+    }
+
+    if sheet = 3
+    {
+        ; If ErrorLevel = EndKey:F1
+        ; {
+        ;     insertDoublePreset("CP - Zoom into me", "CP - Zoom into object")
+        ;     ;presetString = CP - Zoom into me
+        ;     ;preset(presetString)
+        ;     ;Send ^!5
+        ;     return
+        ; }
+        ; If ErrorLevel = EndKey:F2
+        ; {
+        ;     captureScreenshot()
+        ;     ;preset(presetString)
+        ;     ;Send ^!5
+        ;     return
+        ; }
+        ; If ErrorLevel = EndKey:F3
+        ; {
+        ;     presetString = CP - Zoom into book for reading
+        ;     preset(presetString)            
+        ;     return
+        ; } 
+
+        If ErrorLevel = EndKey:F4
+        {
+            presetString = The Shaker
+            preset(presetString)            
+            return
+        }
+
+        ; If ErrorLevel = EndKey:F5
+        ; {
+        ;     insertSFX("Me-Overlay-Adjustment-Layer", 3)
+        ;     ;presetString = CP - %position% Zoom MtoL
+        ;     ;preset(presetString)            
+        ;     return
+        ; }
+        ; If ErrorLevel = EndKey:F6
+        ; {
+        ;     insertSFX("Me-Overlay-Adjustment-Layer", 4)
+        ;     ;presetString = CP - %position% Zoom MtoXL
+        ;     ;preset(presetString)
+        ;     return
+        ; }  
+
+        ; If ErrorLevel = EndKey:F7
+        ; {
+        ;     insertSFX("Me-Overlay-Adjustment-Layer", 3)
+        ;     Input, OutputVar, L1, {Escape}
+        ;     If ErrorLevel = EndKey:Escape
+        ;     {
+        ;         return
+        ;     }
+        ;     preset("CP - Transform Default")
+            
+        ;     ;presetString = CP - %position% Zoom LtoN
+        ;     ;preset(presetString)
+        ;     return
+        ; }
+        ; If ErrorLevel = EndKey:F8
+        ; {
+        ;     insertSFX("Me-Overlay-Adjustment-Layer", 4)
+        ;     Input, OutputVar, L1, {Escape}
+        ;     If ErrorLevel = EndKey:Escape
+        ;     {
+        ;         return
+        ;     }
+        ;     preset("CP - Transform Default")
+        ;     ;presetString = CP - %position% Zoom LtoM
+        ;     ;preset(presetString)
+        ;     return
+        ; }
+        ; If ErrorLevel = EndKey:F9
+        ; {
+        ;     preset("CP - Transform Default")
+            
+        ;     return
+        ; }  
+
+        ; If ErrorLevel = EndKey:F10
+        ; {
+        ;     insertSFX("BlackColorMatte", 4)
+        ;     Input, OutputVar, L1, {Escape}
+        ;     If ErrorLevel = EndKey:Escape
+        ;     {
+        ;         return
+        ;     }
+        ;     preset("CP - Fade to 99 opacity")
+            
+        ;     ;presetString = CP - %position% Zoom LtoXL
+        ;     ;preset(presetString)
+        ;     return
+        ; }
+        ; If ErrorLevel = EndKey:F11
+        ; {
+        ;     ;presetString = CP - %position% Zoom XLtoM
+        ;     ;preset(presetString)
+        ;     return
+        ; }
+        ; If ErrorLevel = EndKey:F12
+        ; {
+        ;     ;presetString = CP - %position% Zoom XLtoL
+        ;     ;preset(presetString)
+        ;     return
+        ; } 
         If ErrorLevel = EndKey:Escape
         {
             return
@@ -655,12 +772,12 @@ return
         }
         If ErrorLevel = EndKey:F8
         {
-            insertSFX("Surprise-Motherfucker")
+            insertSFX("Grunt Tim Allen")
             return
         }
         If ErrorLevel = EndKey:F9
         {
-            insertSFX("fbi-open-up")
+            insertSFX("Hello There English accent")
             return
         }
         If ErrorLevel = EndKey:F10
@@ -670,7 +787,7 @@ return
         }
         If ErrorLevel = EndKey:F11
         {
-            insertSFX("Run!-Marlon-Wayans")
+            insertSFX("Oh my god xgames vine")
             return
         }
         If ErrorLevel = EndKey:F12
@@ -831,7 +948,20 @@ return
         {
             insertSFX("Ding-dong-sound-effect")
             return
-        }       
+        }
+        If ErrorLevel = EndKey:F3
+        {
+            insertSFX("Nani with sound spike")
+            return
+        }     
+        If ErrorLevel = EndKey:F4
+        {
+            insertSFX("Ding-dong-sound-effect")
+            return
+        }     
+
+
+        Mouseclick  
     }
     ;misc
     if sheet = 6
@@ -847,7 +977,7 @@ return
         }
         If ErrorLevel = EndKey:F2
         {
-            ;insertSFX("correct")
+            insertSFX("Static Transition Sound")
             return
         }
         If ErrorLevel = EndKey:F3
@@ -1751,10 +1881,16 @@ return
 {
     Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     sheet = 1
+    direct = 0
 
     If ErrorLevel = EndKey:Escape
     {
         return
+    }
+    If OutputVar = T
+    {
+        direct = 1
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     }
     If OutputVar = Q
     {
@@ -1776,6 +1912,11 @@ return
         sheet = 4
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     }
+    If OutputVar = T
+    {
+        direct = 1
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    }
     
     If ErrorLevel = EndKey:Escape
     {
@@ -1786,11 +1927,25 @@ return
     {
         If sheet = 1
         {
-            addEffectToAdjustmentLayer("CP - Mid Contrast")
+            If direct = 1
+            {
+                preset("CP - Mid Contrast")
+            }
+            if direct = 0
+            {
+                addEffectToAdjustmentLayer("CP - Mid Contrast")
+            }            
         }
         If sheet = 2
         {
-            addEffectToAdjustmentLayer("CP - Fade to M Contrast")
+            If direct = 1
+            {
+                preset("CP - Fade to M Contrast")
+            }
+            if direct = 0
+            {
+                addEffectToAdjustmentLayer("CP - Fade to M Contrast")
+            }
         }
         If sheet = 3
         {
@@ -1803,20 +1958,48 @@ return
     {
         If sheet = 1
         {
-            addEffectToAdjustmentLayer("CP - Deep Contrast")
+            If direct = 1
+            {
+                preset("CP - Deep Contrast")
+            }
+            if direct = 0
+            {
+                addEffectToAdjustmentLayer("CP - Deep Contrast")
+            }
         }
         If sheet = 2
         {
-            addEffectToAdjustmentLayer("CP - Fade to D Contrast")
+            If direct = 1
+            {
+                preset("CP - Fade to D Contrast")
+            }
+            if direct = 0
+            {
+                addEffectToAdjustmentLayer("CP - Fade to D Contrast")
+            }
         }
         If sheet = 3
         {
-            addEffectToAdjustmentLayer("CP - FQuickinOutDeepContrast")
+            If direct = 1
+            {
+                preset("CP - FQuickinOutDeepContrast")
+            }
+            if direct = 0
+            {
+                addEffectToAdjustmentLayer("CP - FQuickinOutDeepContrast")
+            }
         }
         If sheet = 4
         {
+            If direct = 1
+            {
+                preset("CP - DContrast Pop In and Out")
+            }
+            if direct = 0
+            {
+                addEffectToAdjustmentLayer("CP - DContrast Pop In and Out")
+            }
             ;addEffectToAdjustmentLayer("CP - DContrastPop")
-            addEffectToAdjustmentLayer("CP - DContrast Pop In and Out")
         }
 
         return
@@ -1825,22 +2008,50 @@ return
     {
         If sheet = 1
         {
-            ;preset("CP - Black and White")
-            addEffectToAdjustmentLayer("CP - BnWStatic")        
+            If direct = 1
+            {
+                preset("CP - BnWStatic")
+            }
+            if direct = 0
+            {
+                addEffectToAdjustmentLayer("CP - BnWStatic")
+            }
+            ;preset("CP - Black and White")     
         }
         If sheet = 2
         {
+            If direct = 1
+            {
+                preset("CP - FadeToBnW")
+            }
+            if direct = 0
+            {
+                addEffectToAdjustmentLayer("CP - FadeToBnW")
+            }
             ;preset("CP - Fade to BnW")
-            addEffectToAdjustmentLayer("CP - FadeToBnW")
         }
         If sheet = 3
         {
-            addEffectToAdjustmentLayer("CP - FQuickinOutBW")
+            If direct = 1
+            {
+                preset("CP - FQuickinOutBW")
+            }
+            if direct = 0
+            {
+                addEffectToAdjustmentLayer("CP - FQuickinOutBW")
+            }
         }
         If sheet = 4
         {
+            If direct = 1
+            {
+                preset("CP - BnW Pop In and Out")
+            }
+            if direct = 0
+            {
+                addEffectToAdjustmentLayer("CP - BnW Pop In and Out")
+            }
             ;addEffectToAdjustmentLayer("CP - BnWPop") 
-            addEffectToAdjustmentLayer("CP - BnW Pop In and Out")
         }
         return
     }
@@ -1848,17 +2059,47 @@ return
     {
         If sheet = 1
         {
+            ; If direct = 1
+            ; {
+            ;     preset("CP - Deep Contrast")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP - Deep Contrast")
+            ; }
             ;preset("CP - Deep Contrast")
         }
         If sheet = 2
         {
+            ; If direct = 1
+            ; {
+            ;     preset("CP - Fade to D Contrast")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP - Fade to D Contrast")
+            ; }
             ;preset("CP - Fade to D Contrast")
         }
         If sheet = 3
         {
-
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
         }
-        addEffectToAdjustmentLayer("CP - Faded Lumetri Color")
+        If direct = 1
+        {
+            preset("CP - Faded Lumetri Color")
+        }
+        if direct = 0
+        {
+            addEffectToAdjustmentLayer("CP - Faded Lumetri Color")
+        }
         ;preset("CP - Faded Lumetri Color")
         return
     }
@@ -1866,17 +2107,47 @@ return
     {
         If sheet = 1
         {
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
             ;preset("CP - Deep Contrast")
         }
         If sheet = 2
         {
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
             ;preset("CP - Fade to D Contrast")
         }
         If sheet = 3
         {
-
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
         }
-        addEffectToAdjustmentLayer("CP - Red")
+        If direct = 1
+        {
+            preset("CP - Red")
+        }
+        if direct = 0
+        {
+            addEffectToAdjustmentLayer("CP - Red")
+        }
         ;preset("CP - Red")
         return
     }
@@ -1884,17 +2155,47 @@ return
     {
         If sheet = 1
         {
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
             ;preset("CP - Deep Contrast")
         }
         If sheet = 2
         {
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
             ;preset("CP - Fade to D Contrast")
         }
         If sheet = 3
         {
-
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
         }
-        addEffectToAdjustmentLayer("CP - Blue")
+        If direct = 1
+        {
+            preset("CP - Blue")
+        }
+        if direct = 0
+        {
+            addEffectToAdjustmentLayer("CP - Blue")
+        }
         ;preset("CP - Blue")
         return
     }
@@ -1902,17 +2203,47 @@ return
     {
         If sheet = 1
         {
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
             ;preset("CP - Deep Contrast")
         }
         If sheet = 2
         {
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
             ;preset("CP - Fade to D Contrast")
         }
         If sheet = 3
         {
-
-        }      
-        addEffectToAdjustmentLayer("CP - Green")  
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
+        }    
+        If direct = 1
+        {
+            preset("CP - Green")
+        }
+        if direct = 0
+        {
+            addEffectToAdjustmentLayer("CP - Green")
+        }  
         ;preset("CP - Green")  
         return
     }
@@ -1920,15 +2251,38 @@ return
     {
         If sheet = 1
         {
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
             ;preset("CP - Deep Contrast")
         }
         If sheet = 2
         {
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
             ;preset("CP - Fade to D Contrast")
         }
         If sheet = 3
         {
-
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
         }
         return
     }
@@ -1936,15 +2290,38 @@ return
     {
         If sheet = 1
         {
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
             ;preset("CP - Deep Contrast")
         }
         If sheet = 2
         {
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
             ;preset("CP - Fade to D Contrast")
         }
         If sheet = 3
         {
-
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
         }
         return
     }
@@ -1952,15 +2329,38 @@ return
     {
         If sheet = 1
         {
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
             ;preset("CP - Deep Contrast")
         }
         If sheet = 2
         {
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
             ;preset("CP - Fade to D Contrast")
         }
         If sheet = 3
         {
-
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
         }
         
         return
@@ -1969,15 +2369,38 @@ return
     {
         If sheet = 1
         {
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
             ;preset("CP - Deep Contrast")
         }
         If sheet = 2
         {
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
             ;preset("CP - Fade to D Contrast")
         }
         If sheet = 3
         {
-
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
         }
         
         return
@@ -1986,15 +2409,38 @@ return
     {
         If sheet = 1
         {
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
             ;preset("CP - Deep Contrast")
         }
         If sheet = 2
         {
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
             ;preset("CP - Fade to D Contrast")
         }
         If sheet = 3
         {
-
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
         }
         
         return
