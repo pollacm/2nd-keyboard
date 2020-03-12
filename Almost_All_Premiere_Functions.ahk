@@ -385,13 +385,14 @@ if(workPC = "No")
 }
 if(workPC = "Yes")
 {
-	MouseMove, 80, 300, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.	
+	MouseMove, 3940, 355, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.	
+	;MouseMove, 80, 300, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.	
 }
 
 ;msgbox, wheres de mouse?
-; MouseGetPos, lol, lel
-; PixelGetColor, zecolor, lol, lel, alt slow rgb
-; msgbox, %zecolor% 
+MouseGetPos, lol, lel
+PixelGetColor, zecolor, lol, lel, alt slow rgb
+;msgbox, %zecolor% 
 MouseClick, left
 tooltip, CLICK!!!
 sleep 50
@@ -451,7 +452,7 @@ send ^!+7 ;highlight effects panel
 sleep 30
 send ^!+3 ;this is set in premiere to highlight/switch to the timeline. important so that you aren't still stuck in the bin. If this is used more than once, it will unfortunately cycle thorugh all available sequences...
 tooltip,
-send +3
+send +3 
 BlockInput, off
 BlockInput, MouseMoveOff
 sfxEnding:
