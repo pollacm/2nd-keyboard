@@ -952,17 +952,14 @@ return
         }
         If ErrorLevel = EndKey:F3
         {
-            insertSFX("Nani with sound spike")
+            insertSFX("Microphone Tap")
             return
         }     
         If ErrorLevel = EndKey:F4
         {
-            insertSFX("Ding-dong-sound-effect")
+            insertSFX("Mouseclick")
             return
-        }     
-
-
-        Mouseclick  
+        }       
     }
     ;misc
     if sheet = 6
