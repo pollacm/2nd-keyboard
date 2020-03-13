@@ -414,8 +414,7 @@ return
         }
         If ErrorLevel = EndKey:F9
         {
-            preset("CP - Transform Default")
-            
+            preset("CP - Transform Default")            
             return
         }  
 
