@@ -958,7 +958,7 @@ return
         {
             insertSFX("Mouseclick")
             return
-        }       
+        }      
     }
     ;misc
     if sheet = 6
@@ -979,7 +979,7 @@ return
         }
         If ErrorLevel = EndKey:F3
         {
-            ;insertSFX("correct")
+            insertSFX("Blue Screen Of Death Sound")
             return
         }
         If ErrorLevel = EndKey:F4
