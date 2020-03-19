@@ -477,7 +477,14 @@ return
         If ErrorLevel = EndKey:F4
         {
             presetString = The Shaker
-            preset(presetString)            
+            preset(presetString)     
+            Input, OutputVar, L1, {Escape}
+            If ErrorLevel = EndKey:Escape
+            {
+                return
+            }
+
+            insertSFX("Static Transition Sound")       
             return
         }
 
