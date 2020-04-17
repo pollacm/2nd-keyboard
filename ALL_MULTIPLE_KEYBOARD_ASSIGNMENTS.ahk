@@ -484,7 +484,15 @@ return
                 return
             }
 
-            insertSFX("Static Transition Sound")       
+            If OutputVar = 1
+            {
+                insertSFX("Static Transition Sound")       
+            }
+            
+            If OutputVar = 2
+            {
+                insertSFX("Blue Screen Of Death Sound")
+            }
             return
         }
 
@@ -537,20 +545,26 @@ return
         ;     return
         ; }  
 
-        ; If ErrorLevel = EndKey:F10
-        ; {
-        ;     insertSFX("BlackColorMatte", 4)
-        ;     Input, OutputVar, L1, {Escape}
-        ;     If ErrorLevel = EndKey:Escape
-        ;     {
-        ;         return
-        ;     }
-        ;     preset("CP - Fade to 99 opacity")
-            
-        ;     ;presetString = CP - %position% Zoom LtoXL
-        ;     ;preset(presetString)
-        ;     return
-        ; }
+        If ErrorLevel = EndKey:F10
+        {
+            insertSFX("WhiteColorMatte", 4)
+            Input, OutputVar, L1, {Escape}
+            If ErrorLevel = EndKey:Escape
+            {
+                return
+            }
+            preset("CP - White transition flash")
+            Input, OutputVar, L1, {Escape}
+            If ErrorLevel = EndKey:Escape
+            {
+                return
+            }
+
+            insertSFX("picture-taken")
+            ;presetString = CP - %position% Zoom LtoXL
+            ;preset(presetString)
+            return
+        }
         ; If ErrorLevel = EndKey:F11
         ; {
         ;     ;presetString = CP - %position% Zoom XLtoM
@@ -2476,7 +2490,10 @@ return
 #IfWinActive ahk_exe Adobe Premiere Pro.exe
 ~9::
 {
-    Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    first = 1
+    second = 1
+    Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}   
+    
     ;Close ups moving L to R    
     ;Close ups moving in and out
     If ErrorLevel = EndKey:Escape
@@ -2485,9 +2502,164 @@ return
     }
     If ErrorLevel = EndKey:F1
     {
-        insertCloseUpAdjustment("CP - Adj Me Zoom 2 Left to Right")
-        return
+        first = 1
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
     }    
+    else if ErrorLevel = EndKey:F2
+    {
+        first = 2
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    } 
+    else if ErrorLevel = EndKey:F3
+    {
+        first = 3
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    } 
+    else if ErrorLevel = EndKey:F4
+    {
+        first = 4
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    } 
+    else if ErrorLevel = EndKey:F5
+    {
+        first = 5
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    } 
+    else if ErrorLevel = EndKey:F6
+    {
+        first = 6
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    } 
+    else if ErrorLevel = EndKey:F7
+    {
+        first = 7
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    } 
+    else if ErrorLevel = EndKey:F8
+    {
+        first = 8
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    } 
+    else if ErrorLevel = EndKey:F9
+    {
+        first = 9
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    } 
+    else if ErrorLevel = EndKey:F10
+    {
+        first = ten
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    } 
+    else if ErrorLevel = EndKey:F11
+    {
+        first = eleven
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    } 
+    else if ErrorLevel = EndKey:F12
+    {
+        first = twelve
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    } 
+    else if ErrorLevel = EndKey:PrintScreen
+    {
+        first = thirteen
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    } 
+    else if ErrorLevel = EndKey:ScrollLock
+    {
+        first = fourteen
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    } 
+
+    If ErrorLevel = EndKey:Escape
+    {
+        return
+    }
+    If ErrorLevel = EndKey:F1
+    {
+        second = 1
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    }    
+    else if ErrorLevel = EndKey:F2
+    {
+        second = 2
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    } 
+    else if ErrorLevel = EndKey:F3
+    {
+        second = 3
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    } 
+    else if ErrorLevel = EndKey:F4
+    {
+        second = 4
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    } 
+    else if ErrorLevel = EndKey:F5
+    {
+        second = 5
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    } 
+    else if ErrorLevel = EndKey:F6
+    {
+        second = 6
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    } 
+    else if ErrorLevel = EndKey:F7
+    {
+        second = 7
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    } 
+    else if ErrorLevel = EndKey:F8
+    {
+        second = 8
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    } 
+    else if ErrorLevel = EndKey:F9
+    {
+        second = 9
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    } 
+    else if ErrorLevel = EndKey:F10
+    {
+        second = ten
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    } 
+    else if ErrorLevel = EndKey:F11
+    {
+        second = eleven
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    } 
+    else if ErrorLevel = EndKey:F12
+    {
+        second = twelve
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    } 
+    else if ErrorLevel = EndKey:PrintScreen
+    {
+        second = thirteen
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    } 
+    else if ErrorLevel = EndKey:ScrollLock
+    {
+        second = fourteen
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+    } 
+
+    If ErrorLevel = EndKey:Escape
+    {
+        return
+    }
+    
+    combinedZoom = CP - Close Zoom %first%to%second%
+    If OutputVar = Q
+    {        
+        preset(combinedZoom)
+        return
+    }
+
+    insertCloseUpAdjustment(combinedZoom)
+    return
 }    
 
 return
