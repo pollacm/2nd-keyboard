@@ -619,41 +619,15 @@ return
     first = 1
     second = 1
     position = Left
-    sheet = 1
-    Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}{Left}{Right}
+
+    Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}   
     
     If OutputVar = Q
     {        
         position = Right
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}{Left}{Right}
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
     }
-    Else If OutputVar = E
-    {
-        sheet = 2
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}{Left}{Right}
-    } 
-    Else If OutputVar = R
-    {
-        sheet = 3
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}{Left}{Right}
-    }   
-    Else If OutputVar = T
-    {
-        sheet = 4
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}{Left}{Right}
-    }  
-    Else If OutputVar = Y
-    {
-        sheet = 5
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}{Left}{Right}
-    }  
-    If ErrorLevel = EndKey:Escape
-    {
-        return
-    }        
-    if sheet = 1
-    {
-        ;Close ups moving L to R    
+    ;Close ups moving L to R    
     ;Close ups moving in and out
     If ErrorLevel = EndKey:Escape
     {
@@ -662,91 +636,33 @@ return
     If ErrorLevel = EndKey:F1
     {
         first = 1
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}{Left}{Right}
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
     }    
     else if ErrorLevel = EndKey:F2
     {
         first = 2
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}{Left}{Right}
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
     } 
     else if ErrorLevel = EndKey:F3
     {
         first = 3
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}{Left}{Right}
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
     } 
     else if ErrorLevel = EndKey:F4
     {
         first = 4
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}{Left}{Right}
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
     } 
     else if ErrorLevel = EndKey:F5
     {
         first = 5
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}{Left}{Right}
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
     } 
     else if ErrorLevel = EndKey:F6
     {
         first = 6
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}{Left}{Right}
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
     }     
-    else if ErrorLevel = EndKey:Left
-    {
-        if position = Right 
-        {
-            presetName = CP - Face Slide Right In
-            preset(presetName)
-
-            Input, OutputVar, L1, {Escape}
-            If ErrorLevel = EndKey:Escape
-            {
-                return
-            }
-
-            insertSFX("cartoon-swipe-in")
-        }
-        else
-        {
-            presetName = CP - Face Slide Left Out
-            preset(presetName)
-
-            Input, OutputVar, L1, {Escape}
-            If ErrorLevel = EndKey:Escape
-            {
-                return
-            }
-
-            insertSFX("cartoon-swipe-out")
-        }
-    }
-    else if ErrorLevel = EndKey:Right
-    {
-        if position = Right 
-        {
-            presetName = CP - Face Slide Right Out
-            preset(presetName)
-
-            Input, OutputVar, L1, {Escape}
-            If ErrorLevel = EndKey:Escape
-            {
-                return
-            }
-
-            insertSFX("cartoon-swipe-out")
-        }
-        else
-        {
-            presetName = CP - Face Slide Left In
-            preset(presetName)
-
-            Input, OutputVar, L1, {Escape}
-            If ErrorLevel = EndKey:Escape
-            {
-                return
-            }
-
-            insertSFX("cartoon-swipe-in")
-        }
-    }
 
     If ErrorLevel = EndKey:Escape
     {
@@ -852,20 +768,141 @@ return
         preset(presetString)
         Send ^!7
         return
+    }   
+}    
+
+return
+
+;Zoom moving
+#IfWinActive ahk_exe Adobe Premiere Pro.exe
+~2::
+{
+    Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    position = %globalPosition%
+    sheet = 1
+
+    If OutputVar = Q
+    {
+        position = %secondPosition%
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     }
-   }
-   if sheet = 2 
-   {
+    If OutputVar = W
+    {
+        position = %thirdPosition%
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    } 
+    If OutputVar = E
+    {
+        sheet = 2
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    } 
+    If OutputVar = R
+    {
+        sheet = 3
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    }    
+    If ErrorLevel = EndKey:Escape
+    {
+        return
+    }    
+    if sheet = 1
+    {
         If ErrorLevel = EndKey:F1
         {
-            ;insertDoublePreset("CP - Zoom into me", "CP - Zoom into object")
-            insertSFX("Me-Overlay-Adjustment-Layer", 3)
-            Input, OutputVar, L1, {Escape}
-            If ErrorLevel = EndKey:Escape
-            {
-                return
-            }
-            preset("CP - Zoomramp")
+            presetString = CP - %position% Zoom NtoM
+            preset(presetString)
+            Send ^!5
+            return
+        }
+        If ErrorLevel = EndKey:F2
+        {
+            presetString = CP - %position% Zoom NtoL
+            preset(presetString)
+            Send ^!5
+            return
+        }
+        If ErrorLevel = EndKey:F3
+        {
+            presetString = CP - %position% Zoom NtoXL
+            preset(presetString)
+            Send ^!5
+            return
+        } 
+
+        If ErrorLevel = EndKey:F4
+        {
+            presetString = CP - %position% Zoom MtoN
+            preset(presetString)
+            Send ^!5
+            return
+        }
+        If ErrorLevel = EndKey:F5
+        {
+            presetString = CP - %position% Zoom MtoL
+            preset(presetString)
+            Send ^!5
+            return
+        }
+        If ErrorLevel = EndKey:F6
+        {
+            presetString = CP - %position% Zoom MtoXL
+            preset(presetString)
+            Send ^!5
+            return
+        }  
+
+        If ErrorLevel = EndKey:F7
+        {
+            presetString = CP - %position% Zoom LtoN
+            preset(presetString)
+            Send ^!5
+            return
+        }
+        If ErrorLevel = EndKey:F8
+        {
+            presetString = CP - %position% Zoom LtoM
+            preset(presetString)
+            Send ^!5
+            return
+        }
+        If ErrorLevel = EndKey:F9
+        {
+            presetString = CP - %position% Zoom LtoXL
+            preset(presetString)
+            Send ^!5
+            return
+        }  
+
+        If ErrorLevel = EndKey:F10
+        {
+            presetString = CP - %position% Zoom XLtoN
+            preset(presetString)
+            Send ^!5
+            return
+        }
+        If ErrorLevel = EndKey:F11
+        {
+            presetString = CP - %position% Zoom XLtoM
+            preset(presetString)
+            Send ^!5
+            return
+        }
+        If ErrorLevel = EndKey:F12
+        {
+            presetString = CP - %position% Zoom XLtoL
+            preset(presetString)
+            Send ^!5
+            return
+        } 
+    }
+    ;double presets
+    if sheet = 2 
+    {
+        If ErrorLevel = EndKey:F1
+        {
+            insertDoublePreset("CP - Zoom into me", "CP - Zoom into object")
+            ;presetString = CP - Zoom into me
+            ;preset(presetString)
             ;Send ^!5
             return
         }
@@ -1129,783 +1166,7 @@ return
             return
         }
     }
-    if sheet = 4
-    {
-        If ErrorLevel = EndKey:F10
-        {
-            insertSFX("RedColorMatte", 4)
-            Input, OutputVar, L1, {Escape}
-            If ErrorLevel = EndKey:Escape
-            {
-                return
-            }
-            preset("CP - White transition flash")
-            Input, OutputVar, L1, {Escape}
-            If ErrorLevel = EndKey:Escape
-            {
-                return
-            }
-
-            insertSFX("picture-taken")
-            ;presetString = CP - %position% Zoom LtoXL
-            ;preset(presetString)
-            return
-        }
-        If ErrorLevel = EndKey:Escape
-        {
-            return
-        }
-    }
-       
-}    
-
-return
-
-;basic effects
-#IfWinActive ahk_exe Adobe Premiere Pro.exe
-~2::
-{
-    Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    sheet = 1
-    key = 1
-
-    If ErrorLevel = EndKey:Escape
-    {
-        return
-    }
-    else if ErrorLevel = EndKey:F1
-    {
-        key = 1
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }  
-    else if ErrorLevel = EndKey:F2
-    {
-        key = 2
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }  
-    else if ErrorLevel = EndKey:F3
-    {
-        key = 3
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }
-    else if ErrorLevel = EndKey:F4
-    {
-        key = 4
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }
-    else if ErrorLevel = EndKey:F5
-    {
-        key = 5
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }  
-    else if ErrorLevel = EndKey:F6
-    {
-        key = 6
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }  
-    else if ErrorLevel = EndKey:F7
-    {
-        key = 7
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }
-    else if ErrorLevel = EndKey:F8
-    {
-        key = 8
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }
-    else if ErrorLevel = EndKey:F9
-    {
-        key = 9
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }            
-    else if ErrorLevel = EndKey:F10
-    {
-        key = 10
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }
-    else if ErrorLevel = EndKey:F11
-    {
-        key = 11
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }     
-    else if ErrorLevel = EndKey:F12
-    {
-        key = 12
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }
-
-    If ErrorLevel = EndKey:Escape
-    {
-        return
-    }
-    else if ErrorLevel = EndKey:F1
-    {
-        sheet = 1
-    }  
-    else if ErrorLevel = EndKey:F2
-    {
-        sheet = 2
-    }  
-    else if ErrorLevel = EndKey:F3
-    {
-        sheet = 3
-    }
-    else if ErrorLevel = EndKey:F4
-    {
-        sheet = 4
-    }
-    else if ErrorLevel = EndKey:F5
-    {
-        sheet = 5
-    }  
-    else if ErrorLevel = EndKey:F6
-    {
-        sheet = 6
-    }  
-    else if ErrorLevel = EndKey:F7
-    {
-        sheet = 7
-    }
-    else if ErrorLevel = EndKey:F8
-    {
-        sheet = 8
-    }
-    else if ErrorLevel = EndKey:F9
-    {
-        sheet = 9
-    }            
-    else if ErrorLevel = EndKey:F10
-    {
-        sheet = 10
-    }
-    else if ErrorLevel = EndKey:F11
-    {
-        sheet = 11
-    }     
-    else if ErrorLevel = EndKey:F12
-    {
-        sheet = 12
-    }
-    
-    If ErrorLevel = EndKey:Escape
-    {
-        return
-    }
-    ;pick up item
-    if key = 1
-    {
-        If ErrorLevel = EndKey:Escape
-        {
-            return
-        }
-        if sheet = 1
-        {
-            insertSFX("Pick up item basic")
-            return
-        }  
-        if sheet = 2
-        {
-            insertSFX("Pick up item2")
-            return
-        }  
-        if sheet = 3
-        {
-            insertSFX("Pick up item3")
-            return
-        }
-        if sheet = 4
-        {
-            insertSFX("Pick up item4")
-            return
-        }
-        if sheet = 5
-        {
-            insertSFX("Pick up item5")
-            return
-        }  
-        if sheet = 6
-        {
-            insertSFX("Pick up item6")
-            return
-        }  
-        if sheet = 7
-        {
-            insertSFX("Pick up item7")
-            return
-        }
-        if sheet = 8
-        {
-            insertSFX("Pick up item8")
-            return
-        }
-        if sheet = 9
-        {
-            insertSFX("Pick up item9")
-            return
-        }            
-        if sheet = 10
-        {
-            insertSFX("Pick up itemten")
-            return
-        }
-        if sheet = 11
-        {
-            insertSFX("Pick up itemeleven")
-            return
-        }     
-        if sheet = 12
-        {
-            insertSFX("Pick up itemtwelve")
-            return
-        }
-    }    
-
-    ;mario jump
-    if key = 2
-    {
-        If ErrorLevel = EndKey:Escape
-        {
-            return
-        }
-        ; if sheet = 1
-        ; {
-            insertSFX("super mario jump")
-            return
-        ; }  
-        ; If ErrorLevel = EndKey:F2
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }
-        ; If ErrorLevel = EndKey:F3
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }
-        ; If ErrorLevel = EndKey:F4
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }            
-        ; If ErrorLevel = EndKey:F5
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }
-        ; If ErrorLevel = EndKey:F6
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }
-        ; If ErrorLevel = EndKey:F7
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }
-        ; If ErrorLevel = EndKey:F8
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }
-        ; If ErrorLevel = EndKey:F9
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }            
-        ; If ErrorLevel = EndKey:F10
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }
-        ; If ErrorLevel = EndKey:F11
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }     
-        ; If ErrorLevel = EndKey:F12
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }        
-    }     
-
-    ;Error
-    if key = 3
-    {
-        If ErrorLevel = EndKey:Escape
-        {
-            return
-        }
-        if sheet = 1
-        {
-            insertSFX("blue screen of death sound")
-            return
-        }  
-        if sheet = 2
-        {
-            insertSFX("Windows 7 - HardwareDisconnect")
-            return
-        }
-        if sheet = 3
-        {
-            insertSFX("Windows 7 - HardwareConnect")
-            return
-        }
-        if sheet = 4
-        {
-            insertSFX("Windows 10 - Chord")
-            return
-        }  
-        if sheet = 5
-        {
-            insertSFX("Windows 10 - Critical Stop")
-            return
-        }  
-        ; If ErrorLevel = EndKey:F7
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }
-        ; If ErrorLevel = EndKey:F8
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }
-        ; If ErrorLevel = EndKey:F9
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }            
-        ; If ErrorLevel = EndKey:F10
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }
-        ; If ErrorLevel = EndKey:F11
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }     
-        ; If ErrorLevel = EndKey:F12
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }
-    }     
-
-    ;Transitions
-    if key = 4
-    {
-        If ErrorLevel = EndKey:Escape
-        {
-            return
-        }
-        if sheet = 1
-        {
-            insertSFX("cartoon-swipe-in")
-            return
-        }  
-        if sheet = 2
-        {
-            insertSFX("cartoon-swipe-out")
-            return
-        }  
-        if sheet = 3
-        {
-            insertSFX("whip-basic")
-            return
-        }
-        if sheet = 4
-        {
-            insertSFX("Street Fighter 2 Turbo - Med Punch Med")
-            return
-        }
-        if sheet = 5
-        {
-            insertSFX("record-scratch")
-            return
-        }  
-        if sheet = 6
-        {
-            insertSFX("picture-taken")
-            return
-        }  
-        if sheet = 7
-        {
-            insertSFX("Yoshi tongue Super Mario World sound effect")
-            return
-        }
-        ; if sheet = 8
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }
-        ; if sheet = 9
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }            
-        ; if sheet = 10
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }
-        ; if sheet = 11
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }     
-        ; if sheet = 12
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }
-    }     
-
-    ;Zooms
-    if key = 5
-    {
-        If ErrorLevel = EndKey:Escape
-        {
-            return
-        }
-        if sheet = 1
-        {
-            insertSFX("ZoomWindows")
-            return
-        }  
-        if sheet = 2
-        {
-            insertSFX("Zoom3")
-            return
-        }  
-        if sheet = 3
-        {
-            insertSFX("Zoombasic")
-            return
-        }
-        ; if sheet = 4
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }
-        ; if sheet = 5
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }  
-        ; if sheet = 6
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }  
-        ; if sheet = 7
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }
-        ; if sheet = 8
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }
-        ; if sheet = 9
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }            
-        ; if sheet = 10
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }
-        ; if sheet = 11
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }     
-        ; if sheet = 12
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }
-    }     
-
-    ;Alerts
-    if key = 6
-    {
-        If ErrorLevel = EndKey:Escape
-        {
-            return
-        }
-        if sheet = 1
-        {
-            insertSFX("zelda-secret-nes")
-            return
-        }  
-        if sheet = 2
-        {
-            insertSFX("zelda-secret-n64")
-            return
-        }  
-        if sheet = 3
-        {
-            insertSFX("metal gear alert playstation")
-            return
-        }
-        if sheet = 4
-        {
-            insertSFX("metal gear alert nes")
-            return
-        }
-        if sheet = 5
-        {
-            insertSFX("Level up - Zelda II")
-            return
-        }  
-        ; if sheet = 6
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }  
-        ; if sheet = 7
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }
-        ; if sheet = 8
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }
-        ; if sheet = 9
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }            
-        ; if sheet = 10
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }
-        ; if sheet = 11
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }     
-        ; if sheet = 12
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }
-    }     
-
-    ;Dramatic
-    if key = 7
-    {
-        If ErrorLevel = EndKey:Escape
-        {
-            return
-        }
-        if sheet = 1
-        {
-            insertSFX("CinematicBoom")
-            return
-        }  
-        if sheet = 2
-        {
-            insertSFX("dramatic-classic")
-            return
-        }  
-        if sheet = 3
-        {
-            insertSFX("dadum")
-            return
-        }
-        if sheet = 4
-        {
-            insertSFX("bummhorn sound")
-            return
-        }
-        if sheet = 5
-        {
-            insertSFX("bumbumbum")
-            return
-        }  
-        if sheet = 6
-        {
-            insertSFX("hearthit")
-            return
-        }  
-        if sheet = 7
-        {
-            insertSFX("horn2")
-            return
-        }
-        if sheet = 8
-        {
-            insertSFX("Jurassicparklike")
-            return
-        }
-        if sheet = 9
-        {
-            insertSFX("psycho_theme")
-            return
-        }            
-        if sheet = 10
-        {
-            insertSFX("quickhit")
-            return
-        }
-        if sheet = 11
-        {
-            insertSFX("serialkillersortahit")
-            return
-        }     
-        if sheet = 12
-        {
-            insertSFX("heartbeattobuildingsuspense")
-            return
-        }
-    }     
-
-    ;Damage
-    if key = 8
-    {
-        If ErrorLevel = EndKey:Escape
-        {
-            return
-        }
-        if sheet = 1
-        {
-            insertSFX("Uppercut")
-            return
-        }  
-        if sheet = 2
-        {
-            insertSFX("Oof2")
-            return
-        }  
-        if sheet = 3
-        {
-            insertSFX("Oof1")
-            return
-        }
-        if sheet = 4
-        {
-            insertSFX("Joe and Mac Get Hurt")
-            return
-        }
-        if sheet = 5
-        {
-            insertSFX("Caleb City Yeager Yaegar Yagar")
-            return
-        }  
-        if sheet = 6
-        {
-            insertSFX("Caleb City Smackbasic")
-            return
-        }  
-        if sheet = 7
-        {
-            insertSFX("Caleb City Smack2")
-            return
-        }
-        if sheet = 8
-        {
-            insertSFX("Caleb City Smack4")
-            return
-        }
-        if sheet = 9
-        {
-            insertSFX("Caleb City Smack5")
-            return
-        }            
-        if sheet = 10
-        {
-            insertSFX("Caleb City Smack7")
-            return
-        }
-        if sheet = 11
-        {
-            insertSFX("Adventures of Bayou Billy - Damage")
-            return
-        }     
-        ; if sheet = 12
-        ; {
-        ;     insertSFX("Pickfsvcv")
-        ;     return
-        ; }
-    }       
-
-    ;placeholder
-    if key = 9
-    {
-        If ErrorLevel = EndKey:Escape
-        {
-            return
-        }
-        if sheet = 1
-        {
-            insertSFX("Pickfsvcv")
-            return
-        }  
-        if sheet = 2
-        {
-            insertSFX("Pickfsvcv")
-            return
-        }  
-        if sheet = 3
-        {
-            insertSFX("Pickfsvcv")
-            return
-        }
-        if sheet = 4
-        {
-            insertSFX("Pickfsvcv")
-            return
-        }
-        if sheet = 5
-        {
-            insertSFX("Pickfsvcv")
-            return
-        }  
-        if sheet = 6
-        {
-            insertSFX("Pickfsvcv")
-            return
-        }  
-        if sheet = 7
-        {
-            insertSFX("Pickfsvcv")
-            return
-        }
-        if sheet = 8
-        {
-            insertSFX("Pickfsvcv")
-            return
-        }
-        if sheet = 9
-        {
-            insertSFX("Pickfsvcv")
-            return
-        }            
-        if sheet = 10
-        {
-            insertSFX("Pickfsvcv")
-            return
-        }
-        if sheet = 11
-        {
-            insertSFX("Pickfsvcv")
-            return
-        }     
-        if sheet = 12
-        {
-            insertSFX("Pickfsvcv")
-            return
-        }
-    }      
+     
 }    
 
 return
@@ -3277,8 +2538,7 @@ return
 {
     Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     sheet = 1
-    key = 1
-    direct = 0
+    direct = 1
 
     If ErrorLevel = EndKey:Escape
     {
@@ -3286,224 +2546,186 @@ return
     }
     If OutputVar = Q
     {
-        direct = 1
+        direct = 0
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     }    
-
-    If ErrorLevel = EndKey:Escape
+    If OutputVar = W
     {
-        return
-    }
-    else if ErrorLevel = EndKey:F1
-    {
-        key = 1
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }  
-    else if ErrorLevel = EndKey:F2
-    {
-        key = 2
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }  
-    else if ErrorLevel = EndKey:F3
-    {
-        key = 3
+        sheet = 2
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     }
-    else if ErrorLevel = EndKey:F4
+    If OutputVar = E
     {
-        key = 4
+        sheet = 3
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     }
-    else if ErrorLevel = EndKey:F5
+    If OutputVar = R
     {
-        key = 5
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }  
-    else if ErrorLevel = EndKey:F6
-    {
-        key = 6
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }  
-    else if ErrorLevel = EndKey:F7
-    {
-        key = 7
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }
-    else if ErrorLevel = EndKey:F8
-    {
-        key = 8
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }
-    else if ErrorLevel = EndKey:F9
-    {
-        key = 9
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }            
-    else if ErrorLevel = EndKey:F10
-    {
-        key = 10
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }
-    else if ErrorLevel = EndKey:F11
-    {
-        key = 11
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }     
-    else if ErrorLevel = EndKey:F12
-    {
-        key = 12
+        sheet = 4
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     }
     If OutputVar = Q
     {
         direct = 1
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }
-
-
-    If ErrorLevel = EndKey:Escape
-    {
-        return
-    }
-    else if ErrorLevel = EndKey:F1
-    {
-        sheet = 1
-    }  
-    else if ErrorLevel = EndKey:F2
-    {
-        sheet = 2
-    }  
-    else if ErrorLevel = EndKey:F3
-    {
-        sheet = 3
-    }
-    else if ErrorLevel = EndKey:F4
-    {
-        sheet = 4
-    }
-    else if ErrorLevel = EndKey:F5
-    {
-        sheet = 5
-    }  
-    else if ErrorLevel = EndKey:F6
-    {
-        sheet = 6
-    }  
-    else if ErrorLevel = EndKey:F7
-    {
-        sheet = 7
-    }
-    else if ErrorLevel = EndKey:F8
-    {
-        sheet = 8
-    }
-    else if ErrorLevel = EndKey:F9
-    {
-        sheet = 9
-    }            
-    else if ErrorLevel = EndKey:F10
-    {
-        sheet = 10
-    }
-    else if ErrorLevel = EndKey:F11
-    {
-        sheet = 11
-    }     
-    else if ErrorLevel = EndKey:F12
-    {
-        sheet = 12
     }
     
     If ErrorLevel = EndKey:Escape
     {
         return
     }
-
-    Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    If OutputVar = Q
-    {
-        direct = 1        
-    }
     ;b/ws pro
-    If key = 1
+    If ErrorLevel = EndKey:F1
     {
-        ;black and white
+        ;static
         If sheet = 1
         {
             If direct = 1
             {
-                preset("CP - BW.501HC")
+                preset("CP - Mid Contrast")
             }
             if direct = 0
             {
-                addEffectToAdjustmentLayer("CP - BW.501HC")
+                addEffectToAdjustmentLayer("CP - Mid Contrast")
             }            
         }
+        ;fade to 
         If sheet = 2
         {
             If direct = 1
             {
-                preset("CP - BW.Cross.Flat")
+                preset("CP - Fade to M Contrast")
             }
             if direct = 0
             {
-                addEffectToAdjustmentLayer("CP - BW.Cross.Flat")
+                addEffectToAdjustmentLayer("CP - Fade to M Contrast")
             }
         }
+        ;build and fade
         If sheet = 3
         {
-            If direct = 1
-            {
-                preset("CP - BW.HC102")
-            }
-            if direct = 0
-            {
-                addEffectToAdjustmentLayer("CP - BW.HC102")
-            }
-        }
-        ; If sheet = 4
-        ; {
 
-        ; }
-        
-        return
-    } 
-    ;cinematic
-    If key = 2
-    {
-        ;basic
-        If sheet = 1
-        {
-            If direct = 1
-            {
-                preset("CP - Color - Dark black vibrant no color")
-            }
-            if direct = 0
-            {
-                addEffectToAdjustmentLayer("CP - Color - Dark black vibrant no color")
-            }            
         }
-        ;orange tint
-        If sheet = 2
+        ;[1]flash; [2]0 to 40 percent quick; 40 to 100 build; [3]flash; [4]40 percent; fade to 0
+        If sheet = 4
         {
-            If direct = 1
-            {
-                preset("CP - Color - Dark black vibrant orange tint")
-            }
-            if direct = 0
-            {
-                addEffectToAdjustmentLayer("CP - Color - Dark black vibrant orange tint")
-            }
+
         }
         
         return
     } 
     ;contrast
-    If key = 3
+    If ErrorLevel = EndKey:F2
     {
         ;static
-        ; If sheet = 1
-        ; {
+        If sheet = 1
+        {
+            If direct = 1
+            {
+                preset("CP - Mid Contrast")
+            }
+            if direct = 0
+            {
+                addEffectToAdjustmentLayer("CP - Mid Contrast")
+            }            
+        }
+        ;fade to 
+        If sheet = 2
+        {
+            If direct = 1
+            {
+                preset("CP - Fade to M Contrast")
+            }
+            if direct = 0
+            {
+                addEffectToAdjustmentLayer("CP - Fade to M Contrast")
+            }
+        }
+        ;build and fade
+        If sheet = 3
+        {
+
+        }
+        ;[1]contrast pop; [2]0 to 40 percent quick; 40 to 100 build; [3]contrast pop; [4]40 percent; fade to 0
+        If sheet = 4
+        {
+
+        }
+        
+        return
+    } 
+    ;lumetri
+    If ErrorLevel = EndKey:F3
+    {
+        ;static
+        If sheet = 1
+        {
+            If direct = 1
+            {
+                preset("CP - Mid Contrast")
+            }
+            if direct = 0
+            {
+                addEffectToAdjustmentLayer("CP - Mid Contrast")
+            }            
+        }
+        ;fade to 
+        If sheet = 2
+        {
+            If direct = 1
+            {
+                preset("CP - Fade to M Contrast")
+            }
+            if direct = 0
+            {
+                addEffectToAdjustmentLayer("CP - Fade to M Contrast")
+            }
+        }
+        ;build and fade
+        If sheet = 3
+        {
+
+        }
+        
+        return
+    } 
+    ;color effects
+    If ErrorLevel = EndKey:F4
+    {
+        ;find edges (normal; inverse)
+        If sheet = 1
+        {
+            If direct = 1
+            {
+                preset("CP - Mid Contrast")
+            }
+            if direct = 0
+            {
+                addEffectToAdjustmentLayer("CP - Mid Contrast")
+            }            
+        }
+        If sheet = 2
+        {
+            If direct = 1
+            {
+                preset("CP - Fade to M Contrast")
+            }
+            if direct = 0
+            {
+                addEffectToAdjustmentLayer("CP - Fade to M Contrast")
+            }
+        }
+        If sheet = 3
+        {
+
+        }
+        
+        return
+    }    
+    If ErrorLevel = EndKey:F5
+    {
+        If sheet = 1
+        {
             If direct = 1
             {
                 preset("CP - Deep Contrast")
@@ -3511,179 +2733,112 @@ return
             if direct = 0
             {
                 addEffectToAdjustmentLayer("CP - Deep Contrast")
-            }            
-        ; }
-        ;fade to 
-        ; If sheet = 2
-        ; {
-        ;     If direct = 1
-        ;     {
-        ;         preset("CP - Fade to M Contrast")
-        ;     }
-        ;     if direct = 0
-        ;     {
-        ;         addEffectToAdjustmentLayer("CP - Fade to M Contrast")
-        ;     }
-        ; }
-        ;build and fade
-        ; If sheet = 3
-        ; {
-
-        ; }
-        
-        return
-    } 
-    ;lumetri
-    If key = 4
-    {
-        ; If sheet = 1
-        ; {
+            }
+        }
+        If sheet = 2
+        {
             If direct = 1
             {
-                preset("CP - Faded Lumetri Color")
+                preset("CP - Fade to D Contrast")
             }
             if direct = 0
             {
-                addEffectToAdjustmentLayer("CP - Faded Lumetri Color")
-            }            
-        ; }
-        ; If sheet = 2
-        ; {
-        ;     If direct = 1
-        ;     {
-        ;         preset("CP - Fade to M Contrast")
-        ;     }
-        ;     if direct = 0
-        ;     {
-        ;         addEffectToAdjustmentLayer("CP - Fade to M Contrast")
-        ;     }
-        ; }
-        ; If sheet = 3
-        ; {
-
-        ; }
-        
-        return
-    }    
-    ;red
-    If key = 5
-    {
-        ; If sheet = 1
-        ; {
+                addEffectToAdjustmentLayer("CP - Fade to D Contrast")
+            }
+        }
+        If sheet = 3
+        {
             If direct = 1
             {
-                preset("CP - Deep Red Coloring")
+                preset("CP - FQuickinOutDeepContrast")
             }
             if direct = 0
             {
-                addEffectToAdjustmentLayer("CP - Deep Red Coloring")
+                addEffectToAdjustmentLayer("CP - FQuickinOutDeepContrast")
             }
-        ; }
-        ; If sheet = 2
-        ; {
-        ;     If direct = 1
-        ;     {
-        ;         preset("CP - Fade to D Contrast")
-        ;     }
-        ;     if direct = 0
-        ;     {
-        ;         addEffectToAdjustmentLayer("CP - Fade to D Contrast")
-        ;     }
-        ; }
-        ; If sheet = 3
-        ; {
-        ;     If direct = 1
-        ;     {
-        ;         preset("CP - FQuickinOutDeepContrast")
-        ;     }
-        ;     if direct = 0
-        ;     {
-        ;         addEffectToAdjustmentLayer("CP - FQuickinOutDeepContrast")
-        ;     }
-        ; }
-        ; If sheet = 4
-        ; {
-        ;     If direct = 1
-        ;     {
-        ;         preset("CP - DContrast Pop In and Out")
-        ;     }
-        ;     if direct = 0
-        ;     {
-        ;         addEffectToAdjustmentLayer("CP - DContrast Pop In and Out")
-        ;     }
-        ;     ;addEffectToAdjustmentLayer("CP - DContrastPop")
-        ; }
+        }
+        If sheet = 4
+        {
+            If direct = 1
+            {
+                preset("CP - DContrast Pop In and Out")
+            }
+            if direct = 0
+            {
+                addEffectToAdjustmentLayer("CP - DContrast Pop In and Out")
+            }
+            ;addEffectToAdjustmentLayer("CP - DContrastPop")
+        }
 
         return
     }
-    ;green
-    If key = 6
+    If ErrorLevel = EndKey:F6
+    {
+        If sheet = 1
+        {
+            If direct = 1
+            {
+                preset("CP - BnWStatic")
+            }
+            if direct = 0
+            {
+                addEffectToAdjustmentLayer("CP - BnWStatic")
+            }
+            ;preset("CP - Black and White")     
+        }
+        If sheet = 2
+        {
+            If direct = 1
+            {
+                preset("CP - FadeToBnW")
+            }
+            if direct = 0
+            {
+                addEffectToAdjustmentLayer("CP - FadeToBnW")
+            }
+            ;preset("CP - Fade to BnW")
+        }
+        If sheet = 3
+        {
+            If direct = 1
+            {
+                preset("CP - FQuickinOutBW")
+            }
+            if direct = 0
+            {
+                addEffectToAdjustmentLayer("CP - FQuickinOutBW")
+            }
+        }
+        If sheet = 4
+        {
+            If direct = 1
+            {
+                preset("CP - BnW Pop In and Out")
+            }
+            if direct = 0
+            {
+                addEffectToAdjustmentLayer("CP - BnW Pop In and Out")
+            }
+            ;addEffectToAdjustmentLayer("CP - BnWPop") 
+        }
+        return
+    }
+    If ErrorLevel = EndKey:F7
     {
         If sheet = 1
         {
             ; If direct = 1
             ; {
-            ;     preset("CP - BnWStatic")
+            ;     preset("CP - Deep Contrast")
             ; }
             ; if direct = 0
             ; {
-            ;     addEffectToAdjustmentLayer("CP - BnWStatic")
+            ;     addEffectToAdjustmentLayer("CP - Deep Contrast")
             ; }
-            ;preset("CP - Black and White")     
+            ;preset("CP - Deep Contrast")
         }
-        ; If sheet = 2
-        ; {
-        ;     If direct = 1
-        ;     {
-        ;         preset("CP - FadeToBnW")
-        ;     }
-        ;     if direct = 0
-        ;     {
-        ;         addEffectToAdjustmentLayer("CP - FadeToBnW")
-        ;     }
-        ;     ;preset("CP - Fade to BnW")
-        ; }
-        ; If sheet = 3
-        ; {
-        ;     If direct = 1
-        ;     {
-        ;         preset("CP - FQuickinOutBW")
-        ;     }
-        ;     if direct = 0
-        ;     {
-        ;         addEffectToAdjustmentLayer("CP - FQuickinOutBW")
-        ;     }
-        ; }
-        ; If sheet = 4
-        ; {
-        ;     If direct = 1
-        ;     {
-        ;         preset("CP - BnW Pop In and Out")
-        ;     }
-        ;     if direct = 0
-        ;     {
-        ;         addEffectToAdjustmentLayer("CP - BnW Pop In and Out")
-        ;     }
-        ;     ;addEffectToAdjustmentLayer("CP - BnWPop") 
-        ; }
-        return
-    }
-    ;blue
-    If key = 7
-    {
-        ; If sheet = 1
-        ; {
-            If direct = 1
-            {
-                preset("CP - Deep Blue Coloring")
-            }
-            if direct = 0
-            {
-                addEffectToAdjustmentLayer("CP - Deep Blue Coloring")
-            }
-        ; }
-        ; If sheet = 2
-        ; {
+        If sheet = 2
+        {
             ; If direct = 1
             ; {
             ;     preset("CP - Fade to D Contrast")
@@ -3693,131 +2848,6 @@ return
             ;     addEffectToAdjustmentLayer("CP - Fade to D Contrast")
             ; }
             ;preset("CP - Fade to D Contrast")
-        ; }
-        ; If sheet = 3
-        ; {
-            ; If direct = 1
-            ; {
-            ;     preset("CP")
-            ; }
-            ; if direct = 0
-            ; {
-            ;     addEffectToAdjustmentLayer("CP")
-            ; }
-        ; }
-        ; If direct = 1
-        ; {
-        ;     preset("CP - Faded Lumetri Color")
-        ; }
-        ; if direct = 0
-        ; {
-        ;     addEffectToAdjustmentLayer("CP - Faded Lumetri Color")
-        ; }
-        ;preset("CP - Faded Lumetri Color")
-        return
-    }
-    ;earthquake
-    If key = 8
-    {
-        ; If sheet = 1
-        ; {
-            If direct = 1
-            {
-                preset("CP - A - GENTLE SHAKE")
-            }
-            if direct = 0
-            {
-                addEffectToAdjustmentLayer("CP - A - GENTLE SHAKE")
-            }
-        ; }
-        ; If sheet = 2
-        ; {
-            ; If direct = 1
-            ; {
-            ;     preset("CP")
-            ; }
-            ; if direct = 0
-            ; {
-            ;     addEffectToAdjustmentLayer("CP")
-            ; }
-            ;preset("CP - Fade to D Contrast")
-        ; }
-        ; If sheet = 3
-        ; {
-            ; If direct = 1
-            ; {
-            ;     preset("CP")
-            ; }
-            ; if direct = 0
-            ; {
-            ;     addEffectToAdjustmentLayer("CP")
-            ; }
-        ; }
-        return
-    }
-    ;spinning colors
-    If key = 9
-    {
-        ; If sheet = 1
-        ; {
-            If direct = 1
-            {
-                preset("CK Color Adjust")
-            }
-            if direct = 0
-            {
-                addEffectToAdjustmentLayer("CK Color Adjust")
-            }
-        ; }
-        ; If sheet = 2
-        ; {
-            ; If direct = 1
-            ; {
-            ;     preset("CP")
-            ; }
-            ; if direct = 0
-            ; {
-            ;     addEffectToAdjustmentLayer("CP")
-            ; }
-            ; preset("CP - Fade to D Contrast")
-        ; }
-        ; If sheet = 3
-        ; {
-            ; If direct = 1
-            ; {
-            ;     preset("CP")
-            ; }
-            ; if direct = 0
-            ; {
-            ;     addEffectToAdjustmentLayer("CP")
-            ; }
-        ; }
-        return
-    }
-    ;cinematic top/bottom
-    If key = 10
-    {
-        If sheet = 1
-        {
-            If direct = 1
-            {
-                preset("CP - Black Cinematic Bottom")
-            }
-            if direct = 0
-            {
-                addEffectToAdjustmentLayer("CP - Black Cinematic Bottom")
-            }
-        }
-        If sheet = 2
-        {
-            If direct = 1
-            {
-                preset("CP - Black Cinematic Top")
-            }
-            if direct = 0
-            {
-                addEffectToAdjustmentLayer("CP - Black Cinematic Top")
-            }
         }
         If sheet = 3
         {
@@ -3829,25 +2859,34 @@ return
             ; {
             ;     addEffectToAdjustmentLayer("CP")
             ; }
-        }  
+        }
+        If direct = 1
+        {
+            preset("CP - Faded Lumetri Color")
+        }
+        if direct = 0
+        {
+            addEffectToAdjustmentLayer("CP - Faded Lumetri Color")
+        }
+        ;preset("CP - Faded Lumetri Color")
         return
     }
-    ;circular tunnel
-    If key = 11
+    If ErrorLevel = EndKey:F8
     {
-        ; If sheet = 1
-        ; {
-            If direct = 1
-            {
-                preset("CP - Circle Tunnel Zoom")
-            }
-            if direct = 0
-            {
-                addEffectToAdjustmentLayer("CP - Circle Tunnel Zoom")
-            }
-        ; }
-        ; If sheet = 2
-        ; {
+        If sheet = 1
+        {
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
+            ;preset("CP - Deep Contrast")
+        }
+        If sheet = 2
+        {
             ; If direct = 1
             ; {
             ;     preset("CP")
@@ -3857,9 +2896,9 @@ return
             ;     addEffectToAdjustmentLayer("CP")
             ; }
             ;preset("CP - Fade to D Contrast")
-        ; }
-        ; If sheet = 3
-        ; {
+        }
+        If sheet = 3
+        {
             ; If direct = 1
             ; {
             ;     preset("CP")
@@ -3868,13 +2907,118 @@ return
             ; {
             ;     addEffectToAdjustmentLayer("CP")
             ; }
-        ; }
+        }
+        If direct = 1
+        {
+            preset("CP - Deep Red Coloring")
+        }
+        if direct = 0
+        {
+            addEffectToAdjustmentLayer("CP - Red")
+        }
+        ;preset("CP - Red")
         return
     }
-    If key = 12
+    If ErrorLevel = EndKey:F9
     {
-        ; If sheet = 1
-        ; {
+        If sheet = 1
+        {
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
+            ;preset("CP - Deep Contrast")
+        }
+        If sheet = 2
+        {
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
+            ;preset("CP - Fade to D Contrast")
+        }
+        If sheet = 3
+        {
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
+        }
+        If direct = 1
+        {
+            preset("CP - Blue")
+        }
+        if direct = 0
+        {
+            addEffectToAdjustmentLayer("CP - Blue")
+        }
+        ;preset("CP - Blue")
+        return
+    }
+    If ErrorLevel = EndKey:F10
+    {
+        If sheet = 1
+        {
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
+            ;preset("CP - Deep Contrast")
+        }
+        If sheet = 2
+        {
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
+            ;preset("CP - Fade to D Contrast")
+        }
+        If sheet = 3
+        {
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
+        }    
+        If direct = 1
+        {
+            preset("CP - Green")
+        }
+        if direct = 0
+        {
+            addEffectToAdjustmentLayer("CP - Green")
+        }  
+        ;preset("CP - Green")  
+        return
+    }
+    If ErrorLevel = EndKey:F11
+    {
+        If sheet = 1
+        {
             preset("CP - Opacity buildup to 100")
             ; If direct = 1
             ; {
@@ -3885,9 +3029,9 @@ return
             ;     addEffectToAdjustmentLayer("CP")
             ; }
             ;preset("CP - Deep Contrast")
-        ; }
-        ; If sheet = 2
-        ; {
+        }
+        If sheet = 2
+        {
             ; If direct = 1
             ; {
             ;     preset("CP")
@@ -3897,9 +3041,9 @@ return
             ;     addEffectToAdjustmentLayer("CP")
             ; }
             ;preset("CP - Fade to D Contrast")
-        ; }
-        ; If sheet = 3
-        ; {
+        }
+        If sheet = 3
+        {
             ; If direct = 1
             ; {
             ;     preset("CP")
@@ -3908,13 +3052,52 @@ return
             ; {
             ;     addEffectToAdjustmentLayer("CP")
             ; }
-        ; }
+        }
+        return
+    }
+    If ErrorLevel = EndKey:F12
+    {
+        If sheet = 1
+        {
+            preset("CP - Opacity buildup to 100")
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
+            ;preset("CP - Deep Contrast")
+        }
+        If sheet = 2
+        {
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
+            ;preset("CP - Fade to D Contrast")
+        }
+        If sheet = 3
+        {
+            ; If direct = 1
+            ; {
+            ;     preset("CP")
+            ; }
+            ; if direct = 0
+            ; {
+            ;     addEffectToAdjustmentLayer("CP")
+            ; }
+        }
         return
     }    
         
         return    
 } 
-
 
 return
 
