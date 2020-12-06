@@ -27,7 +27,6 @@ if workPC = Yes
     ;#include C:\Users\cxp6696\source\repos\2nd-keyboard\After_Effects_Functions.ahk
 }
 
-
 SetKeyDelay, 0 ;warning ---this was absent for some reason. i just added it back in. IDK if I removed it for a reason or not...
 
 #NoEnv
@@ -614,12 +613,182 @@ return
 
 return 
 */
+#IfWinActive ahk_exe Adobe Premiere Pro.exe
+`::
+{
+    ; explorerpath:= "explorer /e," "G:\Videos\Creative Cloud\Creative Cloud Files\Resources\Sounds" 
+    ; Run, %explorerpath%
+
+    MouseGetPos, MouseTooltipX, MouseTooltipY
+    ToolTip, 
+    (
+FOLDERS
+1. Music
+2. Music Ambient
+3. Music Ambient (horror)
+4. Music Ambient (general)
+5. Music Ambient (comedy)
+6. Music Ambient (sneaking)
+7. Music Ambient (intense)
+8. Music Ambient (upbeat)
+9. Sounds
+10. Sounds Common
+11. Clips
+12. Images
+    ), MouseTooltipX, MouseTooltipY + 20
+    Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}{Left}{Right}{`}
+
+    If ErrorLevel = EndKey:Escape
+    {
+        Tooltip
+        return
+    }
+
+    If ErrorLevel = EndKey:F1
+    {
+        explorerpath:= "explorer /e," "G:\Videos\Creative Cloud\Creative Cloud Files\Resources\Music"          
+        Run, %explorerpath%
+        Tooltip
+        return
+    }    
+    else if ErrorLevel = EndKey:F2
+    {
+        explorerpath:= "explorer /e," "G:\Videos\Creative Cloud\Creative Cloud Files\Resources\Music\Ambient"         
+        Run, %explorerpath%
+        Tooltip
+        return
+    } 
+    else if ErrorLevel = EndKey:F3
+    {
+        explorerpath:= "explorer /e," "G:\Videos\Creative Cloud\Creative Cloud Files\Resources\Music\Ambient\Horror"
+        Run, %explorerpath%
+        Tooltip
+        return
+    } 
+    else if ErrorLevel = EndKey:F4
+    {
+        explorerpath:= "explorer /e," "G:\Videos\Creative Cloud\Creative Cloud Files\Resources\Music\Ambient\General" 
+        Run, %explorerpath%
+        Tooltip
+        return
+    } 
+    else if ErrorLevel = EndKey:F5
+    {
+        explorerpath:= "explorer /e," "G:\Videos\Creative Cloud\Creative Cloud Files\Resources\Music\Ambient\Comedy" 
+        Run, %explorerpath%
+        Tooltip
+        return
+    } 
+    else if ErrorLevel = EndKey:F6
+    {
+        explorerpath:= "explorer /e," "G:\Videos\Creative Cloud\Creative Cloud Files\Resources\Music\Ambient\Sneaking" 
+        Run, %explorerpath%
+        Tooltip
+        return
+    }   
+    
+    If ErrorLevel = EndKey:F7
+    {
+        explorerpath:= "explorer /e," "G:\Videos\Creative Cloud\Creative Cloud Files\Resources\Music\Ambient\Intense" 
+        Run, %explorerpath%
+        Tooltip
+        return
+    }
+
+    else if ErrorLevel = EndKey:F9
+    {
+        explorerpath:= "explorer /e," "G:\Videos\Creative Cloud\Creative Cloud Files\Resources\Music\Ambient\Upbeat"
+        Run, %explorerpath%
+        Tooltip
+        return
+    } 
+    else if ErrorLevel = EndKey:F10
+    {
+        explorerpath:= "explorer /e," "G:\Videos\Creative Cloud\Creative Cloud Files\Resources\Sounds\aaa Common Sounds" 
+        Run, %explorerpath%
+        Tooltip
+        return
+    } 
+    else if ErrorLevel = EndKey:F11
+    {
+        explorerpath:= "explorer /e," "G:\Videos\Creative Cloud\Creative Cloud Files\Resources\Clips" 
+        Run, %explorerpath%
+        Tooltip
+        return
+    }     
+    If ErrorLevel = EndKey:F12
+    {
+        explorerpath:= "explorer /e," "G:\Videos\Creative Cloud\Creative Cloud Files\Resources\images" 
+        Run, %explorerpath%
+        Tooltip
+        return
+    }
+    
+    Tooltip
+    return  
+}
+return
+
+#IfWinActive ahk_exe Adobe Premiere Pro.exe
++`::
+{
+    MouseGetPos, MouseTooltipX, MouseTooltipY
+    ToolTip,
+    (
+1. Positions
+2. Sounds
+3. Sound Effects (words/effects)
+4. Sound Effects (game/crowd/transitions)
+5. Sound Effects (dramatic)
+6. Music
+7. Color Effects
+8. CPSEQ
+9. Close ups
+10. Misc
+    )
+    , MouseTooltipX, MouseTooltipY + 20
+    
+    Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}{Left}{Right}
+    ToolTip
+
+    return
+}
+return
+
+#IfWinActive ahk_exe Adobe Premiere Pro.exe
 ~1::
 {
     first = 1
     second = 1
     position = Left
     sheet = 1
+    MouseGetPos, MouseTooltipX, MouseTooltipY
+    ToolTip,
+    (
+E
+1. Zoomramp
+2. Screenshot
+3. Zoom to face and bg
+4. Screen Shake
+5. Adj Layer 3V
+6. Adj Layer 4V
+7. Adj layer w/ transform 3
+8. Adj layer w/ transform 4
+9. Transform Preset
+10. black matte fade
+11. zoom in rotate in/out
+12. stretch face
+
+R
+1. Zoom to me close
+4. Shaker(1.static 2. bluescreen)
+5. lighting pop for zoom(1. punch 2.yoshi)
+10. white flash
+
+T
+10. Red Flash
+    ), MouseTooltipX, MouseTooltipY + 20
+
     Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}{Left}{Right}
     
     If OutputVar = Q
@@ -630,16 +799,46 @@ return
     Else If OutputVar = E
     {
         sheet = 2
+        ToolTip, 
+        (
+E
+1. Zoomramp
+2. Screenshot
+3. Zoom to face and bg
+4. Screen Shake
+5. Adj Layer 3V
+6. Adj Layer 4V
+7. Adj layer w/ transform 3
+8. Adj layer w/ transform 4
+9. Transform Preset
+10. black matte fade
+11. zoom in rotate in/out
+12. stretch face 
+        )
+        , MouseTooltipX, MouseTooltipY + 20
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}{Left}{Right}
     } 
     Else If OutputVar = R
     {
         sheet = 3
+        ToolTip, 
+        (
+R
+1. Zoom to me close
+4. Shaker(1.static 2. bluescreen)
+5. lighting pop for zoom(1. punch 2.yoshi)
+10. white flash
+        ), MouseTooltipX, MouseTooltipY + 20
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}{Left}{Right}
     }   
     Else If OutputVar = T
     {
         sheet = 4
+        ToolTip, 
+        (
+T
+10. Red Flash
+        ), MouseTooltipX, MouseTooltipY + 20
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}{Left}{Right}
     }  
     Else If OutputVar = Y
@@ -649,6 +848,7 @@ return
     }  
     If ErrorLevel = EndKey:Escape
     {
+        Tooltip
         return
     }        
     if sheet = 1
@@ -657,6 +857,7 @@ return
     ;Close ups moving in and out
     If ErrorLevel = EndKey:Escape
     {
+        Tooltip
         return
     }
     If ErrorLevel = EndKey:F1
@@ -699,6 +900,7 @@ return
             Input, OutputVar, L1, {Escape}
             If ErrorLevel = EndKey:Escape
             {
+                Tooltip
                 return
             }
 
@@ -712,6 +914,7 @@ return
             Input, OutputVar, L1, {Escape}
             If ErrorLevel = EndKey:Escape
             {
+                Tooltip
                 return
             }
 
@@ -728,6 +931,7 @@ return
             Input, OutputVar, L1, {Escape}
             If ErrorLevel = EndKey:Escape
             {
+                Tooltip
                 return
             }
 
@@ -741,6 +945,7 @@ return
             Input, OutputVar, L1, {Escape}
             If ErrorLevel = EndKey:Escape
             {
+                Tooltip
                 return
             }
 
@@ -750,6 +955,7 @@ return
 
     If ErrorLevel = EndKey:Escape
     {
+        Tooltip
         return
     }
 
@@ -759,6 +965,7 @@ return
         combinedZoom = CP - Improved %position% %first%to%second%
 
         preset(combinedZoom)
+        Tooltip
         return
     }    
     else if ErrorLevel = EndKey:F2
@@ -767,6 +974,7 @@ return
         combinedZoom = CP - Improved %position% %first%to%second%
 
         preset(combinedZoom)
+        Tooltip
         return
     } 
     else if ErrorLevel = EndKey:F3
@@ -775,6 +983,7 @@ return
         combinedZoom = CP - Improved %position% %first%to%second%
 
         preset(combinedZoom)
+        Tooltip
         return
     } 
     else if ErrorLevel = EndKey:F4
@@ -783,6 +992,7 @@ return
         combinedZoom = CP - Improved %position% %first%to%second%
 
         preset(combinedZoom)
+        Tooltip
         return
     } 
     else if ErrorLevel = EndKey:F5
@@ -791,6 +1001,7 @@ return
         combinedZoom = CP - Improved %position% %first%to%second%
 
         preset(combinedZoom)
+        Tooltip
         return
     } 
     else if ErrorLevel = EndKey:F6
@@ -799,6 +1010,7 @@ return
         combinedZoom = CP - Improved %position% %first%to%second%
 
         preset(combinedZoom)
+        Tooltip
         return
     }   
     
@@ -807,6 +1019,7 @@ return
         presetString = CP - Just Face %position% Large
         preset(presetString)
         Send ^!6
+        Tooltip
         return
     }
     If ErrorLevel = EndKey:F8
@@ -814,6 +1027,7 @@ return
         presetString = CP - Just Face %position% XL
         preset(presetString)
         Send ^!6
+        Tooltip
         return
     }
 
@@ -822,6 +1036,7 @@ return
         presetString = CP - C%position% Normal
         preset(presetString)
         Send ^!7
+        Tooltip
         return
     }
     If ErrorLevel = EndKey:F10
@@ -829,6 +1044,7 @@ return
         presetString = CP - C%position% Medium
         preset(presetString)
         Send ^!7
+        Tooltip
         return
     }  
 
@@ -837,6 +1053,7 @@ return
         presetString = CP - C%position% Large
         preset(presetString)
         Send ^!7
+        Tooltip
         return
     }
     If ErrorLevel = EndKey:F12
@@ -844,6 +1061,7 @@ return
         presetString = CP - C%position% XL
         preset(presetString)
         Send ^!7
+        Tooltip
         return
     } 
     If ErrorLevel = EndKey:PrintScreen
@@ -851,6 +1069,7 @@ return
         presetString = CP - C%position% XtraL
         preset(presetString)
         Send ^!7
+        Tooltip
         return
     }
    }
@@ -863,10 +1082,12 @@ return
             Input, OutputVar, L1, {Escape}
             If ErrorLevel = EndKey:Escape
             {
+                Tooltip
                 return
             }
             preset("CP - Zoomramp")
             ;Send ^!5
+            Tooltip
             return
         }
         If ErrorLevel = EndKey:F2
@@ -874,19 +1095,22 @@ return
             captureScreenshot()
             ;preset(presetString)
             ;Send ^!5
+            Tooltip
             return
         }
         If ErrorLevel = EndKey:F3
         {
             presetString = CP - Zoom into book for reading
-            preset(presetString)            
+            preset(presetString)  
+            Tooltip          
             return
         } 
 
         If ErrorLevel = EndKey:F4
         {
             presetString = CP - Screen Shake Nested Custom
-            preset(presetString)            
+            preset(presetString)  
+            Tooltip         
             return
         }
 
@@ -894,7 +1118,8 @@ return
         {
             insertSFX("Me-Overlay-Adjustment-Layer", 3)
             ;presetString = CP - %position% Zoom MtoL
-            ;preset(presetString)            
+            ;preset(presetString)  
+            Tooltip          
             return
         }
         If ErrorLevel = EndKey:F6
@@ -902,21 +1127,24 @@ return
             insertSFX("Me-Overlay-Adjustment-Layer", 4)
             ;presetString = CP - %position% Zoom MtoXL
             ;preset(presetString)
+            Tooltip
             return
         }  
-
+        
         If ErrorLevel = EndKey:F7
         {
             insertSFX("Me-Overlay-Adjustment-Layer", 3)
             Input, OutputVar, L1, {Escape}
             If ErrorLevel = EndKey:Escape
             {
+                Tooltip
                 return
             }
             preset("CP - Transform Default")
             
             ;presetString = CP - %position% Zoom LtoN
             ;preset(presetString)
+            Tooltip
             return
         }
         If ErrorLevel = EndKey:F8
@@ -925,16 +1153,20 @@ return
             Input, OutputVar, L1, {Escape}
             If ErrorLevel = EndKey:Escape
             {
+                Tooltip
                 return
             }
             preset("CP - Transform Default")
             ;presetString = CP - %position% Zoom LtoM
             ;preset(presetString)
+            Tooltip
             return
         }
+        
         If ErrorLevel = EndKey:F9
         {
-            preset("CP - Transform Default")            
+            preset("CP - Transform Default")   
+            Tooltip         
             return
         }  
 
@@ -944,28 +1176,33 @@ return
             Input, OutputVar, L1, {Escape}
             If ErrorLevel = EndKey:Escape
             {
+                Tooltip
                 return
             }
             preset("CP - Fade to 99 opacity")
             
             ;presetString = CP - %position% Zoom LtoXL
             ;preset(presetString)
+            Tooltip
             return
         }
         If ErrorLevel = EndKey:F11
         {
             presetString = Zoom in and Rotate Then Out
             preset(presetString)
+            Tooltip
             return
         }
         If ErrorLevel = EndKey:F12
         {
             presetString = CP - Stretched Face Full
             preset(presetString)
+            Tooltip
             return
         } 
         If ErrorLevel = EndKey:Escape
         {
+            Tooltip
             return
         }
     }
@@ -978,6 +1215,7 @@ return
             ;presetString = CP - Zoom into me
             ;preset(presetString)
             ;Send ^!5
+            Tooltip
             return
         }
         ; If ErrorLevel = EndKey:F2
@@ -1001,6 +1239,7 @@ return
             Input, OutputVar, L1, {Escape}
             If ErrorLevel = EndKey:Escape
             {
+                Tooltip
                 return
             }
 
@@ -1013,6 +1252,7 @@ return
             {
                 insertSFX("Blue Screen")
             }
+            Tooltip
             return
         }
 
@@ -1021,6 +1261,7 @@ return
             Input, OutputVar, L1, {Escape}
             If ErrorLevel = EndKey:Escape
             {
+                Tooltip
                 return
             }
             
@@ -1037,6 +1278,7 @@ return
             
             If ErrorLevel = EndKey:Escape
             {
+                Tooltip
                 return
             }
             If OutputVar = 1
@@ -1047,7 +1289,8 @@ return
             {
                 insertSFX("yoshi tongue")
             }
-                 
+
+            Tooltip     
             return
         }
         ; If ErrorLevel = EndKey:F6
@@ -1098,18 +1341,21 @@ return
             Input, OutputVar, L1, {Escape}
             If ErrorLevel = EndKey:Escape
             {
+                Tooltip
                 return
             }
             preset("CP - White transition flash")
             Input, OutputVar, L1, {Escape}
             If ErrorLevel = EndKey:Escape
             {
+                Tooltip
                 return
             }
 
             insertSFX("picture-taken")
             ;presetString = CP - %position% Zoom LtoXL
             ;preset(presetString)
+            Tooltip
             return
         }
         ; If ErrorLevel = EndKey:F11
@@ -1126,6 +1372,7 @@ return
         ; } 
         If ErrorLevel = EndKey:Escape
         {
+            Tooltip
             return
         }
     }
@@ -1137,22 +1384,26 @@ return
             Input, OutputVar, L1, {Escape}
             If ErrorLevel = EndKey:Escape
             {
+                Tooltip
                 return
             }
             preset("CP - White transition flash")
             Input, OutputVar, L1, {Escape}
             If ErrorLevel = EndKey:Escape
             {
+                Tooltip
                 return
             }
 
             insertSFX("picture-taken")
             ;presetString = CP - %position% Zoom LtoXL
             ;preset(presetString)
+            Tooltip
             return
         }
         If ErrorLevel = EndKey:Escape
         {
+            Tooltip
             return
         }
     }
@@ -1165,52 +1416,161 @@ return
 #IfWinActive ahk_exe Adobe Premiere Pro.exe
 ~2::
 {
+    MouseGetPos, MouseTooltipX, MouseTooltipY
+    ToolTip,
+    (
+COMMON SOUNDS
+1. Pick up item
+2. Mario Jump
+3. Error
+4. Transitions
+5. Zooms
+6. Alerts
+7. Dramatic
+8. Damage
+    ), MouseTooltipX, MouseTooltipY + 20
+
     Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     sheet = 1
     key = 1
 
     If ErrorLevel = EndKey:Escape
     {
+        ToolTip
         return
     }
     else if ErrorLevel = EndKey:F1
     {
         key = 1
+        MouseGetPos, MouseTooltipX, MouseTooltipY
+        ToolTip,
+    (
+COMMON SOUNDS
+Pick up item
+    1. Basic
+    2-12
+    ), MouseTooltipX, MouseTooltipY + 20
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     }  
     else if ErrorLevel = EndKey:F2
     {
         key = 2
+        MouseGetPos, MouseTooltipX, MouseTooltipY
+        ToolTip,
+    (
+COMMON SOUNDS
+Mario Jump
+    1. Jump
+    ), MouseTooltipX, MouseTooltipY + 20
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     }  
     else if ErrorLevel = EndKey:F3
     {
         key = 3
+        MouseGetPos, MouseTooltipX, MouseTooltipY
+        ToolTip,
+    (
+COMMON SOUNDS
+Error
+    1.Blue Screen
+    2.Disconnect
+    3.connect
+    4.chord
+    5.critical stop
+    ), MouseTooltipX, MouseTooltipY + 20    
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     }
     else if ErrorLevel = EndKey:F4
     {
         key = 4
+        MouseGetPos, MouseTooltipX, MouseTooltipY
+        ToolTip,
+    (
+COMMON SOUNDS
+Transitions
+    1.swipe in
+    2.swipe out
+    3.whip
+    4.street fighter
+    5.record scratch
+    6.yoshi
+    ), MouseTooltipX, MouseTooltipY + 20
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     }
     else if ErrorLevel = EndKey:F5
     {
         key = 5
+        MouseGetPos, MouseTooltipX, MouseTooltipY
+        ToolTip,
+    (
+COMMON SOUNDS
+Zooms  
+    1.basic
+    2.secondary
+    3.third
+
+    ), MouseTooltipX, MouseTooltipY + 20
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     }  
     else if ErrorLevel = EndKey:F6
     {
         key = 6
+        MouseGetPos, MouseTooltipX, MouseTooltipY
+        ToolTip,
+    (
+COMMON SOUNDS
+Alerts
+    1.Zelda nes
+    2.Zelda N64
+    3.MG PS
+    4.MG NES
+    5.Level up Zelda
+    ), MouseTooltipX, MouseTooltipY + 20
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     }  
     else if ErrorLevel = EndKey:F7
     {
         key = 7
+        MouseGetPos, MouseTooltipX, MouseTooltipY
+        ToolTip,
+    (
+COMMON SOUNDS
+Dramatic
+    1.CinematicBoom
+    2.classic
+    3.da dum
+    4.bumm horn
+    5.bum bum bum
+    6.heart hit
+    7.horn
+    8.jurassic park
+    9.psycho
+    10.quick hit
+    11.serial killer hit
+    12.heart beat
+    ), MouseTooltipX, MouseTooltipY + 20
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     }
     else if ErrorLevel = EndKey:F8
     {
         key = 8
+        MouseGetPos, MouseTooltipX, MouseTooltipY
+        ToolTip,
+    (
+COMMON SOUNDS
+Damage
+    1.uppercut
+    2.oof grown
+    3.oof kid
+    4.joe and mac
+    5.caleb yaegar
+    6.Caleb City Smack
+    7.Caleb City Smack 2
+    8.Caleb City Smack 4
+    9.Caleb City Smack 5
+    10.Caleb City Smack 7
+    11.bayou billy
+    ), MouseTooltipX, MouseTooltipY + 20
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     }
     else if ErrorLevel = EndKey:F9
@@ -1236,39 +1596,40 @@ return
 
     If ErrorLevel = EndKey:Escape
     {
+        ToolTip
         return
     }
     else if ErrorLevel = EndKey:F1
     {
-        sheet = 1
+        sheet = 1        
     }  
     else if ErrorLevel = EndKey:F2
     {
-        sheet = 2
+        sheet = 2        
     }  
     else if ErrorLevel = EndKey:F3
     {
-        sheet = 3
+        sheet = 3            
     }
     else if ErrorLevel = EndKey:F4
     {
-        sheet = 4
+        sheet = 4                
     }
     else if ErrorLevel = EndKey:F5
     {
-        sheet = 5
+        sheet = 5        
     }  
     else if ErrorLevel = EndKey:F6
     {
-        sheet = 6
+        sheet = 6        
     }  
     else if ErrorLevel = EndKey:F7
     {
-        sheet = 7
+        sheet = 7        
     }
     else if ErrorLevel = EndKey:F8
     {
-        sheet = 8
+        sheet = 8        
     }
     else if ErrorLevel = EndKey:F9
     {
@@ -1289,6 +1650,7 @@ return
     
     If ErrorLevel = EndKey:Escape
     {
+        ToolTip
         return
     }
     ;pick up item
@@ -1296,66 +1658,91 @@ return
     {
         If ErrorLevel = EndKey:Escape
         {
+            ToolTip
             return
         }
         if sheet = 1
         {
             insertSFX("Pick up item basic")
+
+            ToolTip
             return
         }  
         if sheet = 2
         {
             insertSFX("Pick up item2")
+
+            ToolTip
             return
         }  
         if sheet = 3
         {
             insertSFX("Pick up item3")
+
+            ToolTip
             return
         }
         if sheet = 4
         {
             insertSFX("Pick up item4")
+
+            ToolTip
             return
         }
         if sheet = 5
         {
             insertSFX("Pick up item5")
+
+            ToolTip
             return
         }  
         if sheet = 6
         {
             insertSFX("Pick up item6")
+            
+            ToolTip
             return
         }  
         if sheet = 7
         {
             insertSFX("Pick up item7")
+            
+            ToolTip
             return
         }
         if sheet = 8
         {
             insertSFX("Pick up item8")
+            
+            ToolTip
             return
         }
         if sheet = 9
         {
             insertSFX("Pick up item9")
+            
+            ToolTip
             return
         }            
         if sheet = 10
         {
             insertSFX("Pick up itemten")
+            
+            ToolTip
             return
         }
         if sheet = 11
         {
             insertSFX("Pick up itemeleven")
+            
+            ToolTip
             return
         }     
         if sheet = 12
         {
             insertSFX("Pick up itemtwelve")
+            
+            ToolTip
             return
         }
     }    
@@ -1365,67 +1752,93 @@ return
     {
         If ErrorLevel = EndKey:Escape
         {
+            
+            ToolTip
             return
         }
         ; if sheet = 1
         ; {
             insertSFX("super mario jump")
+            
+            ToolTip
             return
         ; }  
         ; If ErrorLevel = EndKey:F2
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }
         ; If ErrorLevel = EndKey:F3
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }
         ; If ErrorLevel = EndKey:F4
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }            
         ; If ErrorLevel = EndKey:F5
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }
         ; If ErrorLevel = EndKey:F6
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }
         ; If ErrorLevel = EndKey:F7
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }
         ; If ErrorLevel = EndKey:F8
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }
         ; If ErrorLevel = EndKey:F9
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }            
         ; If ErrorLevel = EndKey:F10
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }
         ; If ErrorLevel = EndKey:F11
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }     
         ; If ErrorLevel = EndKey:F12
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }        
     }     
 
@@ -1434,62 +1847,86 @@ return
     {
         If ErrorLevel = EndKey:Escape
         {
+            
+            ToolTip
             return
         }
         if sheet = 1
         {
             insertSFX("blue screen of death sound")
+            
+            ToolTip
             return
         }  
         if sheet = 2
         {
             insertSFX("Windows 7 - HardwareDisconnect")
+            
+            ToolTip
             return
         }
         if sheet = 3
         {
             insertSFX("Windows 7 - HardwareConnect")
+            
+            ToolTip
             return
         }
         if sheet = 4
         {
             insertSFX("Windows 10 - Chord")
+            
+            ToolTip
             return
         }  
         if sheet = 5
         {
             insertSFX("Windows 10 - Critical Stop")
+            
+            ToolTip
             return
         }  
         ; If ErrorLevel = EndKey:F7
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }
         ; If ErrorLevel = EndKey:F8
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }
         ; If ErrorLevel = EndKey:F9
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }            
         ; If ErrorLevel = EndKey:F10
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }
         ; If ErrorLevel = EndKey:F11
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }     
         ; If ErrorLevel = EndKey:F12
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }
     }     
 
@@ -1498,67 +1935,93 @@ return
     {
         If ErrorLevel = EndKey:Escape
         {
+            
+            ToolTip
             return
         }
         if sheet = 1
         {
             insertSFX("cartoon-swipe-in")
+            
+            ToolTip
             return
         }  
         if sheet = 2
         {
             insertSFX("cartoon-swipe-out")
+            
+            ToolTip
             return
         }  
         if sheet = 3
         {
             insertSFX("whip-basic")
+            
+            ToolTip
             return
         }
         if sheet = 4
         {
             insertSFX("Street Fighter 2 Turbo - Med Punch Med")
+            
+            ToolTip
             return
         }
         if sheet = 5
         {
             insertSFX("record-scratch")
+            
+            ToolTip
             return
         }  
         if sheet = 6
         {
             insertSFX("picture-taken")
+            
+            ToolTip
             return
         }  
         if sheet = 7
         {
             insertSFX("Yoshi tongue Super Mario World sound effect")
+            
+            ToolTip
             return
         }
         ; if sheet = 8
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }
         ; if sheet = 9
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }            
         ; if sheet = 10
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }
         ; if sheet = 11
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }     
         ; if sheet = 12
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }
     }     
 
@@ -1567,67 +2030,93 @@ return
     {
         If ErrorLevel = EndKey:Escape
         {
+            
+            ToolTip
             return
         }
         if sheet = 1
         {
             insertSFX("ZoomWindows")
+            
+            ToolTip
             return
         }  
         if sheet = 2
         {
             insertSFX("Zoom3")
+            
+            ToolTip
             return
         }  
         if sheet = 3
         {
             insertSFX("Zoombasic")
+            
+            ToolTip
             return
         }
         ; if sheet = 4
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }
         ; if sheet = 5
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }  
         ; if sheet = 6
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }  
         ; if sheet = 7
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }
         ; if sheet = 8
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }
         ; if sheet = 9
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }            
         ; if sheet = 10
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }
         ; if sheet = 11
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }     
         ; if sheet = 12
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }
     }     
 
@@ -1636,67 +2125,93 @@ return
     {
         If ErrorLevel = EndKey:Escape
         {
+            
+            ToolTip
             return
         }
         if sheet = 1
         {
             insertSFX("zelda-secret-nes")
+            
+            ToolTip
             return
         }  
         if sheet = 2
         {
             insertSFX("zelda-secret-n64")
+            
+            ToolTip
             return
         }  
         if sheet = 3
         {
             insertSFX("metal gear alert playstation")
+            
+            ToolTip
             return
         }
         if sheet = 4
         {
             insertSFX("metal gear alert nes")
+            
+            ToolTip
             return
         }
         if sheet = 5
         {
             insertSFX("Level up - Zelda II")
+            
+            ToolTip
             return
         }  
         ; if sheet = 6
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }  
         ; if sheet = 7
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }
         ; if sheet = 8
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }
         ; if sheet = 9
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }            
         ; if sheet = 10
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }
         ; if sheet = 11
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }     
         ; if sheet = 12
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }
     }     
 
@@ -1705,66 +2220,92 @@ return
     {
         If ErrorLevel = EndKey:Escape
         {
+            
+            ToolTip
             return
         }
         if sheet = 1
         {
             insertSFX("CinematicBoom")
+            
+            ToolTip
             return
         }  
         if sheet = 2
         {
             insertSFX("dramatic-classic")
+            
+            ToolTip
             return
         }  
         if sheet = 3
         {
             insertSFX("dadum")
+            
+            ToolTip
             return
         }
         if sheet = 4
         {
             insertSFX("bummhorn sound")
+            
+            ToolTip
             return
         }
         if sheet = 5
         {
             insertSFX("bumbumbum")
+            
+            ToolTip
             return
         }  
         if sheet = 6
         {
             insertSFX("hearthit")
+            
+            ToolTip
             return
         }  
         if sheet = 7
         {
             insertSFX("horn2")
+            
+            ToolTip
             return
         }
         if sheet = 8
         {
             insertSFX("Jurassicparklike")
+            
+            ToolTip
             return
         }
         if sheet = 9
         {
             insertSFX("psycho_theme")
+            
+            ToolTip
             return
         }            
         if sheet = 10
         {
             insertSFX("quickhit")
+            
+            ToolTip
             return
         }
         if sheet = 11
         {
             insertSFX("serialkillersortahit")
+            
+            ToolTip
             return
         }     
         if sheet = 12
         {
             insertSFX("heartbeattobuildingsuspense")
+            
+            ToolTip
             return
         }
     }     
@@ -1774,67 +2315,93 @@ return
     {
         If ErrorLevel = EndKey:Escape
         {
+            
+            ToolTip
             return
         }
         if sheet = 1
         {
             insertSFX("Uppercut")
+            
+            ToolTip
             return
         }  
         if sheet = 2
         {
             insertSFX("Oof2")
+            
+            ToolTip
             return
         }  
         if sheet = 3
         {
             insertSFX("Oof1")
+            
+            ToolTip
             return
         }
         if sheet = 4
         {
             insertSFX("Joe and Mac Get Hurt")
+            
+            ToolTip
             return
         }
         if sheet = 5
         {
             insertSFX("Caleb City Yeager Yaegar Yagar")
+            
+            ToolTip
             return
         }  
         if sheet = 6
         {
             insertSFX("Caleb City Smackbasic")
+            
+            ToolTip
             return
         }  
         if sheet = 7
         {
             insertSFX("Caleb City Smack2")
+            
+            ToolTip
             return
         }
         if sheet = 8
         {
             insertSFX("Caleb City Smack4")
+            
+            ToolTip
             return
         }
         if sheet = 9
         {
             insertSFX("Caleb City Smack5")
+            
+            ToolTip
             return
         }            
         if sheet = 10
         {
             insertSFX("Caleb City Smack7")
+            
+            ToolTip
             return
         }
         if sheet = 11
         {
             insertSFX("Adventures of Bayou Billy - Damage")
+            
+            ToolTip
             return
         }     
         ; if sheet = 12
         ; {
         ;     insertSFX("Pickfsvcv")
-        ;     return
+        ;     
+            ToolTip
+            return
         ; }
     }       
 
@@ -1843,66 +2410,92 @@ return
     {
         If ErrorLevel = EndKey:Escape
         {
+            
+            ToolTip
             return
         }
         if sheet = 1
         {
             insertSFX("Pickfsvcv")
+            
+            ToolTip
             return
         }  
         if sheet = 2
         {
             insertSFX("Pickfsvcv")
+            
+            ToolTip
             return
         }  
         if sheet = 3
         {
             insertSFX("Pickfsvcv")
+            
+            ToolTip
             return
         }
         if sheet = 4
         {
             insertSFX("Pickfsvcv")
+            
+            ToolTip
             return
         }
         if sheet = 5
         {
             insertSFX("Pickfsvcv")
+            
+            ToolTip
             return
         }  
         if sheet = 6
         {
             insertSFX("Pickfsvcv")
+            
+            ToolTip
             return
         }  
         if sheet = 7
         {
             insertSFX("Pickfsvcv")
+            
+            ToolTip
             return
         }
         if sheet = 8
         {
             insertSFX("Pickfsvcv")
+            
+            ToolTip
             return
         }
         if sheet = 9
         {
             insertSFX("Pickfsvcv")
+            
+            ToolTip
             return
         }            
         if sheet = 10
         {
             insertSFX("Pickfsvcv")
+            
+            ToolTip
             return
         }
         if sheet = 11
         {
             insertSFX("Pickfsvcv")
+            
+            ToolTip
             return
         }     
         if sheet = 12
         {
             insertSFX("Pickfsvcv")
+            
+            ToolTip
             return
         }
     }      
@@ -1967,244 +2560,451 @@ return
 #IfWinActive ahk_exe Adobe Premiere Pro.exe
 ~3::
 {
+    MouseGetPos, MouseTooltipX, MouseTooltipY
+        ToolTip,
+    (
+Q- Words 1					W- Words 2                          E- Effects 1                                                R- Effects 2	                T- Effects 3
+1. Bruh						1. oof-1                                 1. Blue Screen Of Death Sound              1. fart-short		1. splat
+2. Get-Over-Here-Sound-Effect		                2. oof-2                                 2. bone-break                                           2. glassbreak	                2. spring
+3. gotcha-grab				                3. perfect                              3. bone-breaking-4                                  3. glitch		3. stab
+4. Hello There English accent		                4. Ric-Flair-Woo                  4. bowling-pins                                         4. Microphone Tap	4. Static Transition Sound
+5. help-me			                                5. tadaa                                 5. cash-register                                         5. Mouseclick		5. undertaker
+6. huh			                                                6. Tim Allen Grunt               6. cash-register-clear                               6. picture-taken	                6. whip
+7. incredible		                 	                7. that-is-not-correct          7. cash-register-opening                        7. punch-1		7. Yoshi-Sound-jump-on
+8. kobe						8. toasty		               8. crowd gasp Sound Effect                   8. punch-2                            8. --
+9. Mission-Failed-We'll-Get-Em-Next-Time		9. what-sound	               9. Ding-dong-sound-effect                   9. Quack-Sound-Effect       9. --
+10.nice						10.what-sound2	              10.dream                                                   10.record-scratch                10.--
+11.Nice-Shot-Clean				11.yeet		              11.slotMachine-2                                     11.slide                                  11.--
+12.Nope                                                                                 12.Yes                                   12.Fart-sound-effects                              12.slip                                    12.--
+PS.Oh my god xgames vine                                                PS.--		              PS.fart-long                                              PS.smack                               PS.--
+    ), MouseTooltipX, MouseTooltipY + 20
+
     Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     sheet = 1
-
     If ErrorLevel = EndKey:Escape
-    {
+    {        
+        ToolTip
         return
     }
     If OutputVar = Q
     {
         sheet = 1
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+        MouseGetPos, MouseTooltipX, MouseTooltipY
+        ToolTip,
+    (
+Q- Words 1								
+    1. Bruh									
+    2. Get-Over-Here-Sound-Effect			
+    3. gotcha-grab							
+    4. Hello There English accent			
+    5. help-me								
+    6. huh									
+    7. incredible							
+    8. kobe									
+    9. Mission-Failed-We'll-Get-Em-Next-Time
+    10.nice									
+    11.Nice-Shot-Clean						
+    12.Nope									
+    PS.Oh my god xgames vine			
+
+    ), MouseTooltipX, MouseTooltipY + 20
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}
     }
     If OutputVar = W
     {
         sheet = 2
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+        MouseGetPos, MouseTooltipX, MouseTooltipY
+        ToolTip,
+    (
+W- Words 2							
+    1. oof-1							
+    2. oof-2							
+    3. perfect							
+    4. Ric-Flair-Woo					
+    5. tadaa							
+    6. Tim Allen Grunt - Grunt Tim Allen
+    7. that-is-not-correct				
+    8. toasty							
+    9. what-sound						
+    10.what-sound2						
+    11.yeet								
+    12.Yes								
+    PS.--	
+    ), MouseTooltipX, MouseTooltipY + 20
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}
     }
     If OutputVar = E
     {
         sheet = 3
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+        MouseGetPos, MouseTooltipX, MouseTooltipY
+        ToolTip,
+    (
+E- Effects 1					
+    1. Blue Screen Of Death Sound	
+    2. bone-break					
+    3. bone-breaking-4				
+    4. bowling-pins					
+    5. cash-register				
+    6. cash-register-clear			
+    7. cash-register-opening		
+    8. crowd gasp Sound Effect		
+    9. Ding-dong-sound-effect		
+    10.dream						
+    11.slotMachine-2				
+    12.Fart-sound-effects			
+    PS.fart-long		
+    ), MouseTooltipX, MouseTooltipY + 20
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}
     }
     If OutputVar = R
     {
         sheet = 4
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+        MouseGetPos, MouseTooltipX, MouseTooltipY
+        ToolTip,
+    (
+R- Effects 2			
+    1. fart-short			
+    2. glassbreak			
+    3. glitch				
+    4. Microphone Tap		
+    5. Mouseclick			
+    6. picture-taken		
+    7. punch-1				
+    8. punch-2				
+    9. Quack-Sound-Effect	
+    10.record-scratch		
+    11.slide				
+    12.slip					
+    PS.smack		
+    ), MouseTooltipX, MouseTooltipY + 20
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}
     }
     If OutputVar = T
     {
         sheet = 5
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+        MouseGetPos, MouseTooltipX, MouseTooltipY
+        ToolTip,
+    (
+T- Effects 3
+    1. splat
+    2. spring
+    3. stab
+    4. Static Transition Sound
+    5. undertaker
+    6. whip
+    7. Yoshi-Sound-jump-on
+    8. --
+    9. --
+    10.--
+    11.--
+    12.--
+    PS.--
+    ), MouseTooltipX, MouseTooltipY + 20
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}
     }
-    If OutputVar = Y
-    {
-        sheet = 6
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }
+    ; If OutputVar = Y
+    ; {
+    ;     sheet = 6
+    ;     Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}
+    ; }
     ;words 1
     if sheet = 1
     {
         If ErrorLevel = EndKey:Escape
-        {
+        {            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F1
         {
             insertSFX("Bruh")
-            return
-        }  
-        If ErrorLevel = EndKey:F2
-        {
-            insertSFX("yeet")
-            return
-        }  
-        If ErrorLevel = EndKey:F3
-        {
-            insertSFX("Yes")
-            return
-        }
-        If ErrorLevel = EndKey:F4
-        {
-            insertSFX("Nope")
-            return
-        }
-        If ErrorLevel = EndKey:F5
-        {
-            insertSFX("what-sound")
-            return
-        }  
-        If ErrorLevel = EndKey:F6
-        {
-            insertSFX("what-sound2")
-            return
-        }  
-        If ErrorLevel = EndKey:F7
-        {
-            insertSFX("Oof-1")
-            return
-        }
-        If ErrorLevel = EndKey:F8
-        {
-            insertSFX("Oof-2")
-            return
-        }
-        If ErrorLevel = EndKey:F9
-        {
-            insertSFX("perfect")
-            return
-        }            
-        If ErrorLevel = EndKey:F10
-        {
-            insertSFX("incredible")
-            return
-        }
-        If ErrorLevel = EndKey:F11
-        {
-            insertSFX("kobe")
-            return
-        }     
-        If ErrorLevel = EndKey:F12
-        {
-            insertSFX("nice")
-            return
-        }
-    } 
-    ;words 2
-    if sheet = 2 
-    {
-        If ErrorLevel = EndKey:Escape
-        {
-            return
-        }
-        If ErrorLevel = EndKey:F1
-        {
-            insertSFX("gotcha-grab")
+            
+            ToolTip
             return
         }  
         If ErrorLevel = EndKey:F2
         {
             insertSFX("Get-Over-Here-Sound-Effect")
+            
+            ToolTip
+            return
+        }  
+        If ErrorLevel = EndKey:F3
+        {
+            insertSFX("gotcha-grab")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F4
+        {
+            insertSFX("Hello There English accent")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F5
+        {
+            insertSFX("help-me")
+            
+            ToolTip
+            return
+        }  
+        If ErrorLevel = EndKey:F6
+        {
+            insertSFX("huh")
+            
+            ToolTip
+            return
+        }  
+        If ErrorLevel = EndKey:F7
+        {
+            insertSFX("incredible")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F8
+        {
+            insertSFX("kobe")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F9
+        {
+            insertSFX("Mission-Failed-We'll-Get-Em-Next-Time")
+            
+            ToolTip
+            return
+        }            
+        If ErrorLevel = EndKey:F10
+        {
+            insertSFX("nice")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F11
+        {
+            insertSFX("Nice-Shot-Clean")
+            
+            ToolTip
+            return
+        }     
+        If ErrorLevel = EndKey:F12
+        {
+            insertSFX("Nope")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:PrintScreen
+        {
+            insertSFX("Oh my god xgames vine")
+            
+            ToolTip
+            return
+        }      
+    } 
+    ;words 2
+    if sheet = 2 
+    {
+        If ErrorLevel = EndKey:Escape
+        {            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F1
+        {
+            insertSFX("oof-1")
+            
+            ToolTip
+            return
+        }  
+        If ErrorLevel = EndKey:F2
+        {
+            insertSFX("oof-2")
+            
+            ToolTip
             return
         } 
         If ErrorLevel = EndKey:F3
         {
-            insertSFX("tadaa")
+            insertSFX("perfect")
+            
+            ToolTip
             return
         }  
         If ErrorLevel = EndKey:F4
         {
             insertSFX("Ric-Flair-Woo")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F5
         {
-            insertSFX("Nice-Shot-Clean")
+            insertSFX("tadaa")
+            
+            ToolTip
             return
         }  
         If ErrorLevel = EndKey:F6
         {
-            insertSFX("toasty")
+            insertSFX("Grunt Tim Allen")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F7
         {
             insertSFX("that-is-not-correct")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F8
         {
-            insertSFX("Grunt Tim Allen")
+            insertSFX("toasty")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F9
         {
-            insertSFX("Hello There English accent")
+            insertSFX("what-sound")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F10
         {
-            insertSFX("Mission-Failed-We'll-Get-Em-Next-Time")
+            insertSFX("what-sound2")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F11
         {
-            insertSFX("Oh my god xgames vine")
+            insertSFX("yeet")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F12
         {
-            insertSFX("help-me")
+            insertSFX("yes")
+            
+            ToolTip
             return
         }
+        If ErrorLevel = EndKey:PrintScreen
+        {
+            ;insertSFX("Oh my god xgames vine")
+            
+            ToolTip
+            return
+        }   
     }
     ;effects 1
     if sheet = 3
     {
         If ErrorLevel = EndKey:Escape
-        {
+        {            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F1
         {
-            insertSFX("cash-register-opening")
+            insertSFX("Blue Screen Of Death Sound")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F2
         {
-            insertSFX("cash-register")
+            insertSFX("bone-break")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F3
         {
-            insertSFX("slotMachine-2")
+            insertSFX("bone-breaking-4")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F4
         {
-            insertSFX("Fart-sound-effects")
+            insertSFX("bowling-pins")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F5
         {
-            insertSFX("fart-long")
+            insertSFX("cash-register")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F6
         {
-            insertSFX("fart-short")
+            insertSFX("cash-register-clear")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F7
         {
-            insertSFX("bone-breaking-4")
+            insertSFX("cash-register-opening")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F8
         {
-            insertSFX("bone-break")
+            insertSFX("crowd gasp Sound Effect")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F9
         {
-            insertSFX("picture-taken")
+            insertSFX("Ding-dong-sound-effect")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F10
         {
-            insertSFX("slide")
+            insertSFX("dream")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F11
         {
-            insertSFX("slip")
+            insertSFX("slotMachine-2")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F12
         {
-            insertSFX("whip")
+            insertSFX("Fart-sound-effects")
+            
+            ToolTip
+            return
+        }
+
+        If ErrorLevel = EndKey:PrintScreen
+        {
+            insertSFX("fart-long")
+            
+            ToolTip
             return
         }
     }    
@@ -2212,67 +3012,99 @@ return
     if sheet = 4
     {
         If ErrorLevel = EndKey:Escape
-        {
+        {            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F1
         {
-            insertSFX("punch-1")
+            insertSFX("fart-short")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F2
         {
-            insertSFX("punch-2")
+            insertSFX("glassbreak")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F3
         {
             insertSFX("glitch")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F4
         {
-            insertSFX("glassbreak")
+            insertSFX("Microphone Tap")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F5
         {
-            insertSFX("smack")
+            insertSFX("Mouseclick")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F6
         {
-            insertSFX("stab")
+            insertSFX("picture-taken")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F7
         {
-            insertSFX("bowling-pins")
+            insertSFX("punch-1")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F8
         {
-            insertSFX("dreams")
+            insertSFX("punch-2")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F9
         {
-            insertSFX("record-scratch")
+            insertSFX("Quack-Sound-Effect")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F10
         {
-            insertSFX("splat")
+            insertSFX("record-scratch")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F11
         {
-            insertSFX("spring")
+            insertSFX("slide")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F12
         {
-            insertSFX("Quack-Sound-Effect")
+            insertSFX("slip")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:PrintScreen
+        {
+            insertSFX("smack")
+            
+            ToolTip
             return
         }
     }
@@ -2280,105 +3112,210 @@ return
     if sheet = 5 
     {
         If ErrorLevel = EndKey:Escape
-        {
+        {            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F1
         {
-            insertSFX("Yoshi-Sound-jump-on")
+            insertSFX("splat")
+            
+            ToolTip
             return
         } 
         If ErrorLevel = EndKey:F2
         {
-            insertSFX("Ding-dong-sound-effect")
+            insertSFX("spring")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F3
         {
-            insertSFX("Microphone Tap")
+            insertSFX("stab")
+            
+            ToolTip
             return
         }     
         If ErrorLevel = EndKey:F4
         {
-            insertSFX("Mouseclick")
+            insertSFX("Static Transition Sound")
+            
+            ToolTip
             return
         }     
         If ErrorLevel = EndKey:F5
         {
-            insertSFX("crowd gasp Sound Effect")
+            insertSFX("undertaker")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F6
         {
-            insertSFX("undertaker")
+            insertSFX("whip")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F7
+        {
+            insertSFX("Yoshi-Sound-jump-on")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F8
+        {
+            insertSFX("whip")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F9
+        {
+            insertSFX("whip")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F10
+        {
+            insertSFX("whip")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F11
+        {
+            insertSFX("whip")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F12
+        {
+            insertSFX("whip")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:PrintScreen
+        {
+            insertSFX("whip")
+            
+            ToolTip
             return
         }
     }
     ;misc
     if sheet = 6
     {
+        MouseGetPos, MouseTooltipX, MouseTooltipY
+        ToolTip,
+    (
+Y- N/A
+    1. --
+    2. --
+    3. --
+    4. --
+    5. --
+    6. --
+    7. --
+    8. --
+    9. --
+    10.--
+    11.--
+    12.--
+    PS.--
+    ), MouseTooltipX, MouseTooltipY + 20
         If ErrorLevel = EndKey:Escape
-        {
+        {           
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F1
         {
-            insertSFX("huh")
+            ;insertSFX("huh")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F2
         {
-            insertSFX("Static Transition Sound")
+            ;insertSFX("Static Transition Sound")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F3
         {
-            insertSFX("Blue Screen Of Death Sound")
+            ;insertSFX("Blue Screen Of Death Sound")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F4
         {
             ;insertSFX("correct")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F5
         {
             ;insertSFX("correct")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F6
         {
             ;insertSFX("correct")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F7
         {
             ;insertSFX("correct")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F8
         {
             ;insertSFX("correct")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F9
         {
             ;insertSFX("correct")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F10
         {
             ;insertSFX("correct")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F11
         {
             ;insertSFX("correct")
+            
+            ToolTip
             return
         }
         If ErrorLevel = EndKey:F12
         {
             ;insertSFX("correct")
+            
+            ToolTip
             return
         }
     }

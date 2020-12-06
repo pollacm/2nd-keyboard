@@ -780,8 +780,7 @@ send ^{SC027} ;this is the scan code for a semicolon. CTRL SEMICOLON is one of m
 addEffectToAdjustmentLayer(effect)
 {
 	insertSFX("adjustment-layer", 3)
-
-	Input, OutputVar, L1, {Escape}
+	Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
 	If ErrorLevel = EndKey:Escape
 	{
 		return
