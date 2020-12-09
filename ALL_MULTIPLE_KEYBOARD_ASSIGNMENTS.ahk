@@ -222,6 +222,9 @@ return
     position = Left
     sheet = 1
     MouseGetPos, MouseTooltipX, MouseTooltipY
+
+    ToolTipFont("s10", "Inconsolata")
+    ToolTipColor("black", "yellow")
     ToolTip,
     (
 E
@@ -229,11 +232,11 @@ E
 2. Screenshot
 3. Zoom to face and bg
 4. Screen Shake
-5. Adj Layer 3V
-6. Adj Layer 4V
-7. Adj layer w/ transform 3
-8. Adj layer w/ transform 4
-9. Transform Preset
+5. Adj Layer 4V
+6. Adj layer w/ transform 4
+7. Transform Preset
+8. Spherize
+9. Twirl
 10. black matte fade
 11. zoom in rotate in/out
 12. stretch face
@@ -265,14 +268,14 @@ E
 2. Screenshot
 3. Zoom to face and bg
 4. Screen Shake
-5. Adj Layer 3V
-6. Adj Layer 4V
-7. Adj layer w/ transform 3
-8. Adj layer w/ transform 4
-9. Transform Preset
+5. Adj Layer 4V
+6. Adj layer w/ transform 4
+7. Transform Preset
+8. Spherize
+9. Twirl
 10. black matte fade
 11. zoom in rotate in/out
-12. stretch face 
+12. stretch face
         )
         , MouseTooltipX, MouseTooltipY + 20
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}{Left}{Right}
@@ -575,38 +578,13 @@ T
 
         If ErrorLevel = EndKey:F5
         {
-            insertSFX("Me-Overlay-Adjustment-Layer", 3)
+            insertSFX("Me-Overlay-Adjustment-Layer", 4)
             ;presetString = CP - %position% Zoom MtoL
             ;preset(presetString)  
             Tooltip          
             return
         }
         If ErrorLevel = EndKey:F6
-        {
-            insertSFX("Me-Overlay-Adjustment-Layer", 4)
-            ;presetString = CP - %position% Zoom MtoXL
-            ;preset(presetString)
-            Tooltip
-            return
-        }  
-        
-        If ErrorLevel = EndKey:F7
-        {
-            insertSFX("Me-Overlay-Adjustment-Layer", 3)
-            Input, OutputVar, L1, {Escape}
-            If ErrorLevel = EndKey:Escape
-            {
-                Tooltip
-                return
-            }
-            preset("CP - Transform Default")
-            
-            ;presetString = CP - %position% Zoom LtoN
-            ;preset(presetString)
-            Tooltip
-            return
-        }
-        If ErrorLevel = EndKey:F8
         {
             insertSFX("Me-Overlay-Adjustment-Layer", 4)
             Input, OutputVar, L1, {Escape}
@@ -620,11 +598,24 @@ T
             ;preset(presetString)
             Tooltip
             return
+        }  
+        
+        If ErrorLevel = EndKey:F7
+        {
+            preset("CP - Transform Default")   
+            Tooltip         
+            return
+        }
+        If ErrorLevel = EndKey:F8
+        {
+            preset("CP - Spherize")   
+            Tooltip         
+            return
         }
         
         If ErrorLevel = EndKey:F9
         {
-            preset("CP - Transform Default")   
+            preset("CP - Twirl")   
             Tooltip         
             return
         }  
@@ -876,6 +867,9 @@ return
 ~2::
 {
     MouseGetPos, MouseTooltipX, MouseTooltipY
+
+    ToolTipFont("s10", "Inconsolata")
+    ToolTipColor("black", "yellow")
     ToolTip,
     (
 COMMON SOUNDS
