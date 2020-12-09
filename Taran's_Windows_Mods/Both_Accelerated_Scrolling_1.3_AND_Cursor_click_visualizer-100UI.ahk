@@ -38,7 +38,7 @@ CoordMode, mouse, screen
 size := 200
 kolor := 11FF99
 kolor2 := 008833
-showClicks = 1
+showClicks = 0
 
 
 
