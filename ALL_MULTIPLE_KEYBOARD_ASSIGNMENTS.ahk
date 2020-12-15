@@ -1,4 +1,15 @@
 SetWorkingDir, C:\Users\Owner\source\repos\2nd-keyboard\support_files
+
+
+;static commands
+;#IfWinActive ahk_exe Adobe Premiere Pro.exe
+^F1::
+{
+    GetMusic()
+    return
+}
+return
+
 ;the above will set A_WorkingDir. It must be done in the autoexecute area.
 ;SetNumLockState, on ;This doesn't work, needs to be done in admin mode.
 ;SetScrollLockState, off
@@ -10,7 +21,7 @@ Menu, Tray, Icon, shell32.dll, 283 ;tray icon is now a little keyboard, or piece
 global globalPosition = "Left"
 global secondPosition = "Middle"
 global thirdPosition = "Right"
-global workPC = "No"
+workPC = "No"
 global workingDir = "C:\Users\Owner\source\repos\2nd-keyboard\support_files"
 ;global workingDir = "C:\Users\cxp6696\source\repos\2nd-keyboard\support_files"
 
@@ -62,16 +73,11 @@ SetNumLockState, AlwaysOn ;i think this only works if launched as admin.
 currentTool = "v" ;This is super useful and important for a Premiere script, you'll see...
 
 ;static commands
-#IfWinActive ahk_exe Adobe Premiere Pro.exe
-+1::
+;#IfWinActive ahk_exe Adobe Premiere Pro.exe
+^1::
 {
-    ;global VFXkey = +1
-   ;instantVFX("position")
-   ;instantVFX("position_vertical")
-   ;instantVFX("scale")
-   ;instantVFX("rotation")
-;    instantVFX("anchor_point_vertical")
-   return
+    GetMusic()
+    return
 }
 return
 
@@ -154,9 +160,16 @@ FOLDERS
         return
     }
 
-    else if ErrorLevel = EndKey:F9
+    else if ErrorLevel = EndKey:F8
     {
         explorerpath:= "explorer /e," "G:\Videos\Creative Cloud\Creative Cloud Files\Resources\Music\Ambient\Upbeat"
+        Run, %explorerpath%
+        Tooltip
+        return
+    } 
+    else if ErrorLevel = EndKey:F9
+    {
+        explorerpath:= "explorer /e," "G:\Videos\Creative Cloud\Creative Cloud Files\Resources\Sounds" 
         Run, %explorerpath%
         Tooltip
         return
@@ -196,14 +209,15 @@ return
     (
 1. Positions
 2. Sounds
-3. Sound Effects (words/effects)
-4. Sound Effects (game/crowd/transitions)
-5. Sound Effects (dramatic) [obsolete]
-6. Music [need to revamp]
+3. Sound Effects (words/effects/game/crowd/transitions/dramatic)
+4. Music
+5. Instant Effects and Quick Search
+6. Text
 7. Color Effects
 8. CPSEQ
 9. Close ups
 10. Misc
+Ctrl + F1: GetMusic
     )
     , MouseTooltipX, MouseTooltipY + 20
     
@@ -359,7 +373,7 @@ T
             presetName = CP - Face Slide Right In
             preset(presetName)
 
-            Input, OutputVar, L1, {Escape}
+            Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
             If ErrorLevel = EndKey:Escape
             {
                 Tooltip
@@ -373,7 +387,7 @@ T
             presetName = CP - Face Slide Left Out
             preset(presetName)
 
-            Input, OutputVar, L1, {Escape}
+            Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
             If ErrorLevel = EndKey:Escape
             {
                 Tooltip
@@ -390,7 +404,7 @@ T
             presetName = CP - Face Slide Right Out
             preset(presetName)
 
-            Input, OutputVar, L1, {Escape}
+            Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
             If ErrorLevel = EndKey:Escape
             {
                 Tooltip
@@ -404,7 +418,7 @@ T
             presetName = CP - Face Slide Left In
             preset(presetName)
 
-            Input, OutputVar, L1, {Escape}
+            Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
             If ErrorLevel = EndKey:Escape
             {
                 Tooltip
@@ -423,6 +437,7 @@ T
 
     If ErrorLevel = EndKey:F1
     {
+        Tooltip
         second = 1
         combinedZoom = CP - Improved %position% %first%to%second%
 
@@ -432,6 +447,7 @@ T
     }    
     else if ErrorLevel = EndKey:F2
     {
+        Tooltip
         second = 2
         combinedZoom = CP - Improved %position% %first%to%second%
 
@@ -541,7 +557,7 @@ T
         {
             ;insertDoublePreset("CP - Zoom into me", "CP - Zoom into object")
             insertSFX("Me-Overlay-Adjustment-Layer", 3)
-            Input, OutputVar, L1, {Escape}
+            Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
             If ErrorLevel = EndKey:Escape
             {
                 Tooltip
@@ -587,7 +603,7 @@ T
         If ErrorLevel = EndKey:F6
         {
             insertSFX("Me-Overlay-Adjustment-Layer", 4)
-            Input, OutputVar, L1, {Escape}
+            Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
             If ErrorLevel = EndKey:Escape
             {
                 Tooltip
@@ -608,6 +624,13 @@ T
         }
         If ErrorLevel = EndKey:F8
         {
+            insertSFX("Me-Overlay-Adjustment-Layer", 4)
+            Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+            If ErrorLevel = EndKey:Escape
+            {
+                Tooltip
+                return
+            }
             preset("CP - Spherize")   
             Tooltip         
             return
@@ -615,6 +638,13 @@ T
         
         If ErrorLevel = EndKey:F9
         {
+            insertSFX("Me-Overlay-Adjustment-Layer", 4)
+            Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+            If ErrorLevel = EndKey:Escape
+            {
+                Tooltip
+                return
+            }
             preset("CP - Twirl")   
             Tooltip         
             return
@@ -623,7 +653,7 @@ T
         If ErrorLevel = EndKey:F10
         {
             insertSFX("BlackColorMatte", 4)
-            Input, OutputVar, L1, {Escape}
+            Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
             If ErrorLevel = EndKey:Escape
             {
                 Tooltip
@@ -686,7 +716,7 @@ T
         {
             presetString = The Shaker
             preset(presetString)     
-            Input, OutputVar, L1, {Escape}
+            Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
             If ErrorLevel = EndKey:Escape
             {
                 Tooltip
@@ -708,7 +738,7 @@ T
 
         If ErrorLevel = EndKey:F5
         {            
-            Input, OutputVar, L1, {Escape}
+            Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
             If ErrorLevel = EndKey:Escape
             {
                 Tooltip
@@ -718,13 +748,13 @@ T
             If OutputVar = 1
             {
                 insertSFX("Me-Overlay-Adjustment-Layer", 3)
-                Input, OutputVar, L1, {Escape}              
+                Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}              
             }
 
             presetString = CP - Lighting pop for zoom                       
             preset(presetString)
 
-            Input, OutputVar, L1, {Escape}
+            Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
             
             If ErrorLevel = EndKey:Escape
             {
@@ -754,7 +784,7 @@ T
         ; If ErrorLevel = EndKey:F7
         ; {
         ;     insertSFX("Me-Overlay-Adjustment-Layer", 3)
-        ;     Input, OutputVar, L1, {Escape}
+        ;     Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
         ;     If ErrorLevel = EndKey:Escape
         ;     {
         ;         return
@@ -768,7 +798,7 @@ T
         ; If ErrorLevel = EndKey:F8
         ; {
         ;     insertSFX("Me-Overlay-Adjustment-Layer", 4)
-        ;     Input, OutputVar, L1, {Escape}
+        ;     Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
         ;     If ErrorLevel = EndKey:Escape
         ;     {
         ;         return
@@ -788,14 +818,14 @@ T
         If ErrorLevel = EndKey:F10
         {
             insertSFX("WhiteColorMatte", 4)
-            Input, OutputVar, L1, {Escape}
+            Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
             If ErrorLevel = EndKey:Escape
             {
                 Tooltip
                 return
             }
             preset("CP - White transition flash")
-            Input, OutputVar, L1, {Escape}
+            Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
             If ErrorLevel = EndKey:Escape
             {
                 Tooltip
@@ -831,14 +861,14 @@ T
         If ErrorLevel = EndKey:F10
         {
             insertSFX("RedColorMatte", 4)
-            Input, OutputVar, L1, {Escape}
+            Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
             If ErrorLevel = EndKey:Escape
             {
                 Tooltip
                 return
             }
             preset("CP - White transition flash")
-            Input, OutputVar, L1, {Escape}
+            Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
             If ErrorLevel = EndKey:Escape
             {
                 Tooltip
@@ -2013,29 +2043,46 @@ return
 #IfWinActive ahk_exe Adobe Premiere Pro.exe
 ~3::
 {
+;     data=
+;     (
+; 1- Words 2,W- Words 2,3- Effects 1,4- Effects 2,5- Effects 3
+; 1. Bruh,1. oof-1,1. Blue Screen Of Death Sound,1. fart-short,1. splat
+; 2. Get-Over-Here-Sound-Effect,2. oof-2,2. bone-break,2. glassbreak,2. spring
+; 3. gotcha-grab,3. perfect,3. bone-breaking-4,3. glitch,3. stab
+; 4. Hello There English accent,4. Ric-Flair-Woo,4. bowling-pins,4. Microphone Tap,4. Static Transition Sound
+; 5. help-me,5. tadaa,5. cash-register,5. Mouseclick,5. undertaker
+; 6. huh,6. Tim Allen Grunt,6. cash-register-clear,6. picture-taken,6. whip
+; 7. incredible,7. that-is-not-correct,7. cash-register-opening,7. punch-1,7. Yoshi-Sound-jump-on
+; 8. kobe,8. toasty,8. crowd gasp Sound Effect,8. punch-2,8. --
+; 9. Mission-Failed-We'll-Get-Em-Next-Time,9. what-sound,9. Ding-dong-sound-effect,9. Quack-Sound-Effect,9. --
+; 10.nice,10.what-sound2,10.dream,10.record-scratch,10.--
+; 11.Nice-Shot-Clean,11.yeet,11.slotMachine-2,11.slide,11.--
+; 12.Nope,12.Yes,12.Fart-sound-effects,12.slip,12.--
+; PS.Oh my god xgames vine,PS.--,PS.fart-long,PS.smack,PS.--
+;     )
     data=
     (
-1- Words 2,W- Words 2,3- Effects 1,4- Effects 2,5- Effects 3
-1. Bruh,1. oof-1,1. Blue Screen Of Death Sound,1. fart-short,1. splat
-2. Get-Over-Here-Sound-Effect,2. oof-2,2. bone-break,2. glassbreak,2. spring
-3. gotcha-grab,3. perfect,3. bone-breaking-4,3. glitch,3. stab
-4. Hello There English accent,4. Ric-Flair-Woo,4. bowling-pins,4. Microphone Tap,4. Static Transition Sound
-5. help-me,5. tadaa,5. cash-register,5. Mouseclick,5. undertaker
-6. huh,6. Tim Allen Grunt,6. cash-register-clear,6. picture-taken,6. whip
-7. incredible,7. that-is-not-correct,7. cash-register-opening,7. punch-1,7. Yoshi-Sound-jump-on
-8. kobe,8. toasty,8. crowd gasp Sound Effect,8. punch-2,8. --
-9. Mission-Failed-We'll-Get-Em-Next-Time,9. what-sound,9. Ding-dong-sound-effect,9. Quack-Sound-Effect,9. --
-10.nice,10.what-sound2,10.dream,10.record-scratch,10.--
-11.Nice-Shot-Clean,11.yeet,11.slotMachine-2,11.slide,11.--
-12.Nope,12.Yes,12.Fart-sound-effects,12.slip,12.--
-PS.Oh my god xgames vine,PS.--,PS.fart-long,PS.smack,PS.--
+1- Words 2,W- Words 2,3- Effects 1,4- Effects 2,5- Effects 3,6- Game Sounds 1,7- Game Sounds 2 (N/A),F8- Crowd and Laughs,9- Transitions,10- Dramatic (extra)
+1. Bruh,1. oof-1,1. Blue Screen Of Death Sound,1. fart-short,1. splat,1. chest-opening-Fortnite,1. --,1. CharlieMurphyLaugh,1. cartoon-swipe-in,1. Dramatic-alert
+2. Get-Over-Here-Sound-Effect,2. oof-2,2. bone-break,2. glassbreak,2. spring,2. crash-bandicoot-spin,2. --,2. Human-Applause-LargeCrowd01,2. cartoon-swipe-out,2. Dramatic-building with buzzing
+3. gotcha-grab,3. perfect,3. bone-breaking-4,3. glitch,3. stab,3. FamilyFeud-Blip,3. --,3. Human-Boo-LargeCrowd01,3. swoosh,3. Dramatic-building with slow fade
+4. Hello There English accent,4. Ric-Flair-Woo,4. bowling-pins,4. Microphone Tap,4. Static Transition Sound,4. GTA-5-Death,4. --,4. Human-Boo-SmallCrowd04,4. bubble-pop,4. Dramatic-building violin
+5. help-me,5. tadaa,5. cash-register,5. Mouseclick,5. undertaker,5. minion-w,5. --,5. Human-Laugh-SmallCrowd01,5. --,5. Dramatic-building with wisp 2
+6. huh,6. Tim Allen Grunt,6. cash-register-clear,6. picture-taken,6. whip,6. super-mario-coin,6. --,6. Human-Cheer-MediumCrowd01,6. --,6. Dramatic-boom and trail off
+7. incredible,7. that-is-not-correct,7. cash-register-opening,7. punch-1,7. Yoshi-Sound-jump-on,7. super-mario-death-1,7. --,7. laugh-1,7. --,7. Dramatic-boom scratchy
+8. kobe,8. toasty,8. crowd gasp Sound Effect,8. punch-2,8. --,8. super-mario-death-2,8. --,8. laugh-2,8. --,8. Dramatic-Cinematic-Stinger
+9. Mission-Failed-We'll-Get-Em-Next-Time,9. what-sound,9. Ding-dong-sound-effect,9. Quack-Sound-Effect,9. --,9. super-mario-mushroom,9. --,9. laugh-3,9. --,9. Dramatic-Electronic woosh
+10.nice,10.what-sound2,10.dream,10.record-scratch,10.--,10.--,10.--,10.laughing-earrape,10.--,10.Dramatic-Evil crack 06
+11.Nice-Shot-Clean,11.yeet,11.slotMachine-2,11.slide,11.--,11.--,11.--,11.--,11.--,11.explosion
+12.Nope,12.Yes,12.Fart-sound-effects,12.slip,12.--,12.--,12.--,12.--,12.--,12.Dramatic-hard boom
+PS.Oh my god xgames vine,PS.--,PS.fart-long,PS.smack,PS.--,PS.--,PS.--,PS.--,PS.--,PS.Dramatic-lead pipe clang
     )
-    ToolTipFont("s10", "Inconsolata")
+    ToolTipFont("s8", "Inconsolata")
     ToolTipColor("black", "yellow")
     MouseGetPos, MouseTooltipX, MouseTooltipY
     ToolTip % st_columnize(data, "csv", 1),MouseTooltipX, MouseTooltipY + 20
 
-    Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+    Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{PrintScreen}{Escape}
     sheet = 1
     If ErrorLevel = EndKey:Escape
     {        
@@ -2048,7 +2095,7 @@ PS.Oh my god xgames vine,PS.--,PS.fart-long,PS.smack,PS.--
         MouseGetPos, MouseTooltipX, MouseTooltipY
         ToolTip,
     (
-Q- Words 1								
+F1- Words 1								
     1. Bruh									
     2. Get-Over-Here-Sound-Effect			
     3. gotcha-grab							
@@ -2072,7 +2119,7 @@ Q- Words 1
         MouseGetPos, MouseTooltipX, MouseTooltipY
         ToolTip,
     (
-W- Words 2							
+F2- Words 2							
     1. oof-1							
     2. oof-2							
     3. perfect							
@@ -2095,7 +2142,7 @@ W- Words 2
         MouseGetPos, MouseTooltipX, MouseTooltipY
         ToolTip,
     (
-E- Effects 1					
+F3- Effects 1					
     1. Blue Screen Of Death Sound	
     2. bone-break					
     3. bone-breaking-4				
@@ -2118,7 +2165,7 @@ E- Effects 1
         MouseGetPos, MouseTooltipX, MouseTooltipY
         ToolTip,
     (
-R- Effects 2			
+F4- Effects 2			
     1. fart-short			
     2. glassbreak			
     3. glitch				
@@ -2141,7 +2188,7 @@ R- Effects 2
         MouseGetPos, MouseTooltipX, MouseTooltipY
         ToolTip,
     (
-T- Effects 3
+F5- Effects 3
     1. splat
     2. spring
     3. stab
@@ -2158,12 +2205,147 @@ T- Effects 3
     ), MouseTooltipX, MouseTooltipY + 20
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}
     }
-    ; If OutputVar = Y
-    ; {
-    ;     sheet = 6
-    ;     Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}
-    ; }
-    ;words 1
+    If ErrorLevel = EndKey:F6
+    {
+        sheet = 6
+
+        data=
+            (
+F6- Game Sounds 1
+1. chest-opening-Fortnite
+2. crash-bandicoot-spin
+3. FamilyFeud-Blip
+4. GTA-5-Death
+5. minion-w
+6. super-mario-coin
+7. super-mario-death-1
+8. super-mario-death-2
+9. super-mario-mushroom
+10.--
+11.--
+12.--
+PS.--
+            )
+            ToolTipFont("s10", "Inconsolata")
+            ToolTipColor("black", "yellow")
+            MouseGetPos, MouseTooltipX, MouseTooltipY
+            ToolTip % st_columnize(data, "csv", 1),MouseTooltipX, MouseTooltipY + 20
+
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{PrintScreen}{Escape}
+    }
+    If ErrorLevel = EndKey:F7
+    {
+        sheet = 7
+
+        data=
+            (
+F7- Game Sounds 2 (N/A)
+1. --
+2. --
+3. --
+4. --
+5. --
+6. --
+7. --
+8. --
+9. --
+10.--
+11.--
+12.--
+PS.--
+            )
+            ToolTipFont("s10", "Inconsolata")
+            ToolTipColor("black", "yellow")
+            MouseGetPos, MouseTooltipX, MouseTooltipY
+            ToolTip % st_columnize(data, "csv", 1),MouseTooltipX, MouseTooltipY + 20
+
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{PrintScreen}{Escape}
+    }
+    If ErrorLevel = EndKey:F8
+    {
+        sheet = 8
+
+        data=
+            (
+F8- Crowd and Laughs
+1. CharlieMurphyLaugh
+2. Human-Applause-LargeCrowd01
+3. Human-Boo-LargeCrowd01
+4. Human-Boo-SmallCrowd04
+5. Human-Laugh-SmallCrowd01
+6. Human-Cheer-MediumCrowd01
+7. laugh-1
+8. laugh-2
+9. laugh-3
+10.laughing-earrape
+11.--
+12.--
+PS.--
+            )
+            ToolTipFont("s10", "Inconsolata")
+            ToolTipColor("black", "yellow")
+            MouseGetPos, MouseTooltipX, MouseTooltipY
+            ToolTip % st_columnize(data, "csv", 1),MouseTooltipX, MouseTooltipY + 20
+
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{PrintScreen}{Escape}
+    }
+    If ErrorLevel = EndKey:F9
+    {
+        sheet = 9
+
+        data=
+            (
+F9- Transitions
+1. cartoon-swipe-in
+2. cartoon-swipe-out
+3. swoosh
+4. bubble-pop
+5. --
+6. --
+7. --
+8. --
+9. --
+10.--
+11.--
+12.--
+PS.--
+            )
+            ToolTipFont("s10", "Inconsolata")
+            ToolTipColor("black", "yellow")
+            MouseGetPos, MouseTooltipX, MouseTooltipY
+            ToolTip % st_columnize(data, "csv", 1),MouseTooltipX, MouseTooltipY + 20
+
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{PrintScreen}{Escape}
+    }
+    If ErrorLevel = EndKey:F10
+    {
+        sheet = 10
+
+        data=
+            (
+10- Dramatic (extra)
+1. alert.wav
+2. building with buzzing.wav
+3. building with slow fade.wav
+4. building violin.wav
+5. building with wisp 2.wav
+6. boom and trail off.wav
+7. boom scratchy.wav
+8. Cinematic-Stinger.wav
+9. Electronic woosh.wav
+10.Evil crack 06.wav
+11.explosion.wav
+12.hard boom.wav
+PS.lead pipe clang.wav
+
+            )
+            ToolTipFont("s10", "Inconsolata")
+            ToolTipColor("black", "yellow")
+            MouseGetPos, MouseTooltipX, MouseTooltipY
+            ToolTip % st_columnize(data, "csv", 1),MouseTooltipX, MouseTooltipY + 20
+
+        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{PrintScreen}{Escape}
+    }
     if sheet = 1
     {
         If ErrorLevel = EndKey:Escape
@@ -2663,402 +2845,9 @@ T- Effects 3
             ToolTip
             return
         }
-    }
-    ;misc
-    if sheet = 6
-    {
-        MouseGetPos, MouseTooltipX, MouseTooltipY
-        ToolTip,
-    (
-Y- N/A
-    1. --
-    2. --
-    3. --
-    4. --
-    5. --
-    6. --
-    7. --
-    8. --
-    9. --
-    10.--
-    11.--
-    12.--
-    PS.--
-    ), MouseTooltipX, MouseTooltipY + 20
-        If ErrorLevel = EndKey:Escape
-        {           
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F1
-        {
-            ;insertSFX("huh")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F2
-        {
-            ;insertSFX("Static Transition Sound")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F3
-        {
-            ;insertSFX("Blue Screen Of Death Sound")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F4
-        {
-            ;insertSFX("correct")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F5
-        {
-            ;insertSFX("correct")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F6
-        {
-            ;insertSFX("correct")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F7
-        {
-            ;insertSFX("correct")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F8
-        {
-            ;insertSFX("correct")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F9
-        {
-            ;insertSFX("correct")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F10
-        {
-            ;insertSFX("correct")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F11
-        {
-            ;insertSFX("correct")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F12
-        {
-            ;insertSFX("correct")
-            
-            ToolTip
-            return
-        }
-    }
-}    
-
-return
-
-;Game/Movie effects - 4 q,w; laughs/crowd - 4 e; transitions 4 r
-;4 - q,w
-;;;Game/Movie effects - 18
-;metal-gear-alert-nes.wav
-;metal-gear-alert-playstation.wav
-;minion-w.wav
-;pick-up-item.wav
-;crash-bandicoot-spin.wav
-;zelda-secret-n64.wav
-;zelda-secret-nes.wav
-;super-mario-coin.wav
-;super-mario-death-1.wav
-;super-mario-death-2.wav
-;super-mario-mushroom.wav
-;Super Mario Jump.wav
-;chest opening - Fortnite.wav
-;FamilyFeud-Blip.wav
-;GTA 5 Death.wav
-;Uppercut.wav
-;--CharlieBrownTeacherVoice.wav
-
-;4 - e
-;;;laughs/applause/boo - 9
-;laugh-1.wav
-;laugh-2.wav
-;laugh-3.wav
-;laughing-earrape.wav
-;CharlieMurphyLaugh.wav
-;Human-Applause-LargeCrowd01.wav
-;Human-Boo-LargeCrowd01.wav
-;Human-Boo-SmallCrowd04.wav
-;Human-Cheer-MediumCrowd01.wav
-;Human-Laugh-SmallCrowd01.wav
-
-;4 - r
-;;transitions - 4
-;cartoon-swipe-in.wav
-;cartoon-swipe-out.wav
-;Swoosh.wav
-;bubble-pop.wav
-
-#IfWinActive ahk_exe Adobe Premiere Pro.exe
-~4::
-{
-    data=
-    (
-1- Game Sounds 1,2- Game Sounds 2,3- Crowd 1,4- Transitions
-1. crash-bandicoot-spin,1. chest-opening-Fortnite,1. laugh-1,1. cartoon-swipe-in
-2. metal-gear-alert-nes,2. FamilyFeud-Blip,2. laugh-2,2. cartoon-swipe-out
-3. metal-gear-alert-playstation,3. GTA-5-Death,3. laugh-3,3. swoosh
-4. minion-w,4. uppercut,4. laughing-earrape,4. bubble-pop
-5. pick-up-item,5. CharlieMurphyLaugh,5. --,5. --
-6. super-mario-coin,6. Human-Applause-LargeCrowd01,6. --,6. --
-7. super-mario-death-1,7. Human-Boo-LargeCrowd01,7. --,7. --
-8. super-mario-death-2,8. Human-Boo-SmallCrowd04,8. --,8. --
-9. Super-Mario-Jump,9. Human-Cheer-MediumCrowd01,9. --,9. --
-10super-mario-mushroom,10.Human-Laugh-SmallCrowd01,10.--,10.--
-11.zelda-secret-n64,11.--,11.--,11.--
-12.zelda-secret-nes,12.--,12.--,12.--
-PS.--,PS.--,PS.--,PS.--
-    )
-    ToolTipFont("s10", "Inconsolata")
-    ToolTipColor("black", "yellow")
-    MouseGetPos, MouseTooltipX, MouseTooltipY
-    ToolTip % st_columnize(data, "csv", 1),MouseTooltipX, MouseTooltipY + 20
-
-    Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    sheet = 1
-
-    If ErrorLevel = EndKey:Escape
-    {
-        return
-    }
-    If ErrorLevel = EndKey:F1
-    {
-        sheet = 1
-
-        data=
-            (
-Q- Game Sounds 1
-1. crash-bandicoot-spin
-2. metal-gear-alert-nes
-3. metal-gear-alert-playstation
-4. minion-w
-5. pick-up-item
-6. super-mario-coin
-7. super-mario-death-1
-8. super-mario-death-2
-9. Super-Mario-Jump
-10super-mario-mushroom
-11.zelda-secret-n64
-12.zelda-secret-nes
-PS.--
-            )
-            ToolTipFont("s10", "Inconsolata")
-            ToolTipColor("black", "yellow")
-            MouseGetPos, MouseTooltipX, MouseTooltipY
-            ToolTip % st_columnize(data, "csv", 1),MouseTooltipX, MouseTooltipY + 20
-
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }
-    If ErrorLevel = EndKey:F2
-    {
-        sheet = 2
-
-        data=
-            (
-W- Game Sounds 2
-1. chest-opening-Fortnite
-2. FamilyFeud-Blip
-3. GTA-5-Death
-4. uppercut
-5. CharlieMurphyLaugh
-6. Human-Applause-LargeCrowd01
-7. Human-Boo-LargeCrowd01
-8. Human-Boo-SmallCrowd04
-9. Human-Cheer-MediumCrowd01
-10.Human-Laugh-SmallCrowd01
-11.--
-12.--
-PS.--
-            )
-            ToolTipFont("s10", "Inconsolata")
-            ToolTipColor("black", "yellow")
-            MouseGetPos, MouseTooltipX, MouseTooltipY
-            ToolTip % st_columnize(data, "csv", 1),MouseTooltipX, MouseTooltipY + 20
-
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }
-    If ErrorLevel = EndKey:F3
-    {
-        sheet = 3
-
-        data=
-            (
-E- Crowd 1
-1. laugh-1
-2. laugh-2
-3. laugh-3
-4. laughing-earrape
-5. --
-6. --
-7. --
-8. --
-9. --
-10.--
-11.--
-12.--
-PS.--
-            )
-            ToolTipFont("s10", "Inconsolata")
-            ToolTipColor("black", "yellow")
-            MouseGetPos, MouseTooltipX, MouseTooltipY
-            ToolTip % st_columnize(data, "csv", 1),MouseTooltipX, MouseTooltipY + 20
-
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }
-    If ErrorLevel = EndKey:F4
-    {
-        sheet = 4
-
-        data=
-            (
-R- Transitions
-1. cartoon-swipe-in
-2. cartoon-swipe-out
-3. swoosh
-4. bubble-pop
-5. --
-6. --
-7. --
-8. --
-9. --
-10.--
-11.--
-12.--
-PS.--
-            )
-            ToolTipFont("s10", "Inconsolata")
-            ToolTipColor("black", "yellow")
-            MouseGetPos, MouseTooltipX, MouseTooltipY
-            ToolTip % st_columnize(data, "csv", 1),MouseTooltipX, MouseTooltipY + 20
-
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }
+    }    
     ;Game sounds 1
-    if sheet = 1
-    {
-        If ErrorLevel = EndKey:Escape
-        {            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F1
-        {
-            insertSFX("metal-gear-alert-nes")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F2
-        {
-            insertSFX("metal-gear-alert-playstation")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F3
-        {
-            insertSFX("minion-w")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F4
-        {
-            insertSFX("pick-up-item")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F5
-        {
-            insertSFX("crash-bandicoot-spin")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F6
-        {
-            insertSFX("zelda-secret-n64")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F7
-        {
-            insertSFX("zelda-secret-nes")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F8
-        {
-            insertSFX("super-mario-coin")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F9
-        {
-            insertSFX("super-mario-death-1")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F10
-        {
-            insertSFX("super-mario-death-2")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F11
-        {
-            insertSFX("super-mario-mushroom")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F12
-        {
-            insertSFX("Super-Mario-Jump")
-            
-            ToolTip
-            return
-        }
-    }  
-    ;Game sounds 2
-    if sheet = 2
+    if sheet = 6
     {
         If ErrorLevel = EndKey:Escape
         {            
@@ -3074,21 +2863,121 @@ PS.--
         }
         If ErrorLevel = EndKey:F2
         {
-            insertSFX("FamilyFeud-Blip")
+            insertSFX("crash-bandicoot-spin")
             
             ToolTip
             return
         }
         If ErrorLevel = EndKey:F3
         {
-            insertSFX("GTA-5-Death")
+            insertSFX("FamilyFeud-Blip")
             
             ToolTip
             return
         }
         If ErrorLevel = EndKey:F4
         {
-            insertSFX("uppercut")
+            insertSFX("GTA-5-Death")
+            
+            ToolTip
+            return
+        }        
+        If ErrorLevel = EndKey:F5
+        {
+            insertSFX("minion-w")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F6
+        {
+            insertSFX("super-mario-coin")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F7
+        {
+            insertSFX("super-mario-death-1")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F8
+        {
+            insertSFX("super-mario-death-2")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F9
+        {
+            insertSFX("super-mario-mushroom")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F10
+        {
+            ;insertSFX("super")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F11
+        {
+            ;insertSFX("super")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F12
+        {
+            ;insertSFX("super")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:PrintScreen
+        {
+            ;insertSFX("super")
+            
+            ToolTip
+            return
+        }
+    }  
+    ;Game sounds 2 (Not used right now)
+    if sheet = 7
+    {
+        If ErrorLevel = EndKey:Escape
+        {            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F1
+        {
+            ;insertSFX("super-mario-death-2")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F2
+        {
+            ;insertSFX("super-mario-mushroom")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F3
+        {
+            ;insertSFX("GTA-5-Death")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F4
+        {
+            ;insertSFX("uppercut")
             
             ToolTip
             return
@@ -3149,9 +3038,16 @@ PS.--
             ToolTip
             return
         } 
+        If ErrorLevel = EndKey:PrintScreen
+        {
+            ;insertSFX("correct")
+            
+            ToolTip
+            return
+        } 
     }  
     ;laughs/crowd 1
-    if sheet = 3
+    if sheet = 8
     {
         If ErrorLevel = EndKey:Escape
         {            
@@ -3160,74 +3056,75 @@ PS.--
         }
         If ErrorLevel = EndKey:F1
         {
-            insertSFX("laugh-1")
+            insertSFX("CharlieMurphyLaugh")
             
             ToolTip
             return
         }
         If ErrorLevel = EndKey:F2
         {
-            insertSFX("laugh-2")
+            insertSFX("Human-Applause-LargeCrowd01")
             
             ToolTip
             return
         }
         If ErrorLevel = EndKey:F3
         {
-            insertSFX("laugh-3")
+            insertSFX("Human-Boo-LargeCrowd01")
             
             ToolTip
             return
         }
         If ErrorLevel = EndKey:F4
         {
-            insertSFX("laughing-earrape")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F5
-        {
-            insertSFX("CharlieMurphyLaugh")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F6
-        {
-            insertSFX("Human-Applause-LargeCrowd01")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F7
-        {
-            insertSFX("Human-Boo-LargeCrowd01")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F8
-        {
             insertSFX("Human-Boo-SmallCrowd04")
             
             ToolTip
             return
-        }
-        If ErrorLevel = EndKey:F9
-        {
-            insertSFX("Human-Cheer-MediumCrowd01")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F10
+        }        
+        If ErrorLevel = EndKey:F5
         {
             insertSFX("Human-Laugh-SmallCrowd01")
             
             ToolTip
             return
         }
+        If ErrorLevel = EndKey:F6
+        {
+            insertSFX("Human-Cheer-MediumCrowd01")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F7
+        {
+            insertSFX("laugh-1")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F8
+        {
+            insertSFX("laugh-2")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F9
+        {
+            insertSFX("laugh-3")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F10
+        {
+            insertSFX("laughing-earrape")
+            
+            ToolTip
+            return
+        }       
+        
         If ErrorLevel = EndKey:F11
         {
             ;insertSFX("correct")
@@ -3242,9 +3139,16 @@ PS.--
             ToolTip
             return
         }
+        If ErrorLevel = EndKey:PrintScreen
+        {
+            ;insertSFX("correct")
+            
+            ToolTip
+            return
+        }
     }  
     ;transitions
-    if sheet = 4
+    if sheet = 9
     {
         If ErrorLevel = EndKey:Escape
         {            
@@ -3335,294 +3239,113 @@ PS.--
             ToolTip
             return
         } 
-    }  
-} 
-
-return
-
-;Dramatic q,w
-;5 - q,w
-;;dramatic - 21
-;Dramatic-alert.wav
-;Dramatic-boom and trail off.wav
-;Dramatic-boom scratchy.wav
-;Dramatic-Boom.wav
-;Dramatic-building violin.wav
-;Dramatic-building with buzzing.wav
-;Dramatic-building with slow fade.wav
-;Dramatic-building with wisp 2.wav
-;Dramatic-bum bum bum bum bum bum bum bum.wav
-;Dramatic-Cinematic-Stinger.wav
-;Dramatic-CinematicBoom.wav
-;Dramatic-CinematicBoom2.wav
-;Dramatic-classic.wav
-;Dramatic-do dooo doo doo do dooo.wav
-;Dramatic-Electronic woosh.wav
-;Dramatic-Evil crack 06.wav
-;Dramatic-hard boom.wav
-;Dramatic-horn.wav
-;Dramatic-Jurassic park like.wav
-;Dramatic-lead pipe clang.wav
-;explosion.wav
-#IfWinActive ahk_exe Adobe Premiere Pro.exe
-~5::
-{
-    Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    sheet = 1
-
-    If ErrorLevel = EndKey:Escape
-    {
-        return
     }
-    If ErrorLevel = EndKey:F1
-    {
-        sheet = 1
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }
-    If ErrorLevel = EndKey:F2
-    {
-        sheet = 2
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }
-    If ErrorLevel = EndKey:F3
-    {
-        sheet = 3
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }
-    If ErrorLevel = EndKey:F4
-    {
-        sheet = 4
-        Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
-    }
-    ;dramatic
-    if sheet = 1
+    ;dramatic extra
+    if sheet = 10
     {
         If ErrorLevel = EndKey:Escape
         {
+            Tooltip
             return
         }
         If ErrorLevel = EndKey:F1
         {
             insertSFX("Dramatic-alert")
+            
+            Tooltip
             return
         }  
         If ErrorLevel = EndKey:F2
-        {
-            insertSFX("Dramatic-boom-and-trail-off")
-            return
-        }    
-        If ErrorLevel = EndKey:F3
-        {
-            insertSFX("Dramatic-boom-scratchy")
-            return
-        } 
-        If ErrorLevel = EndKey:F4
-        {
-            insertSFX("Dramatic-Boom")
-            return
-        } 
-        If ErrorLevel = EndKey:F5
-        {
-            insertSFX("Dramatic-building-violin")
-            return
-        }  
-        If ErrorLevel = EndKey:F6
         {
             insertSFX("Dramatic-building-with-buzzing")
+            
+            Tooltip
+            return
+        }    
+        If ErrorLevel = EndKey:F3
+        {
+            insertSFX("Dramatic-building-with-slow-fade")            
+            
+            Tooltip
             return
         } 
-
-        If ErrorLevel = EndKey:F7
+        If ErrorLevel = EndKey:F4
         {
-            insertSFX("Dramatic-building-with-slow-fade")
+            insertSFX("Dramatic-building-violin")            
+            
+            Tooltip
             return
-        }  
-        If ErrorLevel = EndKey:F8
+        } 
+        If ErrorLevel = EndKey:F5
         {
             insertSFX("Dramatic-building-with-wisp-2")
-            return
-        }  
-        If ErrorLevel = EndKey:F9
-        {
-            insertSFX("Dramatic-bum-bum-bum-bum-bum-bum-bum-bum")
-            return
-        }  
-        If ErrorLevel = EndKey:F10
-        {
-            insertSFX("Dramatic-Cinematic-Stinger")
-            return
-        }  
-        If ErrorLevel = EndKey:F11
-        {
-            insertSFX("Dramatic-CinematicBoom")
-            return
-        }  
-        If ErrorLevel = EndKey:F12
-        {
-            insertSFX("Dramatic-CinematicBoom2")
-            return
-        }   
-    }
-    ;dramatic
-    if sheet = 2
-    {
-        If ErrorLevel = EndKey:Escape
-        {
-            return
-        }
-
-        If ErrorLevel = EndKey:F1
-        {
-            insertSFX("Dramatic-classic")
-            return
-        }  
-        If ErrorLevel = EndKey:F2
-        {
-            insertSFX("Dramatic-do-dooo-doo-doo-do-dooo")
-            return
-        }    
-        If ErrorLevel = EndKey:F3
-        {
-            insertSFX("Dramatic-Electronic-woosh")
-            return
-        } 
-        If ErrorLevel = EndKey:F4
-        {
-            insertSFX("Dramatic-Evil-crack-06")
-            return
-        } 
-        If ErrorLevel = EndKey:F5
-        {
-            insertSFX("Dramatic-hard-boom")
+            
+            Tooltip
             return
         }  
         If ErrorLevel = EndKey:F6
         {
-            insertSFX("Dramatic-horn")
+            insertSFX("Dramatic-boom-and-trail-off")
+            
+            Tooltip
             return
         } 
-
         If ErrorLevel = EndKey:F7
         {
-            insertSFX("Dramatic-Jurassic-park-like")
+            insertSFX("Dramatic-boom-scratchy")
+            
+            Tooltip
             return
         }  
         If ErrorLevel = EndKey:F8
         {
-            insertSFX("Dramatic-lead-pipe-clang")
+            insertSFX("Dramatic-Cinematic-Stinger")
+            
+            Tooltip
             return
         }  
         If ErrorLevel = EndKey:F9
         {
-            insertSFX("explosion")
+            insertSFX("Dramatic-Electronic-woosh")
+            
+            Tooltip
             return
         }  
         If ErrorLevel = EndKey:F10
         {
-            ;insertSFX("record-scratch")
+            insertSFX("Dramatic-Evil-crack-06")            
+            
+            Tooltip
             return
         }  
         If ErrorLevel = EndKey:F11
         {
-            ;insertSFX("laugh-2")
+            insertSFX("explosion")
+            
+            Tooltip
             return
         }  
         If ErrorLevel = EndKey:F12
         {
-            ;insertSFX("pick-up-item")
+            insertSFX("Dramatic-hard-boom")
+            
+            Tooltip
             return
-        }      
+        }
+        If ErrorLevel = EndKey:PrintScreen
+        {
+            insertSFX("Dramatic-lead-pipe-clang")
+            
+            Tooltip
+            return
+        }
     } 
-    ;N/A
-    if sheet = 3
-    {
-        If ErrorLevel = EndKey:Escape
-        {
-            return
-        }
-        If ErrorLevel = EndKey:F1
-        {
-            insertSFX("spring")
-            return
-        }  
-        If ErrorLevel = EndKey:F2
-        {
-            insertSFX("super-mario-death-1")
-            return
-        } 
-        If ErrorLevel = EndKey:F3
-        {
-            insertSFX("super-mario-death-2")
-            return
-        }    
-        If ErrorLevel = EndKey:F4
-        {
-            insertSFX("super-mario-mushroom")
-            return
-        } 
-        If ErrorLevel = EndKey:F5
-        {
-            insertSFX("super-mario-coin")
-            return
-        } 
-        If ErrorLevel = EndKey:F6
-        {
-            insertSFX("uppercut")
-            return
-        }
-        If ErrorLevel = EndKey:F7
-        {
-            insertSFX("Nope")
-            return
-        } 
-    } 
-    ;N/A  
-    if sheet = 4
-    {
-        If ErrorLevel = EndKey:Escape
-        {
-            return
-        }
-        If ErrorLevel = EndKey:F1
-        {
-            insertSFX("What-sound")
-            return
-        } 
-    }     
-}   
+}    
 
 return
 
-;Audio Music q,w
-;6 - q,w
-;;music - 24
-;beverly-hills-cop.wav
-;cartoon-music-mattia-cupelli.wav
-;cinema-sins.wav
-;Fluffing-a-duck.wav
-;Ghostpocalypse.mp3
-;hitman.wav
-;Illuminati-Confirmed-Distorted.wav
-;Illuminati-Confirmed.wav
-;Investigations.wav
-;love-me.wav
-;Marty-Gots-a-Plan.wav
-;MBB.wav
-;monkey-spinning.wav
-;Piano-and-Ukulele.wav
-;pink-panther.wav
-;Pizzicato-Playtime.wav
-;sad-emotional-piano.wav
-;Scheming-Weasel.wav
-;Sneaking-Suspense-Jazz.wav
-;Sneaky-Adventure.wav
-;Sneaky-Snitch.wav
-;Spongebob-background-music.wav
-;Umbrella-Pants.mp3
-;wii-music.wav
-;workaday.wav
 #IfWinActive ahk_exe Adobe Premiere Pro.exe
-~6::
+~4::
 {
     Input, OutputVar, L1, 1,2,3,4,5,6,7,8,9,0,{F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
     sheet = 1
@@ -3873,10 +3596,591 @@ return
             insertAudio("love-me")
             return
         } 
-    }   
+    }  
 } 
 
 return
+
+#IfWinActive ahk_exe Adobe Premiere Pro.exe
+~5::
+{
+    data=
+    (
+5. Instant Effects and Quick Search
+1. instantVFX("position")
+2. instantVFX("position_vertical")
+3. instantVFX("scale")
+4. instantVFX("rotation")
+5. instantVFX("anchor_point")
+6. instantVFX("anchor_point_vertical")
+7. quickEffectsSearch()
+8. quickProjectSearch() 
+9. --
+10.--
+11.--
+12.--
+PS.--
+    )
+    ToolTipFont("s10", "Inconsolata")
+    ToolTipColor("black", "yellow")
+    MouseGetPos, MouseTooltipX, MouseTooltipY
+    ToolTip % st_columnize(data, "csv", 1),MouseTooltipX, MouseTooltipY + 20
+
+    Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{PrintScreen}{Escape}
+    sheet = 1
+    If ErrorLevel = EndKey:Escape
+    {        
+        ToolTip
+        return
+    }
+;     If ErrorLevel = EndKey:F1
+;     {
+;         sheet = 1
+;         MouseGetPos, MouseTooltipX, MouseTooltipY
+;         ToolTip,
+;     (
+; F1- Words 1								
+;     1. Bruh									
+;     2. Get-Over-Here-Sound-Effect			
+;     3. gotcha-grab							
+;     4. Hello There English accent			
+;     5. help-me								
+;     6. huh									
+;     7. incredible							
+;     8. kobe									
+;     9. Mission-Failed-We'll-Get-Em-Next-Time
+;     10.nice									
+;     11.Nice-Shot-Clean						
+;     12.Nope									
+;     PS.Oh my god xgames vine			
+
+;     ), MouseTooltipX, MouseTooltipY + 20
+;         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}
+;     }
+    if sheet = 1
+    {
+        If ErrorLevel = EndKey:Escape
+        {            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F1
+        {
+            global VFXkey = F1
+            instantVFX("position")
+            
+            ToolTip
+            return
+        }  
+        If ErrorLevel = EndKey:F2
+        {
+            global VFXkey = F2
+            instantVFX("position_vertical")
+   
+            ToolTip
+            return
+        }  
+        If ErrorLevel = EndKey:F3
+        {
+            global VFXkey = F3            
+            instantVFX("scale")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F4
+        {
+            global VFXkey = F4            
+            instantVFX("rotation")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F5
+        {
+            global VFXkey = F5
+            instantVFX("anchor_point")
+            
+            ToolTip
+            return
+        }  
+        If ErrorLevel = EndKey:F6
+        {
+            global VFXkey = F6
+            instantVFX("anchor_point_vertical")
+            
+            ToolTip
+            return
+        }  
+        If ErrorLevel = EndKey:F7
+        {
+            quickEffectsSearch()
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F8
+        {
+            quickProjectSearch()  
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F9
+        {
+            ;insertSFX("Mission-Failed-We'll-Get-Em-Next-Time")
+            
+            ToolTip
+            return
+        }            
+        If ErrorLevel = EndKey:F10
+        {
+            ;insertSFX("nice")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F11
+        {
+            ;insertSFX("Nice-Shot-Clean")
+            
+            ToolTip
+            return
+        }     
+        If ErrorLevel = EndKey:F12
+        {
+            ;insertSFX("Nope")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:PrintScreen
+        {
+            ;insertSFX("Oh my god xgames vine")
+            
+            ToolTip
+            return
+        }      
+    }  
+}   
+
+return
+
+;Text
+#IfWinActive ahk_exe Adobe Premiere Pro.exe
+~6::
+{
+    data=
+    (
+6. Text
+1. CP - Default Text For Message
+2. CP - Default Text For Message (Tecmo - Black)
+3. CP - Default Text For Message (Tecmo - Basic)
+4. CP - Default Text for special characters
+5. CP - Glitchy Text on Dup Layer (bottom)
+6. --
+7. --
+8. --
+9. --
+10.--
+11.--
+12.--
+PS.--
+    )
+    ToolTipFont("s10", "Inconsolata")
+    ToolTipColor("black", "yellow")
+    MouseGetPos, MouseTooltipX, MouseTooltipY
+    ToolTip % st_columnize(data, "csv", 1),MouseTooltipX, MouseTooltipY + 20
+
+    Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{PrintScreen}{Escape}
+    sheet = 1
+    If ErrorLevel = EndKey:Escape
+    {        
+        ToolTip
+        return
+    }
+;     If ErrorLevel = EndKey:F1
+;     {
+;         sheet = 1
+;         MouseGetPos, MouseTooltipX, MouseTooltipY
+;         ToolTip,
+;     (
+; F1- Words 1								
+;     1. Bruh									
+;     2. Get-Over-Here-Sound-Effect			
+;     3. gotcha-grab							
+;     4. Hello There English accent			
+;     5. help-me								
+;     6. huh									
+;     7. incredible							
+;     8. kobe									
+;     9. Mission-Failed-We'll-Get-Em-Next-Time
+;     10.nice									
+;     11.Nice-Shot-Clean						
+;     12.Nope									
+;     PS.Oh my god xgames vine			
+
+;     ), MouseTooltipX, MouseTooltipY + 20
+;         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}
+;     }
+    if sheet = 1
+    {
+        If ErrorLevel = EndKey:Escape
+        {            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F1
+        {
+            preset("CP - Default Text For Message")
+            
+            ToolTip
+            return
+        }  
+        If ErrorLevel = EndKey:F2
+        {
+            preset("CP - Default Text For Message (Tecmo - Black)")
+   
+            ToolTip
+            return
+        }  
+        If ErrorLevel = EndKey:F3
+        {
+            preset("CP - Default Text For Message (Tecmo - Basic)")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F4
+        {
+            preset("CP - Default Text for special characters")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F5
+        {
+            preset("CP - Glitchy Text on Dup Layer (bottom)")
+            
+            ToolTip
+            return
+        }  
+        If ErrorLevel = EndKey:F6
+        {
+            ;preset("anchor_point_vertical")
+            
+            ToolTip
+            return
+        }  
+        If ErrorLevel = EndKey:F7
+        {
+            ; quickEffectsSearch()
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F8
+        {
+            ; quickProjectSearch()  
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F9
+        {
+            ;insertSFX("Mission-Failed-We'll-Get-Em-Next-Time")
+            
+            ToolTip
+            return
+        }            
+        If ErrorLevel = EndKey:F10
+        {
+            ;insertSFX("nice")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:F11
+        {
+            ;insertSFX("Nice-Shot-Clean")
+            
+            ToolTip
+            return
+        }     
+        If ErrorLevel = EndKey:F12
+        {
+            ;insertSFX("Nope")
+            
+            ToolTip
+            return
+        }
+        If ErrorLevel = EndKey:PrintScreen
+        {
+            ;insertSFX("Oh my god xgames vine")
+            
+            ToolTip
+            return
+        }      
+    }  
+}   
+
+return
+; #IfWinActive ahk_exe Adobe Premiere Pro.exe
+; ~6::
+; {
+;     Input, OutputVar, L1, 1,2,3,4,5,6,7,8,9,0,{F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+;     sheet = 1
+
+;     If ErrorLevel = EndKey:Escape
+;     {
+;         return
+;     }
+;     If OutputVar = Q
+;     {
+;         sheet = 1
+;         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+;     }
+;     If OutputVar = W
+;     {
+;         sheet = 2
+;         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+;     }
+;     If OutputVar = E
+;     {
+;         sheet = 3
+;         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+;     }
+;     If OutputVar = R
+;     {
+;         sheet = 4
+;         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}
+;     }
+;     ;music 1
+;     if sheet = 1
+;     {
+;         If ErrorLevel = EndKey:Escape
+;         {
+;             return
+;         }
+;         If ErrorLevel = EndKey:F1
+;         {
+;             insertAudio("wii-music")
+;             return
+;         }   
+;         If ErrorLevel = EndKey:F2
+;         {
+;             insertAudio("cartoon-music-mattia-cupelli")
+;             return
+;         }   
+;         If ErrorLevel = EndKey:F3
+;         {
+;             insertAudio("hitman")
+;             return
+;         }   
+;         If ErrorLevel = EndKey:F4
+;         {
+;             insertAudio("investigations")
+;             return
+;         }   
+;         If ErrorLevel = EndKey:F5
+;         {
+;             insertAudio("cinema-sins")
+;             return
+;         }   
+;         If ErrorLevel = EndKey:F6
+;         {
+;             insertAudio("beverly-hills-cop")
+;             return
+;         }   
+;         If ErrorLevel = EndKey:F7
+;         {
+;             insertAudio("Umbrella-pants")
+;             return
+;         }   
+;         If ErrorLevel = EndKey:F8
+;         {
+;             insertAudio("Ghostpocalypse")
+;             return
+;         }   
+;         If ErrorLevel = EndKey:F9
+;         {
+;             insertAudio("darix-togni")
+;             return
+;         }   
+;         If ErrorLevel = EndKey:F10
+;         {
+;             insertAudio("fluffing-a-duck")
+;             return
+;         }   
+;         If ErrorLevel = EndKey:F11
+;         {
+;             insertAudio("marty-gots-a-plan")
+;             return
+;         }   
+;         If ErrorLevel = EndKey:F12
+;         {
+;             insertAudio("mbb")
+;             return
+;         }   
+;     }
+;     ;music 2
+;     if sheet = 2
+;     {
+;         If ErrorLevel = EndKey:Escape
+;         {
+;             return
+;         }
+        
+;         If ErrorLevel = EndKey:F1
+;         {
+;             insertAudio("Scheming-Weasel")
+;             return
+;         }   
+;         If ErrorLevel = EndKey:F2
+;         {
+;             insertAudio("sneaky-suspense-jazz")
+;             return
+;         }   
+;         If ErrorLevel = EndKey:F3
+;         {
+;             insertAudio("sneaky-adventure")
+;             return
+;         }   
+;         If ErrorLevel = EndKey:F4
+;         {
+;             insertAudio("sneaky-snitch")
+;             return
+;         }   
+;         If ErrorLevel = EndKey:F5
+;         {
+;             insertAudio("spongebob-background")
+;             return
+;         }   
+;         If ErrorLevel = EndKey:F6
+;         {
+;             insertAudio("batman streets")
+;             return
+;         }   
+;         If ErrorLevel = EndKey:F7
+;         {
+;             insertAudio("workaday")
+;             return
+;         }   
+;         If ErrorLevel = EndKey:F8
+;         {
+;             insertAudio("monkey-spinning")
+;             return
+;         }   
+;         If ErrorLevel = EndKey:F9
+;         {
+;             insertAudio("piano-and-ukalele")
+;             return
+;         }   
+;         If ErrorLevel = EndKey:F10
+;         {
+;             insertAudio("sad-emotional-piano")
+;             return
+;         }   
+;         If ErrorLevel = EndKey:F11
+;         {
+;             insertAudio("illuminat-confirmed")
+;             return
+;         }   
+;         If ErrorLevel = EndKey:F12
+;         {
+;             insertAudio("illuminat-confirmed-distorted")
+;             return
+;         }   
+;     }
+;     ;music N/A
+;     if sheet = 3
+;     {
+;         If ErrorLevel = EndKey:Escape
+;         {
+;             return
+;         }
+;         If ErrorLevel = EndKey:F1
+;         {
+;             insertAudio("pizzicato-playtime")
+;             return
+;         } 
+;         If ErrorLevel = EndKey:F2
+;         {
+;             insertAudio("love-me")
+;             return
+;         } 
+;         If ErrorLevel = EndKey:F3
+;         {
+;             insertAudio("Movement-Proposition")
+;             return
+;         } 
+;         If ErrorLevel = EndKey:F4
+;         {
+;             insertAudio("Myuu - The Order's Theme")
+;             return
+;         }        
+;         If ErrorLevel = EndKey:F5
+;         {
+;             insertAudio("Blippy Trance")
+;             return
+;         }        
+;         If ErrorLevel = EndKey:F6
+;         {
+;             insertAudio("wholesome")
+;             return
+;         }        
+;         If ErrorLevel = EndKey:F7
+;         {
+;             insertAudio("Super Mario Bros. 3 Music - Athletic Theme")
+;             return
+;         }        
+;         If ErrorLevel = EndKey:F8
+;         {
+;             insertAudio("Dizzy")
+;             return
+;         }        
+;         If ErrorLevel = EndKey:F9
+;         {
+;             insertAudio("Deep and Dirty")
+;             return
+;         }        
+;         If ErrorLevel = EndKey:F10
+;         {
+;             insertAudio("george street shuffle")
+;             return
+;         }        
+;         If ErrorLevel = EndKey:F11
+;         {
+;             insertAudio("antagonist a")
+;             return
+;         }        
+;         If ErrorLevel = EndKey:F12
+;         {
+;             ;insertAudio("Myuu - The Order's Theme")
+;             return
+;         }                
+;     }   
+;     ;music N/A 
+;     if sheet = 4
+;     {
+;         If ErrorLevel = EndKey:Escape
+;         {
+;             return
+;         }
+;         If ErrorLevel = EndKey:F1
+;         {
+;             insertAudio("pizzicato-playtime")
+;             return
+;         } 
+;         If ErrorLevel = EndKey:F2
+;         {
+;             insertAudio("love-me")
+;             return
+;         } 
+;     }   
+; } 
+
+; return
 
 ;Color effects
 #IfWinActive ahk_exe Adobe Premiere Pro.exe

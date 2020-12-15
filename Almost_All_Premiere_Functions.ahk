@@ -10,6 +10,7 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 #SingleInstance force ;only one instance of this script may run at a time!
 #MaxHotkeysPerInterval 2000
 #WinActivateForce ;https://autohotkey.com/docs/commands/_WinActivateForce.htm
+workPC = "No"
 
 ;-------------------------------------------------------------------------
 ; HELLO PEOPLES!
@@ -228,14 +229,14 @@ Send %item%
 
 sleep 5
 
-if workPC = No 
-{
+; if workPC = "No"
+; {
 	MouseMove, 40, 62, 0, R ;----------------------(for 100% UI) 	
-}
-if workPC = Yes
-{
-	MouseMove, 50, 105, 0, R ;----------------------(for 150% UI) relative to the position of the magnifying glass (established earlier,) this moves the cursor down and directly onto the preset's icon. In my case, it is inside the "presets" folder, then inside of another folder, and the written name should be completely unique so that it is the first and only item.	
-}
+; }
+; if workPC = "Yes"
+; {
+; 	MouseMove, 50, 105, 0, R ;----------------------(for 150% UI) relative to the position of the magnifying glass (established earlier,) this moves the cursor down and directly onto the preset's icon. In my case, it is inside the "presets" folder, then inside of another folder, and the written name should be completely unique so that it is the first and only item.	
+; }
 
 ;msgbox, The cursor should be directly on top of the preset's icon. `n If not, the script needs modification.
 sleep 5
@@ -379,15 +380,15 @@ sleep 400 ;we are waiting for the search to complete....
 ;msgbox, wheres de mouse?
 ;MouseMove, -6000, 250, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.
 
-if(workPC = "No")
-{
+; if(workPC = "No")
+; {
 	MouseMove, 35, 229, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.	
-}
-if(workPC = "Yes")
-{
-	MouseMove, 3940, 355, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.	
-	;MouseMove, 80, 300, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.	
-}
+; }
+; if(workPC = "Yes")
+; {
+; 	MouseMove, 3940, 355, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.	
+; 	;MouseMove, 80, 300, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.	
+; }
 
 ;msgbox, wheres de mouse?
 MouseGetPos, lol, lel
@@ -663,14 +664,15 @@ SetKeyDelay, 0 ;for instant writing of text
 MouseGetPos, xpos, ypos
 send ^+x ;ctrl shift x -- shortcut in premiere for "remove in/out points.
 sleep 10
-send ^+9 ;ctrl shift 6 - source assignment preset 4. (sets it to A3.)
+send ^`. ;ctrl shift 6 - source assignment preset 4. (sets it to A3.)
 sleep 10
 ; Send ^!+1 ;premiere shortcut to open the "project" panel, which is actually a bin. Only ONE bin is highlightable in this way.
 ; ;Send F11
 ; sleep 100
 ;msgbox, you in the panel now?
 send ^!+1 ;CTRL ALT SHIFT 1 -- ;shortcut for application>window>project (highlights a single bin. In my case, it's on my left monitor.)
-tooltip, waiting for premiere to select that bin....
+send ^!+1 ;CTRL ALT SHIFT 1 -- ;shortcut for application>window>project (highlights a single bin. In my case, it's on my left monitor.)
+;tooltip, waiting for premiere to select that bin....
 ;msgbox, waiting for premiere to select that bin....
 sleep 20
 ;msgbox how about naow?
@@ -680,61 +682,237 @@ Send ^b ;CTRL B -- set this in premiere's shortcuts panel to "select find box." 
 
 ; msgbox, okay now what
 Send %leSound% ;types in the name of the sound effect you want - should do so instantaneously.
-tooltip, waiting for premiere to load......
-send ^+9 ;source assignment preset 4, again.
-sleep 400 ;we are waiting for the search to complete....
+;tooltip, waiting for premiere to load......
+send ^`. ;source assignment preset 4, again.
+sleep 2000 ;we are waiting for the search to complete....
 ;sleep 400 ;we are still waiting for the search to complete....
 ;msgbox, wheres de mouse?
 ;MouseMove, -6000, 250, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.
-if(workPC = "No")
-{
-	MouseMove, 35, 229, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.	
-}
-if(workPC = "Yes")
-{
-	MouseMove, 80, 300, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.	
-}
+;if(workPC = "No")
+;{	
+	;MouseMove, 35, 229, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.	
+	;MouseMove, 8, 572, 0
+
+	ImageSearch, Px, Py, 8, 572, 443, 836, *3 %A_WorkingDir%\audio-waveform.png
+
+	if ErrorLevel
+	{
+		ImageSearch, Px, Py, 8, 572, 443, 836, *3 %A_WorkingDir%\audio-waveform-c.png
+		if ErrorLevel
+		{
+			;msgbox, not found
+			BlockInput, off
+			BlockInput, MouseMoveOff		
+		}
+		else
+		{
+		;	msgbox, found %Px% %Py%
+			MouseMove, Px, Py-30
+		}		
+	}
+	else
+	{
+	;	msgbox, found %Px% %Py%
+		MouseMove, Px, Py-30
+	}
+;}
+;if(workPC = "Yes")
+;{
+	;msgbox, in yes
+	;MouseMove, 80, 300, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.	
+;}
+
 ;msgbox, wheres de mouse?
 ; MouseGetPos, lol, lel
 ; PixelGetColor, zecolor, lol, lel, alt slow rgb
-; msgbox, %zecolor% 
+; msgbox, %zecolor% insertAudio(leSound)
+; {
+	
+; ifWinNotActive ahk_exe Adobe Premiere Pro.exe
+; 	goto audioEnding 
+; ;keyShower(leSound, "insertSFX")
+; if IsFunc("Keyshower") {
+; 	Func := Func("Keyshower")
+; 	RetVal := Func.Call(leSound, "insertAudio") 
+; }
+; CoordMode, mouse, Screen
+; CoordMode, pixel, Screen
+; coordmode, Caret, screen
+
+; BlockInput, mouse
+; blockinput, MouseMove
+; BlockInput, On
+; SetKeyDelay, 0 ;for instant writing of text
+; MouseGetPos, xpos, ypos
+; send ^+x ;ctrl shift x -- shortcut in premiere for "remove in/out points.
+; sleep 10
+; send ^+9 ;ctrl shift 6 - source assignment preset 4. (sets it to A3.)
+; sleep 10
+; ; Send ^!+1 ;premiere shortcut to open the "project" panel, which is actually a bin. Only ONE bin is highlightable in this way.
+; ; ;Send F11
+; ; sleep 100
+; ;msgbox, you in the panel now?
+; send ^!+1 ;CTRL ALT SHIFT 1 -- ;shortcut for application>window>project (highlights a single bin. In my case, it's on my left monitor.)
+; send ^!+1 ;CTRL ALT SHIFT 1 -- ;shortcut for application>window>project (highlights a single bin. In my case, it's on my left monitor.)
+; tooltip, waiting for premiere to select that bin....
+; ;msgbox, waiting for premiere to select that bin....
+; sleep 20
+; ;msgbox how about naow?
+; ; 
+; Send ^b ;CTRL B -- set this in premiere's shortcuts panel to "select find box." Make sure there are NO OTHER conflicting shortcuts on this key, like "create new bin," which would stop it from working.
+; ; send +{backspace} ;to delete anything that might be written in the bin, so that the caret coordinates are always accurate.
+
+; ; msgbox, okay now what
+; Send %leSound% ;types in the name of the sound effect you want - should do so instantaneously.
+; tooltip, waiting for premiere to load......
+; send ^+9 ;source assignment preset 4, again.
+; sleep 400 ;we are waiting for the search to complete....
+; ;sleep 400 ;we are still waiting for the search to complete....
+; ;msgbox, wheres de mouse?
+; ;MouseMove, -6000, 250, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.
+; if(workPC = "No")
+; {
+; 	MouseMove, 35, 229, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.	
+; }
+; if(workPC = "Yes")
+; {
+; 	MouseMove, 80, 300, 0 ;moves the mouse to the expected location of the bin that becomes highlighted from the "project" keyboard shortcut command in Premiere.	
+; }
+; msgbox, wheres de mouse?
+; ; MouseGetPos, lol, lel
+; ; PixelGetColor, zecolor, lol, lel, alt slow rgb
+; ; msgbox, %zecolor% 
+;  sleep 500
+;  Send, {LButton 4}
+;  sleep 100
 MouseClick, left
 sleep 10
-MouseClick, left
+Send +o
+; MouseClick, left
+; sleep 10
+; MouseClick, left
+; sleep 10
+; MouseClick, left
+; sleep 10
+; MouseClick, left
+; mousemove, 860, 418
+; msgbox, first point
+; mousemove, 1252, 546
+; msgbox, second point
+
+
 sleep 100
-Send {Home}
-Send i
-sleep 100
-Send {Right}
-Send {Right}
-Send {Right}
-Send {Right}
-Send {Right}
-Send {Right}
-Send {Right}
-Send {Right}
-Send {Right}
-Send {Right}
-sleep 100
-Send o
+Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+
+If ErrorLevel = EndKey:F1
+{
+	Send {Home}
+	Send i
+	sleep 100
+	Send {Right 20}
+	sleep 100
+	Send o
+	sleep 10			 
+}
+
+send ^`. ;source assignment preset 4, again.
 sleep 10
-send ^+9 ;source assignment preset 4, again.
-Send ^/ 
-sleep 5
-send ^!+1
-sleep 10
-Send ^b ;CTRL B -- set this in premiere's shortcuts panel to "select find box."
-sleep 10
-Send +{backspace} ;deletes the search text so that the bin returns to normal view with all SFX visible.
-sleep 10
-MouseMove, %xpos%, %ypos%, 0 ;move mouse back to original coordinates.
-sleep 20
-tooltip, so did that work?
-send ^!+7 ;highlight effects panel
-sleep 30
-send ^!+3 ;this is set in premiere to highlight/switch to the timeline. important so that you aren't still stuck in the bin. If this is used more than once, it will unfortunately cycle thorugh all available sequences...
-tooltip,
-send +3
+Send `.
+
+
+
+
+;  ImageSearch, Px, Py, 860, 418, 1252, 546, *3 %A_WorkingDir%\drag-video-only.png
+
+; 	if ErrorLevel
+; 	{
+; 		msgbox, not found %ErrorLevel% ErrorLevel
+; 		BlockInput, off
+; 		BlockInput, MouseMoveOff
+; 		;sleep 100
+; 		;resetFromAutoVFX()
+; 		;return ;i am not sure if this is needed.
+; 	}
+; 	else
+; 	{
+; 		sleep 1000
+; 		Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}{ScrollLock}
+
+; 		If ErrorLevel = EndKey:F1
+;     	{
+; 			Send {Home}
+; 			Send i
+; 			sleep 100
+; 			Send {Right 10}
+; 			sleep 100
+; 			Send o
+; 			sleep 10			 
+; 		}
+
+; 		send ^+9 ;source assignment preset 4, again.
+; 		sleep 10
+; 		Send ^`.
+
+; 		;msgbox, found %Px% %Py%
+; 		; MouseMove, Px-200, Py+25, 0
+; 		; msgbox, first point
+; 		; mousemove, Px, Py+50, 0
+; 		; msgbox, second point
+; 		; PixelSearch, xx, yy, Px-200, Py+25, Px, Py+50, 444444, 0, Fast ;this is searching to the RIGHT, looking the blueness of the scrubbable hot text. Unfortunately, it sees to start looking from right to left, so if your window is sized too small, it'll possibly latch onto the blue of the playhead/CTI.
+		
+; 		; if ErrorLevel = 1
+; 		; {
+; 		; 	tooltip, blue not Found
+; 		; 	msgbox, blue not found 1
+			
+; 		; 	;return ;i am not sure if this is needed.
+; 		; }
+; 		; if ErrorLevel = 2
+; 		; {
+; 		; 	tooltip, blue not Found
+; 		; 	msgbox, blue not found 2
+			
+; 		; 	;return ;i am not sure if this is needed.
+; 		; }
+; 		; if ErrorLevel = 0
+; 		; {
+; 		; 	msgbox, found
+; 		; }
+; 	;	msgbox, moved mouse here?
+; 	}
+; Send {Home}
+; Send i
+; sleep 100
+; Send {Right}
+; Send {Right}
+; Send {Right}
+; Send {Right}
+; Send {Right}
+; Send {Right}
+; Send {Right}
+; Send {Right}
+; Send {Right}
+; Send {Right}
+; sleep 100
+; Send o
+; sleep 10
+; send ^+9 ;source assignment preset 4, again.
+; Send ^`, 
+; sleep 5
+; send ^!+1
+; sleep 10
+; Send ^b ;CTRL B -- set this in premiere's shortcuts panel to "select find box."
+; sleep 10
+; Send +{backspace} ;deletes the search text so that the bin returns to normal view with all SFX visible.
+; sleep 10
+; MouseMove, %xpos%, %ypos%, 0 ;move mouse back to original coordinates.
+; sleep 20
+; tooltip, so did that work?
+; send ^!+7 ;highlight effects panel
+; sleep 30
+; send ^!+3 ;this is set in premiere to highlight/switch to the timeline. important so that you aren't still stuck in the bin. If this is used more than once, it will unfortunately cycle thorugh all available sequences...
+; tooltip,
+; send +3
 BlockInput, off
 BlockInput, MouseMoveOff
 audioEnding:
@@ -1733,6 +1911,51 @@ return, FocusedControlList
 
 return, FocusedControl " - " FocusedControlId "`n`n____Text____`n`n" FocusedControlText "`n`n____List____`n`n" FocusedControlList
 
+}
+
+#IfWinActive ahk_exe Adobe Premiere Pro.exe
+quickEffectsSearch()
+{
+	SendInput, +^!7
+	SendInput, ^b
+	sleep 10
+	SendInput, +{backspace}
+}
+
+return
+;END of quickEffectsSearch()
+
+#IfWinActive ahk_exe Adobe Premiere Pro.exe
+quickProjectSearch()
+{
+	prFocus("project")
+	sleep 10
+	Send ^!+1 ;need to do it twice to get to the right bin
+	sleep 10
+	SendInput, ^b
+	sleep 10
+	SendInput, +{backspace}
+}
+
+return
+
+
+GetMusic()
+{
+	Send {F2}
+	sleep 10
+	Send ^c
+	WinActivate, ahk_class Premiere Pro
+	sleep 50
+	insertAudio(Clipboard)
+	; prFocus("project")
+	; sleep 10
+	; Send ^!+1 ;need to do it twice to get to the right bin
+	; sleep 10
+	; SendInput, ^b
+	; sleep 10
+	; SendInput, +{backspace}
+	; SendInput, Clipboard
 }
 
 
