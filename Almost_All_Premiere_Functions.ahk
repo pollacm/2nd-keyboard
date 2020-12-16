@@ -881,7 +881,7 @@ Send `.
 ; 		; if ErrorLevel = 1
 ; 		; {
 ; 		; 	tooltip, blue not Found
-; 		; 	msgbox, blue not found 1
+-; 		; 	msgbox, blue not found 1
 			
 ; 		; 	;return ;i am not sure if this is needed.
 ; 		; }

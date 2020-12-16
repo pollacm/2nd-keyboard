@@ -2089,7 +2089,7 @@ PS.Oh my god xgames vine,PS.--,PS.fart-long,PS.smack,PS.--,PS.--,PS.--,PS.--,PS.
         ToolTip
         return
     }
-    If ErrorLevel = EndKey:F1
+    Else If ErrorLevel = EndKey:F1
     {
         sheet = 1
         MouseGetPos, MouseTooltipX, MouseTooltipY
@@ -2113,7 +2113,7 @@ F1- Words 1
     ), MouseTooltipX, MouseTooltipY + 20
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}
     }
-    If ErrorLevel = EndKey:F2
+    Else If ErrorLevel = EndKey:F2
     {
         sheet = 2
         MouseGetPos, MouseTooltipX, MouseTooltipY
@@ -2136,7 +2136,7 @@ F2- Words 2
     ), MouseTooltipX, MouseTooltipY + 20
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}
     }
-    If ErrorLevel = EndKey:F3
+    Else If ErrorLevel = EndKey:F3
     {
         sheet = 3
         MouseGetPos, MouseTooltipX, MouseTooltipY
@@ -2159,7 +2159,7 @@ F3- Effects 1
     ), MouseTooltipX, MouseTooltipY + 20
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}
     }
-    If ErrorLevel = EndKey:F4
+    Else If ErrorLevel = EndKey:F4
     {
         sheet = 4
         MouseGetPos, MouseTooltipX, MouseTooltipY
@@ -2182,7 +2182,7 @@ F4- Effects 2
     ), MouseTooltipX, MouseTooltipY + 20
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}
     }
-    If ErrorLevel = EndKey:F5
+    Else If ErrorLevel = EndKey:F5
     {
         sheet = 5
         MouseGetPos, MouseTooltipX, MouseTooltipY
@@ -2205,7 +2205,7 @@ F5- Effects 3
     ), MouseTooltipX, MouseTooltipY + 20
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Escape}{PrintScreen}
     }
-    If ErrorLevel = EndKey:F6
+    Else If ErrorLevel = EndKey:F6
     {
         sheet = 6
 
@@ -2218,7 +2218,7 @@ F6- Game Sounds 1
 4. GTA-5-Death
 5. minion-w
 6. super-mario-coin
-7. super-mario-death-1
+7. super-mario-nes-death-1
 8. super-mario-death-2
 9. super-mario-mushroom
 10.--
@@ -2233,7 +2233,7 @@ PS.--
 
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{PrintScreen}{Escape}
     }
-    If ErrorLevel = EndKey:F7
+    Else If ErrorLevel = EndKey:F7
     {
         sheet = 7
 
@@ -2261,7 +2261,7 @@ PS.--
 
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{PrintScreen}{Escape}
     }
-    If ErrorLevel = EndKey:F8
+    Else If ErrorLevel = EndKey:F8
     {
         sheet = 8
 
@@ -2289,7 +2289,7 @@ PS.--
 
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{PrintScreen}{Escape}
     }
-    If ErrorLevel = EndKey:F9
+    Else If ErrorLevel = EndKey:F9
     {
         sheet = 9
 
@@ -2317,7 +2317,7 @@ PS.--
 
         Input, OutputVar, L1, {F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{PrintScreen}{Escape}
     }
-    If ErrorLevel = EndKey:F10
+    Else If ErrorLevel = EndKey:F10
     {
         sheet = 10
 
@@ -2353,91 +2353,91 @@ PS.lead pipe clang.wav
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F1
+        Else If ErrorLevel = EndKey:F1
         {
             insertSFX("Bruh")
             
             ToolTip
             return
         }  
-        If ErrorLevel = EndKey:F2
+        Else If ErrorLevel = EndKey:F2
         {
             insertSFX("Get-Over-Here-Sound-Effect")
             
             ToolTip
             return
         }  
-        If ErrorLevel = EndKey:F3
+        Else If ErrorLevel = EndKey:F3
         {
             insertSFX("gotcha-grab")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F4
+        Else If ErrorLevel = EndKey:F4
         {
             insertSFX("Hello There English accent")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F5
+        Else If ErrorLevel = EndKey:F5
         {
             insertSFX("help-me")
             
             ToolTip
             return
         }  
-        If ErrorLevel = EndKey:F6
+        Else If ErrorLevel = EndKey:F6
         {
             insertSFX("huh")
             
             ToolTip
             return
         }  
-        If ErrorLevel = EndKey:F7
+        Else If ErrorLevel = EndKey:F7
         {
             insertSFX("incredible")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F8
+        Else If ErrorLevel = EndKey:F8
         {
             insertSFX("kobe")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F9
+        Else If ErrorLevel = EndKey:F9
         {
             insertSFX("Mission-Failed-We'll-Get-Em-Next-Time")
             
             ToolTip
             return
         }            
-        If ErrorLevel = EndKey:F10
+        Else If ErrorLevel = EndKey:F10
         {
             insertSFX("nice")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F11
+        Else If ErrorLevel = EndKey:F11
         {
             insertSFX("Nice-Shot-Clean")
             
             ToolTip
             return
         }     
-        If ErrorLevel = EndKey:F12
+        Else If ErrorLevel = EndKey:F12
         {
             insertSFX("Nope")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:PrintScreen
+        Else If ErrorLevel = EndKey:PrintScreen
         {
             insertSFX("Oh my god xgames vine")
             
@@ -2453,91 +2453,91 @@ PS.lead pipe clang.wav
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F1
+        Else If ErrorLevel = EndKey:F1
         {
             insertSFX("oof-1")
             
             ToolTip
             return
         }  
-        If ErrorLevel = EndKey:F2
+        Else If ErrorLevel = EndKey:F2
         {
             insertSFX("oof-2")
             
             ToolTip
             return
         } 
-        If ErrorLevel = EndKey:F3
+        Else If ErrorLevel = EndKey:F3
         {
             insertSFX("perfect")
             
             ToolTip
             return
         }  
-        If ErrorLevel = EndKey:F4
+        Else If ErrorLevel = EndKey:F4
         {
             insertSFX("Ric-Flair-Woo")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F5
+        Else If ErrorLevel = EndKey:F5
         {
             insertSFX("tadaa")
             
             ToolTip
             return
         }  
-        If ErrorLevel = EndKey:F6
+        Else If ErrorLevel = EndKey:F6
         {
             insertSFX("Grunt Tim Allen")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F7
+        Else If ErrorLevel = EndKey:F7
         {
             insertSFX("that-is-not-correct")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F8
+        Else If ErrorLevel = EndKey:F8
         {
             insertSFX("toasty")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F9
+        Else If ErrorLevel = EndKey:F9
         {
             insertSFX("what-sound")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F10
+        Else If ErrorLevel = EndKey:F10
         {
             insertSFX("what-sound2")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F11
+        Else If ErrorLevel = EndKey:F11
         {
             insertSFX("yeet")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F12
+        Else If ErrorLevel = EndKey:F12
         {
             insertSFX("yes")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:PrintScreen
+        Else If ErrorLevel = EndKey:PrintScreen
         {
             ;insertSFX("Oh my god xgames vine")
             
@@ -2553,84 +2553,84 @@ PS.lead pipe clang.wav
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F1
+        Else If ErrorLevel = EndKey:F1
         {
             insertSFX("Blue Screen Of Death Sound")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F2
+        Else If ErrorLevel = EndKey:F2
         {
             insertSFX("bone-break")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F3
+        Else If ErrorLevel = EndKey:F3
         {
             insertSFX("bone-breaking-4")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F4
+        Else If ErrorLevel = EndKey:F4
         {
             insertSFX("bowling-pins")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F5
+        Else If ErrorLevel = EndKey:F5
         {
             insertSFX("cash-register")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F6
+        Else If ErrorLevel = EndKey:F6
         {
             insertSFX("cash-register-clear")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F7
+        Else If ErrorLevel = EndKey:F7
         {
             insertSFX("cash-register-opening")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F8
+        Else If ErrorLevel = EndKey:F8
         {
             insertSFX("crowd gasp Sound Effect")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F9
+        Else If ErrorLevel = EndKey:F9
         {
             insertSFX("Ding-dong-sound-effect")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F10
+        Else If ErrorLevel = EndKey:F10
         {
             insertSFX("dream")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F11
+        Else If ErrorLevel = EndKey:F11
         {
             insertSFX("slotMachine-2")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F12
+        Else If ErrorLevel = EndKey:F12
         {
             insertSFX("Fart-sound-effects")
             
@@ -2638,7 +2638,7 @@ PS.lead pipe clang.wav
             return
         }
 
-        If ErrorLevel = EndKey:PrintScreen
+        Else If ErrorLevel = EndKey:PrintScreen
         {
             insertSFX("fart-long")
             
@@ -2654,91 +2654,91 @@ PS.lead pipe clang.wav
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F1
+        Else If ErrorLevel = EndKey:F1
         {
             insertSFX("fart-short")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F2
+        Else If ErrorLevel = EndKey:F2
         {
             insertSFX("glassbreak")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F3
+        Else If ErrorLevel = EndKey:F3
         {
             insertSFX("glitch")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F4
+        Else If ErrorLevel = EndKey:F4
         {
             insertSFX("Microphone Tap")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F5
+        Else If ErrorLevel = EndKey:F5
         {
             insertSFX("Mouseclick")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F6
+        Else If ErrorLevel = EndKey:F6
         {
             insertSFX("picture-taken")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F7
+        Else If ErrorLevel = EndKey:F7
         {
             insertSFX("punch-1")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F8
+        Else If ErrorLevel = EndKey:F8
         {
             insertSFX("punch-2")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F9
+        Else If ErrorLevel = EndKey:F9
         {
             insertSFX("Quack-Sound-Effect")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F10
+        Else If ErrorLevel = EndKey:F10
         {
             insertSFX("record-scratch")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F11
+        Else If ErrorLevel = EndKey:F11
         {
             insertSFX("slide")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F12
+        Else If ErrorLevel = EndKey:F12
         {
             insertSFX("slip")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:PrintScreen
+        Else If ErrorLevel = EndKey:PrintScreen
         {
             insertSFX("smack")
             
@@ -2754,91 +2754,91 @@ PS.lead pipe clang.wav
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F1
+        Else If ErrorLevel = EndKey:F1
         {
             insertSFX("splat")
             
             ToolTip
             return
         } 
-        If ErrorLevel = EndKey:F2
+        Else If ErrorLevel = EndKey:F2
         {
             insertSFX("spring")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F3
+        Else If ErrorLevel = EndKey:F3
         {
             insertSFX("stab")
             
             ToolTip
             return
         }     
-        If ErrorLevel = EndKey:F4
+        Else If ErrorLevel = EndKey:F4
         {
             insertSFX("Static Transition Sound")
             
             ToolTip
             return
         }     
-        If ErrorLevel = EndKey:F5
+        Else If ErrorLevel = EndKey:F5
         {
             insertSFX("undertaker")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F6
+        Else If ErrorLevel = EndKey:F6
         {
             insertSFX("whip")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F7
+        Else If ErrorLevel = EndKey:F7
         {
             insertSFX("Yoshi-Sound-jump-on")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F8
+        Else If ErrorLevel = EndKey:F8
         {
             insertSFX("whip")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F9
+        Else If ErrorLevel = EndKey:F9
         {
             insertSFX("whip")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F10
+        Else If ErrorLevel = EndKey:F10
         {
             insertSFX("whip")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F11
+        Else If ErrorLevel = EndKey:F11
         {
             insertSFX("whip")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F12
+        Else If ErrorLevel = EndKey:F12
         {
             insertSFX("whip")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:PrintScreen
+        Else If ErrorLevel = EndKey:PrintScreen
         {
             insertSFX("whip")
             
@@ -2854,91 +2854,91 @@ PS.lead pipe clang.wav
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F1
+        Else If ErrorLevel = EndKey:F1
         {
             insertSFX("chest-opening-Fortnite")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F2
+        Else If ErrorLevel = EndKey:F2
         {
             insertSFX("crash-bandicoot-spin")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F3
+        Else If ErrorLevel = EndKey:F3
         {
             insertSFX("FamilyFeud-Blip")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F4
+        Else If ErrorLevel = EndKey:F4
         {
             insertSFX("GTA-5-Death")
             
             ToolTip
             return
         }        
-        If ErrorLevel = EndKey:F5
+        Else If ErrorLevel = EndKey:F5
         {
             insertSFX("minion-w")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F6
+        Else If ErrorLevel = EndKey:F6
         {
             insertSFX("super-mario-coin")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F7
+        Else If ErrorLevel = EndKey:F7
         {
-            insertSFX("super-mario-death-1")
+            insertSFX("super-mario-nes-death")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F8
+        Else If ErrorLevel = EndKey:F8
         {
             insertSFX("super-mario-death-2")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F9
+        Else If ErrorLevel = EndKey:F9
         {
             insertSFX("super-mario-mushroom")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F10
+        Else If ErrorLevel = EndKey:F10
         {
             ;insertSFX("super")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F11
+        Else If ErrorLevel = EndKey:F11
         {
             ;insertSFX("super")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F12
+        Else If ErrorLevel = EndKey:F12
         {
             ;insertSFX("super")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:PrintScreen
+        Else If ErrorLevel = EndKey:PrintScreen
         {
             ;insertSFX("super")
             
@@ -2954,91 +2954,91 @@ PS.lead pipe clang.wav
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F1
+        Else If ErrorLevel = EndKey:F1
         {
             ;insertSFX("super-mario-death-2")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F2
+        Else If ErrorLevel = EndKey:F2
         {
             ;insertSFX("super-mario-mushroom")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F3
+        Else If ErrorLevel = EndKey:F3
         {
             ;insertSFX("GTA-5-Death")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F4
+        Else If ErrorLevel = EndKey:F4
         {
             ;insertSFX("uppercut")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F5
+        Else If ErrorLevel = EndKey:F5
         {
             ;insertSFX("correct")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F6
+        Else If ErrorLevel = EndKey:F6
         {
             ;insertSFX("correct")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F7
+        Else If ErrorLevel = EndKey:F7
         {
             ;insertSFX("correct")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F8
+        Else If ErrorLevel = EndKey:F8
         {
             ;insertSFX("correct")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F9
+        Else If ErrorLevel = EndKey:F9
         {
             ;insertSFX("correct")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F10
+        Else If ErrorLevel = EndKey:F10
         {
             ;insertSFX("correct")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F11
+        Else If ErrorLevel = EndKey:F11
         {
             ;insertSFX("correct")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F12
+        Else If ErrorLevel = EndKey:F12
         {
             ;insertSFX("correct")
             
             ToolTip
             return
         } 
-        If ErrorLevel = EndKey:PrintScreen
+        Else If ErrorLevel = EndKey:PrintScreen
         {
             ;insertSFX("correct")
             
@@ -3054,70 +3054,70 @@ PS.lead pipe clang.wav
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F1
+        Else If ErrorLevel = EndKey:F1
         {
             insertSFX("CharlieMurphyLaugh")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F2
+        Else If ErrorLevel = EndKey:F2
         {
             insertSFX("Human-Applause-LargeCrowd01")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F3
+        Else If ErrorLevel = EndKey:F3
         {
             insertSFX("Human-Boo-LargeCrowd01")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F4
+        Else If ErrorLevel = EndKey:F4
         {
             insertSFX("Human-Boo-SmallCrowd04")
             
             ToolTip
             return
         }        
-        If ErrorLevel = EndKey:F5
+        Else If ErrorLevel = EndKey:F5
         {
             insertSFX("Human-Laugh-SmallCrowd01")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F6
+        Else If ErrorLevel = EndKey:F6
         {
             insertSFX("Human-Cheer-MediumCrowd01")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F7
+        Else If ErrorLevel = EndKey:F7
         {
             insertSFX("laugh-1")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F8
+        Else If ErrorLevel = EndKey:F8
         {
             insertSFX("laugh-2")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F9
+        Else If ErrorLevel = EndKey:F9
         {
             insertSFX("laugh-3")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F10
+        Else If ErrorLevel = EndKey:F10
         {
             insertSFX("laughing-earrape")
             
@@ -3125,21 +3125,21 @@ PS.lead pipe clang.wav
             return
         }       
         
-        If ErrorLevel = EndKey:F11
+        Else If ErrorLevel = EndKey:F11
         {
             ;insertSFX("correct")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F12
+        Else If ErrorLevel = EndKey:F12
         {
             ;insertSFX("correct")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:PrintScreen
+        Else If ErrorLevel = EndKey:PrintScreen
         {
             ;insertSFX("correct")
             
@@ -3155,84 +3155,84 @@ PS.lead pipe clang.wav
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F1
+        Else If ErrorLevel = EndKey:F1
         {
             insertSFX("cartoon-swipe-in")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F2
+        Else If ErrorLevel = EndKey:F2
         {
             insertSFX("cartoon-swipe-out")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F3
+        Else If ErrorLevel = EndKey:F3
         {
             insertSFX("swoosh")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F4
+        Else If ErrorLevel = EndKey:F4
         {
             insertSFX("bubble-pop")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F5
+        Else If ErrorLevel = EndKey:F5
         {
             ;insertSFX("correct")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F6
+        Else If ErrorLevel = EndKey:F6
         {
             ;insertSFX("correct")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F7
+        Else If ErrorLevel = EndKey:F7
         {
             ;insertSFX("correct")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F8
+        Else If ErrorLevel = EndKey:F8
         {
             ;insertSFX("correct")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F9
+        Else If ErrorLevel = EndKey:F9
         {
             ;insertSFX("correct")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F10
+        Else If ErrorLevel = EndKey:F10
         {
             ;insertSFX("correct")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F11
+        Else If ErrorLevel = EndKey:F11
         {
             ;insertSFX("correct")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F12
+        Else If ErrorLevel = EndKey:F12
         {
             ;insertSFX("correct")
             
@@ -3248,91 +3248,91 @@ PS.lead pipe clang.wav
             Tooltip
             return
         }
-        If ErrorLevel = EndKey:F1
+        Else If ErrorLevel = EndKey:F1
         {
             insertSFX("Dramatic-alert")
             
             Tooltip
             return
         }  
-        If ErrorLevel = EndKey:F2
+        Else If ErrorLevel = EndKey:F2
         {
             insertSFX("Dramatic-building-with-buzzing")
             
             Tooltip
             return
         }    
-        If ErrorLevel = EndKey:F3
+        Else If ErrorLevel = EndKey:F3
         {
             insertSFX("Dramatic-building-with-slow-fade")            
             
             Tooltip
             return
         } 
-        If ErrorLevel = EndKey:F4
+        Else If ErrorLevel = EndKey:F4
         {
             insertSFX("Dramatic-building-violin")            
             
             Tooltip
             return
         } 
-        If ErrorLevel = EndKey:F5
+        Else If ErrorLevel = EndKey:F5
         {
             insertSFX("Dramatic-building-with-wisp-2")
             
             Tooltip
             return
         }  
-        If ErrorLevel = EndKey:F6
+        Else If ErrorLevel = EndKey:F6
         {
             insertSFX("Dramatic-boom-and-trail-off")
             
             Tooltip
             return
         } 
-        If ErrorLevel = EndKey:F7
+        Else If ErrorLevel = EndKey:F7
         {
             insertSFX("Dramatic-boom-scratchy")
             
             Tooltip
             return
         }  
-        If ErrorLevel = EndKey:F8
+        Else If ErrorLevel = EndKey:F8
         {
             insertSFX("Dramatic-Cinematic-Stinger")
             
             Tooltip
             return
         }  
-        If ErrorLevel = EndKey:F9
+        Else If ErrorLevel = EndKey:F9
         {
             insertSFX("Dramatic-Electronic-woosh")
             
             Tooltip
             return
         }  
-        If ErrorLevel = EndKey:F10
+        Else If ErrorLevel = EndKey:F10
         {
             insertSFX("Dramatic-Evil-crack-06")            
             
             Tooltip
             return
         }  
-        If ErrorLevel = EndKey:F11
+        Else If ErrorLevel = EndKey:F11
         {
             insertSFX("explosion")
             
             Tooltip
             return
         }  
-        If ErrorLevel = EndKey:F12
+        Else If ErrorLevel = EndKey:F12
         {
             insertSFX("Dramatic-hard-boom")
             
             Tooltip
             return
         }
-        If ErrorLevel = EndKey:PrintScreen
+        Else If ErrorLevel = EndKey:PrintScreen
         {
             insertSFX("Dramatic-lead-pipe-clang")
             
@@ -3381,62 +3381,62 @@ return
         {
             return
         }
-        If ErrorLevel = EndKey:F1
+        Else If ErrorLevel = EndKey:F1
         {
             insertAudio("wii-music")
             return
         }   
-        If ErrorLevel = EndKey:F2
+        Else If ErrorLevel = EndKey:F2
         {
             insertAudio("cartoon-music-mattia-cupelli")
             return
         }   
-        If ErrorLevel = EndKey:F3
+        Else If ErrorLevel = EndKey:F3
         {
             insertAudio("hitman")
             return
         }   
-        If ErrorLevel = EndKey:F4
+        Else If ErrorLevel = EndKey:F4
         {
             insertAudio("investigations")
             return
         }   
-        If ErrorLevel = EndKey:F5
+        Else If ErrorLevel = EndKey:F5
         {
             insertAudio("cinema-sins")
             return
         }   
-        If ErrorLevel = EndKey:F6
+        Else If ErrorLevel = EndKey:F6
         {
             insertAudio("beverly-hills-cop")
             return
         }   
-        If ErrorLevel = EndKey:F7
+        Else If ErrorLevel = EndKey:F7
         {
             insertAudio("Umbrella-pants")
             return
         }   
-        If ErrorLevel = EndKey:F8
+        Else If ErrorLevel = EndKey:F8
         {
             insertAudio("Ghostpocalypse")
             return
         }   
-        If ErrorLevel = EndKey:F9
+        Else If ErrorLevel = EndKey:F9
         {
             insertAudio("darix-togni")
             return
         }   
-        If ErrorLevel = EndKey:F10
+        Else If ErrorLevel = EndKey:F10
         {
             insertAudio("fluffing-a-duck")
             return
         }   
-        If ErrorLevel = EndKey:F11
+        Else If ErrorLevel = EndKey:F11
         {
             insertAudio("marty-gots-a-plan")
             return
         }   
-        If ErrorLevel = EndKey:F12
+        Else If ErrorLevel = EndKey:F12
         {
             insertAudio("mbb")
             return
@@ -3450,62 +3450,62 @@ return
             return
         }
         
-        If ErrorLevel = EndKey:F1
+        Else If ErrorLevel = EndKey:F1
         {
             insertAudio("Scheming-Weasel")
             return
         }   
-        If ErrorLevel = EndKey:F2
+        Else If ErrorLevel = EndKey:F2
         {
             insertAudio("sneaky-suspense-jazz")
             return
         }   
-        If ErrorLevel = EndKey:F3
+        Else If ErrorLevel = EndKey:F3
         {
             insertAudio("sneaky-adventure")
             return
         }   
-        If ErrorLevel = EndKey:F4
+        Else If ErrorLevel = EndKey:F4
         {
             insertAudio("sneaky-snitch")
             return
         }   
-        If ErrorLevel = EndKey:F5
+        Else If ErrorLevel = EndKey:F5
         {
             insertAudio("spongebob-background")
             return
         }   
-        If ErrorLevel = EndKey:F6
+        Else If ErrorLevel = EndKey:F6
         {
             insertAudio("batman streets")
             return
         }   
-        If ErrorLevel = EndKey:F7
+        Else If ErrorLevel = EndKey:F7
         {
             insertAudio("workaday")
             return
         }   
-        If ErrorLevel = EndKey:F8
+        Else If ErrorLevel = EndKey:F8
         {
             insertAudio("monkey-spinning")
             return
         }   
-        If ErrorLevel = EndKey:F9
+        Else If ErrorLevel = EndKey:F9
         {
             insertAudio("piano-and-ukalele")
             return
         }   
-        If ErrorLevel = EndKey:F10
+        Else If ErrorLevel = EndKey:F10
         {
             insertAudio("sad-emotional-piano")
             return
         }   
-        If ErrorLevel = EndKey:F11
+        Else If ErrorLevel = EndKey:F11
         {
             insertAudio("illuminat-confirmed")
             return
         }   
-        If ErrorLevel = EndKey:F12
+        Else If ErrorLevel = EndKey:F12
         {
             insertAudio("illuminat-confirmed-distorted")
             return
@@ -3518,62 +3518,62 @@ return
         {
             return
         }
-        If ErrorLevel = EndKey:F1
+        Else If ErrorLevel = EndKey:F1
         {
             insertAudio("pizzicato-playtime")
             return
         } 
-        If ErrorLevel = EndKey:F2
+        Else If ErrorLevel = EndKey:F2
         {
             insertAudio("love-me")
             return
         } 
-        If ErrorLevel = EndKey:F3
+        Else If ErrorLevel = EndKey:F3
         {
             insertAudio("Movement-Proposition")
             return
         } 
-        If ErrorLevel = EndKey:F4
+        Else If ErrorLevel = EndKey:F4
         {
             insertAudio("Myuu - The Order's Theme")
             return
         }        
-        If ErrorLevel = EndKey:F5
+        Else If ErrorLevel = EndKey:F5
         {
             insertAudio("Blippy Trance")
             return
         }        
-        If ErrorLevel = EndKey:F6
+        Else If ErrorLevel = EndKey:F6
         {
             insertAudio("wholesome")
             return
         }        
-        If ErrorLevel = EndKey:F7
+        Else If ErrorLevel = EndKey:F7
         {
             insertAudio("Super Mario Bros. 3 Music - Athletic Theme")
             return
         }        
-        If ErrorLevel = EndKey:F8
+        Else If ErrorLevel = EndKey:F8
         {
             insertAudio("Dizzy")
             return
         }        
-        If ErrorLevel = EndKey:F9
+        Else If ErrorLevel = EndKey:F9
         {
             insertAudio("Deep and Dirty")
             return
         }        
-        If ErrorLevel = EndKey:F10
+        Else If ErrorLevel = EndKey:F10
         {
             insertAudio("george street shuffle")
             return
         }        
-        If ErrorLevel = EndKey:F11
+        Else If ErrorLevel = EndKey:F11
         {
             insertAudio("antagonist a")
             return
         }        
-        If ErrorLevel = EndKey:F12
+        Else If ErrorLevel = EndKey:F12
         {
             ;insertAudio("Myuu - The Order's Theme")
             return
@@ -3586,12 +3586,12 @@ return
         {
             return
         }
-        If ErrorLevel = EndKey:F1
+        Else If ErrorLevel = EndKey:F1
         {
             insertAudio("pizzicato-playtime")
             return
         } 
-        If ErrorLevel = EndKey:F2
+        Else If ErrorLevel = EndKey:F2
         {
             insertAudio("love-me")
             return
@@ -3664,7 +3664,7 @@ PS.--
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F1
+        Else If ErrorLevel = EndKey:F1
         {
             key = F1
             instantVFX("position", key)
@@ -3672,7 +3672,7 @@ PS.--
             ToolTip
             return
         }  
-        If ErrorLevel = EndKey:F2
+        Else If ErrorLevel = EndKey:F2
         {
             VFXkey = F2
             instantVFX("position_vertical", VFXkey)
@@ -3680,7 +3680,7 @@ PS.--
             ToolTip
             return
         }  
-        If ErrorLevel = EndKey:F3
+        Else If ErrorLevel = EndKey:F3
         {
             VFXkey = F3            
             instantVFX("scale", VFXkey)
@@ -3688,7 +3688,7 @@ PS.--
             ToolTip
             return
         }        
-        If ErrorLevel = EndKey:F4
+        Else If ErrorLevel = EndKey:F4
         {
             VFXkey = F4         
             instantVFX("rotation", VFXkey)
@@ -3696,7 +3696,7 @@ PS.--
             ToolTip
             return
         }  
-        If ErrorLevel = EndKey:F5
+        Else If ErrorLevel = EndKey:F5
         {
             VFXkey = F5         
             instantVFX("opacity", VFXkey)
@@ -3704,7 +3704,7 @@ PS.--
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F6
+        Else If ErrorLevel = EndKey:F6
         {
             VFXkey = F6
             instantVFX("anchor_point", VFXkey)
@@ -3712,7 +3712,7 @@ PS.--
             ToolTip
             return
         }  
-        If ErrorLevel = EndKey:F7
+        Else If ErrorLevel = EndKey:F7
         {
             VFXkey = F7
             instantVFX("anchor_point_vertical", VFXkey)
@@ -3720,42 +3720,42 @@ PS.--
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F8
+        Else If ErrorLevel = EndKey:F8
         {
             quickEffectsSearch()
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F9
+        Else If ErrorLevel = EndKey:F9
         {
             quickProjectSearch()
             
             ToolTip
             return
         }            
-        If ErrorLevel = EndKey:F10
+        Else If ErrorLevel = EndKey:F10
         {
             ;insertSFX("nice")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F11
+        Else If ErrorLevel = EndKey:F11
         {
             ;insertSFX("Nice-Shot-Clean")
             
             ToolTip
             return
         }     
-        If ErrorLevel = EndKey:F12
+        Else If ErrorLevel = EndKey:F12
         {
             ;insertSFX("Nope")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:PrintScreen
+        Else If ErrorLevel = EndKey:PrintScreen
         {
             ;insertSFX("Oh my god xgames vine")
             
@@ -3831,91 +3831,91 @@ PS.--
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F1
+        Else If ErrorLevel = EndKey:F1
         {
             preset("CP - Default Text For Message")
             
             ToolTip
             return
         }  
-        If ErrorLevel = EndKey:F2
+        Else If ErrorLevel = EndKey:F2
         {
             preset("CP - Default Text For Message (Tecmo - Black)")
    
             ToolTip
             return
         }  
-        If ErrorLevel = EndKey:F3
+        Else If ErrorLevel = EndKey:F3
         {
             preset("CP - Default Text For Message (Tecmo - Basic)")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F4
+        Else If ErrorLevel = EndKey:F4
         {
             preset("CP - Default Text for special characters")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F5
+        Else If ErrorLevel = EndKey:F5
         {
             preset("CP - Glitchy Text on Dup Layer (bottom)")
             
             ToolTip
             return
         }  
-        If ErrorLevel = EndKey:F6
+        Else If ErrorLevel = EndKey:F6
         {
             ;preset("anchor_point_vertical")
             
             ToolTip
             return
         }  
-        If ErrorLevel = EndKey:F7
+        Else If ErrorLevel = EndKey:F7
         {
             ; quickEffectsSearch()
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F8
+        Else If ErrorLevel = EndKey:F8
         {
             ; quickProjectSearch()  
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F9
+        Else If ErrorLevel = EndKey:F9
         {
             ;insertSFX("Mission-Failed-We'll-Get-Em-Next-Time")
             
             ToolTip
             return
         }            
-        If ErrorLevel = EndKey:F10
+        Else If ErrorLevel = EndKey:F10
         {
             ;insertSFX("nice")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:F11
+        Else If ErrorLevel = EndKey:F11
         {
             ;insertSFX("Nice-Shot-Clean")
             
             ToolTip
             return
         }     
-        If ErrorLevel = EndKey:F12
+        Else If ErrorLevel = EndKey:F12
         {
             ;insertSFX("Nope")
             
             ToolTip
             return
         }
-        If ErrorLevel = EndKey:PrintScreen
+        Else If ErrorLevel = EndKey:PrintScreen
         {
             ;insertSFX("Oh my god xgames vine")
             
