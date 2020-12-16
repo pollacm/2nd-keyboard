@@ -3607,15 +3607,15 @@ return
     data=
     (
 5. Instant Effects and Quick Search
-1. instantVFX("position")
-2. instantVFX("position_vertical")
-3. instantVFX("scale")
-4. instantVFX("rotation")
-5. instantVFX("anchor_point")
-6. instantVFX("anchor_point_vertical")
-7. quickEffectsSearch()
-8. quickProjectSearch() 
-9. --
+1. instantVFX("position")
+2. instantVFX("position_vertical")
+3. instantVFX("scale")
+4. instantVFX("rotation")
+5. instantVFX("opacity")
+6. instantVFX("anchor_point")
+7. instantVFX("anchor_point_vertical")
+8. quickEffectsSearch()
+9. quickProjectSearch() 
 10.--
 11.--
 12.--
@@ -3666,69 +3666,70 @@ PS.--
         }
         If ErrorLevel = EndKey:F1
         {
-            global VFXkey = F1
-            instantVFX("position")
+            key = F1
+            instantVFX("position", key)
             
             ToolTip
             return
         }  
         If ErrorLevel = EndKey:F2
         {
-            global VFXkey = F2
-            instantVFX("position_vertical")
+            VFXkey = F2
+            instantVFX("position_vertical", VFXkey)
    
             ToolTip
             return
         }  
         If ErrorLevel = EndKey:F3
         {
-            global VFXkey = F3            
-            instantVFX("scale")
+            VFXkey = F3            
+            instantVFX("scale", VFXkey)
             
             ToolTip
             return
-        }
+        }        
         If ErrorLevel = EndKey:F4
         {
-            global VFXkey = F4            
-            instantVFX("rotation")
-            
-            ToolTip
-            return
-        }
-        If ErrorLevel = EndKey:F5
-        {
-            global VFXkey = F5
-            instantVFX("anchor_point")
+            VFXkey = F4         
+            instantVFX("rotation", VFXkey)
             
             ToolTip
             return
         }  
+        If ErrorLevel = EndKey:F5
+        {
+            VFXkey = F5         
+            instantVFX("opacity", VFXkey)
+            
+            ToolTip
+            return
+        }
         If ErrorLevel = EndKey:F6
         {
-            global VFXkey = F6
-            instantVFX("anchor_point_vertical")
+            VFXkey = F6
+            instantVFX("anchor_point", VFXkey)
             
             ToolTip
             return
         }  
         If ErrorLevel = EndKey:F7
         {
-            quickEffectsSearch()
+            VFXkey = F7
+            instantVFX("anchor_point_vertical", VFXkey)
             
             ToolTip
             return
         }
         If ErrorLevel = EndKey:F8
         {
-            quickProjectSearch()  
+            quickEffectsSearch()
             
             ToolTip
             return
         }
         If ErrorLevel = EndKey:F9
         {
-            ;insertSFX("Mission-Failed-We'll-Get-Em-Next-Time")
+            quickProjectSearch()
             
             ToolTip
             return
@@ -4213,7 +4214,8 @@ Color Effects (Q for no adjustment layer)
     direct = 0
 
     If ErrorLevel = EndKey:Escape
-    {
+    {   
+        ToolTip
         return
     }
     If OutputVar = Q
@@ -4224,6 +4226,7 @@ Color Effects (Q for no adjustment layer)
 
     If ErrorLevel = EndKey:Escape
     {
+        ToolTip
         return
     }
     else if ErrorLevel = EndKey:F1

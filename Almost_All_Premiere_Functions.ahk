@@ -700,9 +700,27 @@ sleep 2000 ;we are waiting for the search to complete....
 		ImageSearch, Px, Py, 8, 572, 443, 836, *3 %A_WorkingDir%\audio-waveform-c.png
 		if ErrorLevel
 		{
-			;msgbox, not found
-			BlockInput, off
-			BlockInput, MouseMoveOff		
+			ImageSearch, Px, Py, 8, 572, 443, 836, *3 %A_WorkingDir%\audio-waveform-blue.png
+			if ErrorLevel
+			{
+				ImageSearch, Px, Py, 8, 572, 443, 836, *3 %A_WorkingDir%\audio-waveform-c-blue.png
+				if ErrorLevel
+				{
+					;msgbox, not found
+					BlockInput, off
+					BlockInput, MouseMoveOff		
+				}
+				else
+				{
+				;	msgbox, found %Px% %Py%
+					MouseMove, Px, Py-30
+				}		
+			}
+			else
+			{
+			;	msgbox, found %Px% %Py%
+				MouseMove, Px, Py-30
+			}		
 		}
 		else
 		{
@@ -1564,8 +1582,9 @@ loadSequence(sequenceName)
 ; 	blockinput, MouseMoveOff
 ; }
 
-instantVFX(foobar)
+instantVFX(foobar, key)
 {
+
 dontrestart = 0
 restartPoint:
 blockinput, sendandMouse
@@ -1580,7 +1599,7 @@ global Xbegin = Xbeginlol
 global Ybegin = Ybeginlol
 ; MsgBox, "please verify that the mouse cannot move"
 ; sleep 2000
-ControlGetPos, Xcorner, Ycorner, Width, Height, DroverLord - Window Class51, ahk_class Premiere Pro ;This is HOPEFULLY the ClassNN of the effect controls panel. Use Window Spy to figure it out.
+ControlGetPos, Xcorner, Ycorner, Width, Height, DroverLord - Window Class47, ahk_class Premiere Pro ;This is HOPEFULLY the ClassNN of the effect controls panel. Use Window Spy to figure it out.
 ;I might need a far more robust way of ensuring the effect controls panel has been located, in the future.
 
 ;move mouse to expected triangle location. this is a VERY SPECIFIC PIXEL which will be right on the EDGE of the triangle when it is OPEN.
@@ -1604,7 +1623,7 @@ if (colorr = "0x222222") ;for 100% ui
 	Click XX, YY
 	sleep 5
 	clickTransformIcon()
-	findVFX(foobar)
+	findVFX(foobar, key)
 	Return
 }
 ;else if (colorr = "0x757575") ;for 150% ui. again, this values could be different for everyone. check with window spy. This color simply needs to be different from the color when the triangle is closed. it also cannot be the same as a normal panel color (1d1d1d or 232323)
@@ -1614,7 +1633,7 @@ else if (colorr = "0x7A7A7A") ;for 100% ui
 	blockinput, Mouse
 	sleep 5
 	clickTransformIcon()
-	findVFX(foobar)
+	findVFX(foobar, key)
 	;untwirled = 1
 	Return, untwirled
 }
@@ -1645,7 +1664,7 @@ else
 }
 Return ;from autoscaler part 1
 
-findVFX(foobar) ; searches for text inside of the Motion effect. requires an actual image.
+findVFX(foobar, key) ; searches for text inside of the Motion effect. requires an actual image.
 {
 ;tooltip, WTF
 ;msgbox, now we are in findVFX
@@ -1695,14 +1714,14 @@ else
 	MouseMove, FoundX, FoundY, 0
 	;msgbox,,,moved to located text,1
 	sleep 5
-	findHotText(foobar)
+	findHotText(foobar, key)
 	}
 }
 
 
 
 
-findHotText(foobar)
+findHotText(foobar, key)
 {
 tooltip, ; removes any tooltips that might be in the way of the searcher.
 ; https://www.autohotkey.com/docs/commands/PixelSearch.htm
@@ -1710,7 +1729,7 @@ tooltip, ; removes any tooltips that might be in the way of the searcher.
 MouseGetPos, xxx, yyy
 
 ;msgbox, foobar is %foobar%
-if (foobar = "scale" ||  foobar = "anchor_point" || foobar = "rotation" || foobar = "position")
+if (foobar = "scale" ||  foobar = "anchor_point" || foobar = "rotation" || foobar = "position" || foobar = "opacity")
 {
 	;msgbox,,,scale or the other 3,1
 	;PixelSearch, Px, Py, xxx+50, yyy, xxx+350, yyy+11, 0x3398EE, 30, Fast RGB ;this is searching to the RIGHT, looking the blueness of the scrubbable hot text. Unfortunately, it sees to start looking from right to left, so if your window is sized too small, it'll possibly latch onto the blue of the playhead/CTI.
@@ -1779,9 +1798,9 @@ else
 	}
 	;msgbox, 5 point
 	Click down left
-	
-	GetKeyState, stateFirstCheck, %VFXkey%, P
-		
+
+	GetKeyState, stateFirstCheck, %key%, P
+
 	if stateFirstCheck = U
 		{
 			;a bit of time has passed by now, so if the user is no longer holding the key down at this point, that means that they pressed it an immediately released it.
@@ -1807,19 +1826,19 @@ else
 			resetFromAutoVFX()
 			;return
 		}
-	;Now we start the official loop, which will continue as long as the user holds down the VFXkey. They can now simply move the mouse to change the value of the hot text which has been automatically selected for them.
+	;Now we start the official loop, which will continue as long as the user holds down the key. They can now simply move the mouse to change the value of the hot text which has been automatically selected for them.
 	Loop
 		{
 		blockinput, off
 		blockinput, MouseMoveOff
-		;tooltip, %VFXkey% Instant %foobar% mod
+		;tooltip, %key% Instant %foobar% mod
 		tooltip, ;removes any tooltips that might exist.
 		sleep 15
-		GetKeyState, state, %VFXkey%, P
+		GetKeyState, state, %key%, P
 		if state = U
 			{
 			Click up left
-			;tooltip, "%VFXkey% is now physically UP so we are exiting now"
+			;tooltip, "%key% is now physically UP so we are exiting now"
 			sleep 15
 			resetFromAutoVFX()
 			; MouseMove, Xbegin, Ybegin, 0
